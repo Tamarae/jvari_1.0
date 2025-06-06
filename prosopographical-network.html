@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross Monastery Memorial Records - Prosopographical Network</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        /* Academic minimal styling */
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .visualization-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #ddd;
+            background: #fafafa;
+        }
+
+        .visualization-header h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .visualization-header p {
+            margin: 0;
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .controls {
+            padding: 12px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8em;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .control-group label {
+            font-weight: normal;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 3px 6px;
+            border: 1px solid #ccc;
+            font-size: 0.8em;
+            font-family: inherit;
+            background: #fff;
+            color: #333;
+            border-radius: 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+        }
+
+        .control-group select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 12px;
+            padding-right: 20px;
+            cursor: pointer;
+        }
+
+        .control-group select:focus,
+        .control-group input:focus {
+            border-color: #999;
+            box-shadow: none;
+        }
+
+        .control-group select:hover {
+            border-color: #999;
+        }
+
+        .control-group input[type="text"] {
+            width: 120px;
+        }
+
+        .btn {
+            padding: 4px 10px;
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+            font-size: 0.8em;
+            cursor: pointer;
+            font-family: inherit;
+            color: #333;
+            border-radius: 0;
+            outline: none;
+            transition: none;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+            border-color: #999;
+        }
+
+        .btn:active {
+            background: #e8e8e8;
+        }
+
+        .visualization-container {
+            position: relative;
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .network-stats {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 0.75em;
+            color: #666;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 8px;
+            border: 1px solid #eee;
+        }
+
+        .tooltip {
+            position: absolute;
+            padding: 8px;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            border-radius: 3px;
+            pointer-events: none;
+            font-size: 0.75em;
+            max-width: 250px;
+            z-index: 1000;
+            line-height: 1.3;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 0.7em;
+            background: rgba(255,255,255,0.95);
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 2px 0;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-line {
+            width: 20px;
+            height: 2px;
+        }
+
+        /* Network styling */
+        .node {
+            cursor: pointer;
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+
+        .node.secular { fill: #BF3C1F; }
+        .node.royal { fill: #010D00; }
+        .node.noble { fill: #A6351C; }
+        .node.ecclesiastical { fill: #732514; }
+        .node.unknown { fill: #400F0B; }
+
+
+
+
+
+
+        .node:hover {
+            stroke-width: 3px;
+            stroke: #333;
+        }
+
+        .lang-toggle {
+            margin-left: auto;
+        }
+
+        .link {
+            stroke-opacity: 0.6;
+        }
+
+        .link.spouse { stroke: #dc143c; stroke-width: 2px; }
+        .link.parent-child { stroke: #ff8c00; stroke-width: 1.5px; }
+        .link.co-commemorated { stroke: #4682b4; stroke-width: 1px; }
+        .link.sibling { stroke: #9370db; stroke-width: 1.5px; }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Iframe-optimized responsive design */
+        @media (max-width: 1200px) {
+            .control-row {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .control-group {
+                min-width: 140px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .controls {
+                padding: 10px 15px;
+                font-size: 0.75em;
+            }
+
+            .control-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .control-group {
+                width: 100%;
+                justify-content: space-between;
+                min-width: auto;
+            }
+
+            .control-group label {
+                flex-shrink: 0;
+                min-width: 80px;
+            }
+
+            .control-group select,
+            .control-group input {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .btn {
+                padding: 6px 12px;
+                font-size: 0.75em;
+            }
+
+            .lang-toggle {
+                margin-left: 0;
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .visualization-header {
+                padding: 10px 15px;
+            }
+
+            .visualization-header h2 {
+                font-size: 1rem;
+            }
+
+            .visualization-header p {
+                font-size: 0.8em;
+            }
+
+            .controls {
+                padding: 8px 12px;
+                font-size: 0.7em;
+            }
+
+            .network-stats {
+                top: 5px;
+                right: 10px;
+                font-size: 0.7em;
+                padding: 4px 6px;
+            }
+
+            .legend {
+                bottom: 10px;
+                left: 10px;
+                font-size: 0.65em;
+                padding: 6px;
+            }
+        }
+
+        /* Ensure proper sizing within iframe */
+        body {
+            min-width: 320px;
+            overflow-x: auto;
+        }
+
+        .visualization-container {
+            min-height: 400px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <div class="control-row">
+            <div class="control-group">
+                <label for="roleFilter" id="roleLabel">როლი:</label>
+                <select id="roleFilter">
+                    <option value="all" id="allRolesOpt">ყველა</option>
+                    <option value="royal" id="royalOpt">მონარქი</option>
+                    <option value="noble" id="nobleOpt">დიდებული</option>
+                    <option value="ecclesiastical" id="ecclesOpt">სასულიერო</option>
+                    <option value="secular" id="secularOpt">საერო</option>
+                    <option value="unknown" id="unknownOpt">უცნობი</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="linkFilter" id="linkLabel">კავშირი:</label>
+                <select id="linkFilter">
+                    <option value="all" id="allLinksOpt">ყველა</option>
+                    <option value="spouse" id="spouseOpt">ქორწინება</option>
+                    <option value="parent-child" id="kinshipOpt">ნათესაობა</option>
+                    <option value="co-commemorated" id="commemOpt">ერთდროული ხსენება</option>
+                    <option value="sibling" id="siblingOpt">ძმობა</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="searchInput" id="searchLabel">ძიება:</label>
+                <input type="text" id="searchInput" placeholder="სახელი...">
+            </div>
+
+            <button class="btn" id="resetBtn">გასუფთავება</button>
+
+
+            <div class="control-group lang-toggle">
+                <button class="btn" id="langToggle">English</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="visualization-container">
+        <div class="loading" id="loading">პროსოპოგრაფიული მონაცემების ჩატვირთვა...</div>
+        <div class="network-stats" id="stats" style="display: none;">
+            <div id="personLabel">პირები: <span id="nodeCount">0</span></div>
+            <div id="connectionLabel">კავშირები: <span id="linkCount">0</span></div>
+        </div>
+        <div class="legend" id="legend" style="display: none;">
+            <div class="legend-title" id="legendTitle">აღნიშვნები</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #010D00;"></div>
+                <span id="royalLegend">მონარქი</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #A6351C;"></div>
+                <span id="nobleLegend">დიდებული</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #732514;"></div>
+                <span id="ecclesLegend">სასულიერო</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #BF3C1F;"></div>
+                <span id="secularLegend">საერო</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #400F0B;"></div>
+                <span id="unknownLegend">უცნობი</span>
+            </div>
+            <div style="margin-top: 6px;">
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #dc143c;"></div>
+                    <span id="marriageLegend">ქორწინება</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #ff8c00;"></div>
+                    <span id="kinshipLegend">ნათესაობა</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #4682b4;"></div>
+                    <span id="commemLegend">ერთდროული ხსენება</span>
+                </div>
+            </div>
+        </div>
+        <svg id="network"></svg>
+    </div>
+
+    <script>
+        // Embedded data - replace this with your actual JSON data
+        const PROSOPOGRAPHICAL_DATA = {
+  "nodes": [
+    {
+      "id": "ambrose_agent",
+      "name": "ამბროსე, მზეჭაბუკ ათაბაგის გაზრდილი",
+      "role": "secular",
+      "sex": "0",
+      "services": "გ კჳრიაკესა მარხვათასა, გ კჳრიაკესა მარხვათასა, გ კჳრიაკესა მარხვათასა"
+    },
+    {
+      "id": "atanase_makhasdze_formerly_ardashir",
+      "name": "არდაშირ-ყოფილი ათანასე, მახასძე",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "ას დღესა"
+    },
+    {
+      "id": "auth_pers_aghbugha_qobulisdze",
+      "name": "აღბუღა ქობულისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_aghdgomela",
+      "name": "აღდგომელა",
+      "role": "secular",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_aguti_dadiani",
+      "name": "აგუტი დადიანი",
+      "role": "noble",
+      "sex": "2",
+      "services": "დიდსა ხუთშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_aleksandre_konstantine",
+      "name": "ალექსანდრე, კოსტანტინეს შვილი",
+      "role": "secular",
+      "sex": "0",
+      "services": "პირველსა კჳრიაკესა წმიდათა მარხვათასა: წირვა, აღაპი"
+    },
+    {
+      "id": "auth_pers_arslan_afridonisdze",
+      "name": "არსლან აფრიდონიძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "პირველსა კჳრიაკესა წმიდათა მარხვათასა: წირვა, აღაპი, პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_avtandil_zedginidze",
+      "name": "ავთანდილ ზედგინიძე",
+      "role": "noble",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_barata",
+      "name": "ბარათა",
+      "role": "secular",
+      "sex": "0",
+      "services": "ყველიერისა შაბათსა: წირვა, აღაპი"
+    },
+    {
+      "id": "auth_pers_basili_bueghvesdze",
+      "name": "ბასილი ბუეღუესძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "შაბათსა შემდგომად ამაღლებისა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_beqa",
+      "name": "ბექა",
+      "role": "secular",
+      "sex": "0",
+      "services": "ჴორციელსა ორშაბათსა: პანაშვიდი, ამასვე დღესა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_beshqen_goboysdze",
+      "name": "ბეშქენ გობოჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "პარასკევსა შემდგომად ამაღლებისა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_beshqen_mkhetisdze",
+      "name": "ბეშქენ მჴეცისძე მოლარეთუხუცესი",
+      "role": "civil",
+      "sex": "0",
+      "services": "ყველიერისა კჳრიაკესა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_betlemay",
+      "name": "ბეთლემაჲ",
+      "role": "secular",
+      "sex": "0",
+      "services": "მენელსაცხებლეთა კჳრიაკესა: წირვაჲ, აღაპი, მწუხრი პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_chargaz_afaqisdze",
+      "name": "ჩარგაზ აფაქისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "ხუთშაბათსა სულისა წმიდისა მოსლვისასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_davit_king",
+      "name": "დავით მეფე",
+      "role": "royal",
+      "sex": "0",
+      "services": "შაბათსა თეედორობისასა: აღაპი"
+    },
+    {
+      "id": "auth_pers_davit_vi_narini",
+      "name": "დავით VI ნარინი",
+      "role": "royal",
+      "sex": "0",
+      "services": "მეორესა კჳრიაკესა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_duda_ghltisdze",
+      "name": "დუდა ღლტისძე",
+      "role": "secular",
+      "sex": "2",
+      "services": "მეორესა შაბათსა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_dzagan_abuletisdze",
+      "name": "ძაგან_აბულეთისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "ყოველთა წმიდათა კჳრიაკესა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_galinoz_berisdze",
+      "name": "გალინოზ ბერჲსა ძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა კჳრასა: აღაპი"
+    },
+    {
+      "id": "auth_pers_ghobiari_gamrekeli",
+      "name": "ღობიარ გამრეკელი ერისთავთერისთავი",
+      "role": "noble",
+      "sex": "0",
+      "services": "სულისა წმიდისა სამშაბათსა: აღაპი, წირვა"
+    },
+    {
+      "id": "auth_pers_giorgi_falqozisdze",
+      "name": "გიორგი ფალქოზისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა კჳრიაკესა შობითგან ბრმისა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_giorgi_javesiani",
+      "name": "გიორგი ჯავესიანი",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა შაბათსა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_giorgi_king_kings",
+      "name": "მეფეთ მეფე გიორგი",
+      "role": "royal",
+      "sex": "1",
+      "services": "კჳრიაკესა ბაიაობისასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_giorgi_lashkhisshvili",
+      "name": "გიორგი ლაშხისშვილი",
+      "role": "secular",
+      "sex": "0",
+      "services": "სამშაბათსა მენელსაცხებლეთა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_giorgi_mother",
+      "name": "დედა მეფეთმეფე გიორგისა",
+      "role": "royal",
+      "sex": "0",
+      "services": "სულისა წმიდისა მოს: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_giorgi_wife",
+      "name": "ცოლი მეფეთმეფე გიორგისა",
+      "role": "secular",
+      "sex": "0",
+      "services": "სულისა წმიდისა მოს: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_goboy_sons",
+      "name": "გობოჲს ძეები მიცვალებული",
+      "role": "secular",
+      "sex": "0",
+      "services": "პარასკევსა შემდგომად ამაღლებისა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_grigol_drandeli",
+      "name": "გრიგოლ დრანდელი",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "ჴორციელისა კჳრიაკესა: წირვაჲ, აღაპი, პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_grigol_fanaskerteli",
+      "name": "გრიგოლ ფანასკერტელი",
+      "role": "noble",
+      "sex": "0",
+      "services": "სამშაბათსა: წირვაჲ, აღაპი, წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_gulshar_avtandilwife",
+      "name": "გულშარ, ავთანდილის მეუღლე",
+      "role": "secular",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_imarindo_amilakhori",
+      "name": "იმარინდო ამილახორი",
+      "role": "noble",
+      "sex": "0",
+      "services": "წმი: მწუხრსა აღაპი მისთ, წირვა, აღაპი საუკუნო"
+    },
+    {
+      "id": "auth_pers_ioane_modzghvari",
+      "name": "იოანე_მოძღუარი",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_iob_betlemaysa",
+      "name": "იობ, ბეთლემაჲსა ბიძა",
+      "role": "secular",
+      "sex": "0",
+      "services": "მენელსაცხებლეთა კჳრიაკესა: წირვაჲ, აღაპი, მწუხრი პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_ioseb_khaflay",
+      "name": "იოსებ ხაფლაჲ",
+      "role": "secular",
+      "sex": "0",
+      "services": "მენელსაცხებლეთა კჳრიაკესა: წირვაჲ, აღაპი, მწუხრი პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_ivane_ghvinaysdze",
+      "name": "ივანე ღჳნაჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეხუთესა კჳრიაკესა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_ivane_goboysdze",
+      "name": "ივანე_გობოჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "პარასკევსა შემდგომად ამაღლებისა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_ivane_makhujagiani",
+      "name": "ივანე მახუჯაგიანი",
+      "role": "secular",
+      "sex": "0",
+      "services": "სამარიტელისა კჳრიაკესა: წირვაჲ, აღაპი, მწუხრი პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_janibeg_zedginidze",
+      "name": "ჯანიბეგ ზედგინიძე",
+      "role": "noble",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_javakhi_chilaysdze",
+      "name": "ჯავახ ჭილაჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა კჳრიაკესა წმიდათა მარხვათასა: წირვაჲ, აღაპი, პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_kakha_gamrekeli",
+      "name": "კახა გამრეკელი",
+      "role": "noble",
+      "sex": "0",
+      "services": "თევდორობად: აღაპი"
+    },
+    {
+      "id": "auth_pers_kandelaki",
+      "name": "კანდელაკი",
+      "role": "secular",
+      "sex": "0",
+      "services": "დიდათა მარხუაშ"
+    },
+    {
+      "id": "auth_pers_khalili",
+      "name": "ხალილ",
+      "role": "secular",
+      "sex": "0",
+      "services": "აღდგომასა: აღაპი"
+    },
+    {
+      "id": "auth_pers_khazhik_zosime",
+      "name": "ზოსიმე ხაჟიკ",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა შაბათსა ზატიკისასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_khuasha_chiaurti",
+      "name": "ხუაშა ჭიაურთა",
+      "role": "secular",
+      "sex": "2",
+      "services": "ახალ კჳრიაკესა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_king_aleksandre",
+      "name": "მეფეთ მეფე ალექსანდრე",
+      "role": "royal",
+      "sex": "1",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_king_giorgi",
+      "name": "მეფეთ მეფე გიორგი",
+      "role": "royal",
+      "sex": "1",
+      "services": "სულისა წმიდისა მოს: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_kueche_goboysdze",
+      "name": "კუეჭე გობოჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "პარასკევსა შემდგომად ამაღლებისა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_liparit_qvesheli",
+      "name": "ლიპარიტ ქვეშელი",
+      "role": "secular",
+      "sex": "0",
+      "services": "ახალ კჳრიაკისა შაბათსა: წირვაჲ, აღაპი, პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_mariam_qortozisdaughter",
+      "name": "მარიამ ქორთოძის ასული",
+      "role": "secular",
+      "sex": "0",
+      "services": "დიდს ხუთშაბათს გარდაიჴდიდენ: აღაპი"
+    },
+    {
+      "id": "auth_pers_mariami",
+      "name": "მარიამ",
+      "role": "unknown",
+      "sex": "0",
+      "services": "ამასვე დღესა: აღაპი"
+    },
+    {
+      "id": "auth_pers_marushiani_falqozisdze",
+      "name": "მარუშიანი ფალქოზისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მესამესა შაბათსა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_marushiani_nioraysdze",
+      "name": "მარუშიან ნიორაჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა პარასკევსა ზატიკთასა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_meliqzedeg_bedieli",
+      "name": "მელიქზედეგ ბედიელი",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_mikael_grigol",
+      "name": "მიქაელ, გრიგოლის ძმა",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეხუთესა ოთხშაბათსა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_mikael_khuedisjureli",
+      "name": "მიქაელ ჴუედისჯურელი",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეხუთესა შაბათსა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_mikael_lashkhisshvili",
+      "name": "მიქაელ ლაშხისშვილი",
+      "role": "secular",
+      "sex": "0",
+      "services": "სამშაბათსა მენელსაცხებლეთა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_natel_quabulisdze",
+      "name": "ნათელ ქუაბულისძე",
+      "role": "secular",
+      "sex": "2",
+      "services": "მეორესა ხუთშაბათსა ზატიკთასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_nateli_bedanisdaughter",
+      "name": "ნათელი ბედანის ასული",
+      "role": "secular",
+      "sex": "2",
+      "services": "ხუთშაბათსა სულისა წმიდისა მოსლვისასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_nateli_dadiani",
+      "name": "ნათელ დადიანი",
+      "role": "noble",
+      "sex": "2",
+      "services": "ლაზარობისა შაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_nateli_psitay",
+      "name": "ნათელ ფსიტაჲს მეუღლე",
+      "role": "secular",
+      "sex": "2",
+      "services": "აღვსებისა ხუთშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_nikifore_crossfather",
+      "name": "ნიკიფორე ჯუარის მამა",
+      "role": "ecclesiastical",
+      "sex": "1",
+      "services": "დიდს ხუთშაბათს გარდაიჴდიდენ: აღაპი"
+    },
+    {
+      "id": "auth_pers_nikoloz_eristavi",
+      "name": "ნიკოლოზ ერისთავი",
+      "role": "noble",
+      "sex": "0",
+      "services": "ბაიაობასა დღესა: წირვა"
+    },
+    {
+      "id": "auth_pers_pata_gurieli",
+      "name": "პატა ბატონი გურიელი",
+      "role": "noble",
+      "sex": "0",
+      "services": "დიდს ხუთშაბათს გარდაიჴდიდენ: აღაპი"
+    },
+    {
+      "id": "auth_pers_pimen_matsqvereli",
+      "name": "პიმენ მაწყვერელი ჯვარისმამა",
+      "role": "noble",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_pipa_shalvason",
+      "name": "პიპა შალვას შვილი",
+      "role": "secular",
+      "sex": "0",
+      "services": "სამარიტელისა ოთხშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_pipa_son",
+      "name": "პიპას შვილი",
+      "role": "secular",
+      "sex": "0",
+      "services": "ახალ კჳრიაკესა ორშაბათსა: აღაპი"
+    },
+    {
+      "id": "auth_pers_prokhore_cross_father",
+      "name": "პროხორე ჯვარის მამა",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "ყველიერისა ხუთშაბათსა: აღაპი"
+    },
+    {
+      "id": "auth_pers_psitay",
+      "name": "ფსიტაჲ",
+      "role": "secular",
+      "sex": "0",
+      "services": "აღვსებისა ხუთშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_queen_tamar_aleksandrewife",
+      "name": "თამარ დედოფალი, ალექსანდრეს მეუღლე",
+      "role": "royal",
+      "sex": "2",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_qundos_chakhubisdze",
+      "name": "ყუნდოს ჭახუბისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "აღვსებისა პარასკევსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_rusa_amirejibwife",
+      "name": "რუსა, ამირეჯიბის მეუღლე",
+      "role": "noble",
+      "sex": "2",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_rusudan_dedopali",
+      "name": "რუსუდან დედოფალი",
+      "role": "royal",
+      "sex": "2",
+      "services": "მეორესა კჳრიაკესა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_saakisi",
+      "name": "სააკისი",
+      "role": "secular",
+      "sex": "0",
+      "services": "დიდსა შაბათსა: აღაპი"
+    },
+    {
+      "id": "auth_pers_saba_abazasdze",
+      "name": "საბა აბაზასძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "ე კჳრიაკესა შემდგომად ამაღლებისა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_saba_mimtsaysdze",
+      "name": "საბა მიმცაჲსძე საღირყოფილი",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "სულისა წმიდისა მოსლვისა წინა შაბათსა: აღაპი, პანაჰშჳდითა, ორისა ხუცისა წირვითა"
+    },
+    {
+      "id": "auth_pers_saghir_gareyanysdze",
+      "name": "საღირ გარეყანისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "ყველიერისა შაბათსა: წირვაჲ, აღაპი, პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_saghir_goboysdze",
+      "name": "საღირ გობოჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "აღვსებისა ორშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_saghir_laskhaysdze",
+      "name": "საღირ ლაშხაჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "აღვსებისა ოთხშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_saghiri_brother",
+      "name": "საღირა",
+      "role": "secular",
+      "sex": "0",
+      "services": "სამშაბათსა: აღაპი"
+    },
+    {
+      "id": "auth_pers_sargis_goboysdze",
+      "name": "სარგის გობოჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "პარასკევსა შემდგომად ამაღლებისა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_shahansha",
+      "name": "შაჰანშა",
+      "role": "noble",
+      "sex": "0",
+      "services": "კჳრიაკესა ბაიაობისასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_shahansha_second",
+      "name": "შაჰანშა_2",
+      "role": "noble",
+      "sex": "0",
+      "services": "აღვსებისა შაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_shalva_qenifnveli",
+      "name": "შალვა ქენიფნველი ერისთავი",
+      "role": "noble",
+      "sex": "0",
+      "services": "სამარიტელისა ოთხშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_shalva_quabulisdze",
+      "name": "შალვა ქუაბულისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეოთხესა ორშაბათსა ზატიკთასა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_shansha_daughter",
+      "name": "შანშას ასული",
+      "role": "noble",
+      "sex": "0",
+      "services": "შუა ზატიკსა: აღაპი"
+    },
+    {
+      "id": "auth_pers_shota_mechurchletukhutsesi",
+      "name": "შოთა მეჭურჭლეთუხუცესი",
+      "role": "civil",
+      "sex": "0",
+      "services": "ორშაბათსა სულისა წმიდისა მოსლვისასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_taba_vardan",
+      "name": "თაბა",
+      "role": "secular",
+      "sex": "2",
+      "services": "მესამესა კჳრიაკესა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_tamar_imarindowife",
+      "name": "თამარ იმარინდოს მეუღლე",
+      "role": "secular",
+      "sex": "2",
+      "services": "წმი: მწუხრსა აღაპი მისთ, წირვა, აღაპი საუკუნო"
+    },
+    {
+      "id": "auth_pers_tamar_mamlaqnisdaughter",
+      "name": "თამარ მამლაქნისძის ასული",
+      "role": "secular",
+      "sex": "2",
+      "services": "ამაღლებასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_tamari_aghbugha",
+      "name": "თამარი, აღბუღა ქობულისძის მეუღლე",
+      "role": "secular",
+      "sex": "2",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_tamari_pipawife",
+      "name": "თამარი, პიპას მეუღლე",
+      "role": "secular",
+      "sex": "0",
+      "services": "სამარიტელისა ოთხშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_taqa_zedginidze",
+      "name": "თაყა ზედგინიძე",
+      "role": "noble",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_teodore_bishop",
+      "name": "თეოდორე ეპისკოპოსი",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "დიდს ხუთშაბათს გარდაიჴდიდენ: აღაპი"
+    },
+    {
+      "id": "auth_pers_tovlay_giorgi",
+      "name": "თოვლაჲ",
+      "role": "secular",
+      "sex": "2",
+      "services": "მეორესა ორშაბათსა ზატიკთასა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_tsotne_afaqisdze_chkhagu",
+      "name": "ცოტნე აფაქისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მეორესა შაბათსა ზატიკთასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_tsotne_dadiani",
+      "name": "ცოტნე დადიანი",
+      "role": "noble",
+      "sex": "0",
+      "services": "ლაზარობისა შაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_tsotne_qvelivaysdze",
+      "name": "ცოტნე ქველივაჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "ყველიერისა ორშაბათსა: პანაშჳდი"
+    },
+    {
+      "id": "auth_pers_unclear_easter",
+      "name": "მა...",
+      "role": "unknown",
+      "sex": "0",
+      "services": "აღვსებასა დღესა: წირვა, აღაპი"
+    },
+    {
+      "id": "auth_pers_vardan_dadiani",
+      "name": "ვარდან დადიანი",
+      "role": "noble",
+      "sex": "0",
+      "services": "დიდსა ხუთშაბათსა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_vardan_gaznisdze",
+      "name": "ვარდან გაზნისძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "მესამესა კჳრიაკესა წმიდათა მარხვათასა: წირვაჲ, აღაპი"
+    },
+    {
+      "id": "auth_pers_zedginidze_father",
+      "name": "მამა ზედგინიძე",
+      "role": "noble",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "auth_pers_zviad_goboysdze",
+      "name": "ზვად გობოჲსძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "პარასკევსა შემდგომად ამაღლებისა: პანაშჳდი"
+    },
+    {
+      "id": "avtandil_zedginidze",
+      "name": "ავთანდილ ზედგინიძე",
+      "role": "noble",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "bedani_chilaysdze",
+      "name": "ბედან ჭილასძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "აღდგომისა პარასკევსა"
+    },
+    {
+      "id": "daniel_nikozel",
+      "name": "დანიელ ნიქოზელი, ჯუარის მამა",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "დიდათა მარხუაშ"
+    },
+    {
+      "id": "elempi_gokhasdze",
+      "name": "ელემპი გოხასძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "დიდათა მარხუაშ"
+    },
+    {
+      "id": "elene_vatsasdze_mother",
+      "name": "ელენე, დედა შოთა ვაცასძისა",
+      "role": "secular",
+      "sex": "2",
+      "services": "მენელსაცხებლეთა კირიაკესა"
+    },
+    {
+      "id": "giorgi_lipariteli",
+      "name": "გიორგი ლიპარიტელი",
+      "role": "secular",
+      "sex": "0",
+      "services": "წმიდისა გიორგისა"
+    },
+    {
+      "id": "grigol_synaxarion_compiler",
+      "name": "გრიგოლ, სვინაქსარის შემკაზმავი",
+      "role": "civil",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "gulshar_avtandilwife",
+      "name": "გულშარ, ავთანდილ ზედგინიძის მეუღლე",
+      "role": "noble",
+      "sex": "2",
+      "services": ""
+    },
+    {
+      "id": "ioanne_cross_father",
+      "name": "იოანე ჯუარისა მამა",
+      "role": "ecclesiastical",
+      "sex": "1",
+      "services": ""
+    },
+    {
+      "id": "kandake_bedaniwife",
+      "name": "კანდაკე, ბედან ჭილასძეს მეუღლე",
+      "role": "secular",
+      "sex": "2",
+      "services": "აღდგომისა პარასკევსა"
+    },
+    {
+      "id": "liparit_dadiani",
+      "name": "ლიპარიტ დადიანი",
+      "role": "noble",
+      "sex": "0",
+      "services": "ყველიერისა სამშაფათსა"
+    },
+    {
+      "id": "loma_dadian_gurieli",
+      "name": "ლომა დადიან-გურიელი",
+      "role": "noble",
+      "sex": "0",
+      "services": "აღდგომისა სამშაფათსა"
+    },
+    {
+      "id": "markoz_priest_monk",
+      "name": "მარკოზ მღვდელ-მონაზონი",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "ბზობისა დღესა"
+    },
+    {
+      "id": "mzechabuk_atabag",
+      "name": "მზეჭაბუკ ათაბაგი, ჯუარის მამის პატრონი",
+      "role": "noble",
+      "sex": "0",
+      "services": "გ კჳრიაკესა მარხვათასა"
+    },
+    {
+      "id": "natel_gethsemane",
+      "name": "ნათელ გესამანიელი",
+      "role": "secular",
+      "sex": "2",
+      "services": ""
+    },
+    {
+      "id": "neofite_cross_father",
+      "name": "ნეოფიტე ჯუარისა მამა",
+      "role": "ecclesiastical",
+      "sex": "1",
+      "services": "წმიდისა გიორგისა"
+    },
+    {
+      "id": "nestan_darejan_chiladze",
+      "name": "ნესტან-დარეჯან ჭილაძე, გიორგი ლიპარიტელის მეუღლე",
+      "role": "secular",
+      "sex": "2",
+      "services": "წმიდისა გიორგისა"
+    },
+    {
+      "id": "nikifore_archimandrite",
+      "name": "ნიკიფორე (ნიკიფო) ჩოლაყაშვილი, ჯვარისა მამა",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "ბზობისა დღესა"
+    },
+    {
+      "id": "nikodime_kandelaki",
+      "name": "ნიკოდიმე კანდელაკი",
+      "role": "secular",
+      "sex": "0",
+      "services": ""
+    },
+    {
+      "id": "nikodime_parents",
+      "name": "ნიკოდიმე კანდელაკის მშობლები",
+      "role": "secular",
+      "sex": "2",
+      "services": ""
+    },
+    {
+      "id": "qaikosro_atabag",
+      "name": "ქაიხოსრო ათაბაგი",
+      "role": "noble",
+      "sex": "0",
+      "services": "გ კჳრიაკესა მარხვათასა"
+    },
+    {
+      "id": "qalandar",
+      "name": "ყალანდარი",
+      "role": "secular",
+      "sex": "0",
+      "services": "ქრისტეს შობისა წინა კჳრიაკესა მამათმთავართა დღესასწაულსა"
+    },
+    {
+      "id": "ramin_gabelisdze_amirejib",
+      "name": "რამინ გაბელისძე ამირეჯიბი",
+      "role": "noble",
+      "sex": "0",
+      "services": "ყოველთა მოციქულთა მარხვათა შიგან"
+    },
+    {
+      "id": "shota_vatsasdze",
+      "name": "შოთა ვაცასძე",
+      "role": "secular",
+      "sex": "0",
+      "services": "ახალ კუირიაკისა სამშაფაჲთსა"
+    },
+    {
+      "id": "solomon_vachidzorel",
+      "name": "სოლომონ ვაჩიძორელი",
+      "role": "unknown",
+      "sex": "0",
+      "services": "უძღებისა კჳრიაკესა"
+    },
+    {
+      "id": "teodose_bishop",
+      "name": "თეოდოსე ეპისკოპოსი წმ. საბას მონასტრისა",
+      "role": "ecclesiastical",
+      "sex": "0",
+      "services": "ბზობისა დღესა"
+    },
+    {
+      "id": "vakhtang_gurieli",
+      "name": "ვახტანგ გურიელი",
+      "role": "noble",
+      "sex": "0",
+      "services": "ბზობისა დღესა"
+    }
+
+  ],
+  "links": [
+    {
+    "source": "auth_pers_davit_vi_narini",
+    "target": "auth_pers_rusudan_dedopali",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_marushiani_falqozisdze",
+    "target": "auth_pers_giorgi_falqozisdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_vardan_gaznisdze",
+    "target": "auth_pers_taba_vardan",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_vardan_gaznisdze",
+    "target": "auth_pers_taba_vardan",
+    "type": "spouse"
+  },
+  {
+    "source": "auth_pers_tsotne_dadiani",
+    "target": "auth_pers_nateli_dadiani",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_vardan_dadiani",
+    "target": "auth_pers_aguti_dadiani",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_vardan_dadiani",
+    "target": "auth_pers_aguti_dadiani",
+    "type": "parent-child"
+  },
+  {
+    "source": "auth_pers_psitay",
+    "target": "auth_pers_nateli_psitay",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_tovlay_giorgi",
+    "target": "auth_pers_giorgi_falqozisdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_aghbugha_qobulisdze",
+    "target": "auth_pers_tamari_aghbugha",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_aghbugha_qobulisdze",
+    "target": "auth_pers_tamari_aghbugha",
+    "type": "spouse"
+  },
+  {
+    "source": "auth_pers_iob_betlemaysa",
+    "target": "auth_pers_betlemay",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_iob_betlemaysa",
+    "target": "auth_pers_ioseb_khaflay",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_betlemay",
+    "target": "auth_pers_ioseb_khaflay",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_mikael_lashkhisshvili",
+    "target": "auth_pers_giorgi_lashkhisshvili",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_shalva_qenifnveli",
+    "target": "auth_pers_pipa_shalvason",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_shalva_qenifnveli",
+    "target": "auth_pers_tamari_pipawife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_pipa_shalvason",
+    "target": "auth_pers_tamari_pipawife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_goboy_sons",
+    "target": "auth_pers_zviad_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_goboy_sons",
+    "target": "auth_pers_ivane_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_goboy_sons",
+    "target": "auth_pers_kueche_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_goboy_sons",
+    "target": "auth_pers_beshqen_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_goboy_sons",
+    "target": "auth_pers_sargis_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_zviad_goboysdze",
+    "target": "auth_pers_ivane_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_zviad_goboysdze",
+    "target": "auth_pers_kueche_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_zviad_goboysdze",
+    "target": "auth_pers_beshqen_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_zviad_goboysdze",
+    "target": "auth_pers_sargis_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_ivane_goboysdze",
+    "target": "auth_pers_kueche_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_ivane_goboysdze",
+    "target": "auth_pers_beshqen_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_ivane_goboysdze",
+    "target": "auth_pers_sargis_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_kueche_goboysdze",
+    "target": "auth_pers_beshqen_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_kueche_goboysdze",
+    "target": "auth_pers_sargis_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_beshqen_goboysdze",
+    "target": "auth_pers_sargis_goboysdze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_king_giorgi",
+    "target": "auth_pers_giorgi_mother",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_king_giorgi",
+    "target": "auth_pers_giorgi_wife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_giorgi_mother",
+    "target": "auth_pers_giorgi_wife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_chargaz_afaqisdze",
+    "target": "auth_pers_nateli_bedanisdaughter",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_pimen_matsqvereli",
+    "target": "auth_pers_ioane_modzghvari",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_pimen_matsqvereli",
+    "target": "auth_pers_kandelaki",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_pimen_matsqvereli",
+    "target": "auth_pers_aghdgomela",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_ioane_modzghvari",
+    "target": "auth_pers_kandelaki",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_ioane_modzghvari",
+    "target": "auth_pers_aghdgomela",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_kandelaki",
+    "target": "auth_pers_aghdgomela",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_avtandil_zedginidze",
+    "target": "auth_pers_gulshar_avtandilwife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_nikifore_crossfather",
+    "target": "auth_pers_teodore_bishop",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_nikifore_crossfather",
+    "target": "auth_pers_pata_gurieli",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_nikifore_crossfather",
+    "target": "auth_pers_mariam_qortozisdaughter",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_teodore_bishop",
+    "target": "auth_pers_pata_gurieli",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_teodore_bishop",
+    "target": "auth_pers_mariam_qortozisdaughter",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_pata_gurieli",
+    "target": "auth_pers_mariam_qortozisdaughter",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "auth_pers_imarindo_amilakhori",
+    "target": "auth_pers_tamar_imarindowife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "bedani_chilaysdze",
+    "target": "kandake_bedaniwife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "bedani_chilaysdze",
+    "target": "kandake_bedaniwife",
+    "type": "spouse"
+  },
+  {
+    "source": "nikodime_kandelaki",
+    "target": "nikodime_parents",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "nikodime_kandelaki",
+    "target": "nikodime_parents",
+    "type": "parent-child"
+  },
+  {
+    "source": "nikifore_archimandrite",
+    "target": "teodose_bishop",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "nikifore_archimandrite",
+    "target": "markoz_priest_monk",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "nikifore_archimandrite",
+    "target": "vakhtang_gurieli",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "teodose_bishop",
+    "target": "markoz_priest_monk",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "teodose_bishop",
+    "target": "vakhtang_gurieli",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "markoz_priest_monk",
+    "target": "vakhtang_gurieli",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "mzechabuk_atabag",
+    "target": "qaikosro_atabag",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "mzechabuk_atabag",
+    "target": "ambrose_agent",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "qaikosro_atabag",
+    "target": "ambrose_agent",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "neofite_cross_father",
+    "target": "giorgi_lipariteli",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "neofite_cross_father",
+    "target": "nestan_darejan_chiladze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "giorgi_lipariteli",
+    "target": "nestan_darejan_chiladze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "ioanne_cross_father",
+    "target": "avtandil_zedginidze",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "ioanne_cross_father",
+    "target": "gulshar_avtandilwife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "avtandil_zedginidze",
+    "target": "gulshar_avtandilwife",
+    "type": "co-commemorated"
+  },
+  {
+    "source": "daniel_nikozel",
+    "target": "elempi_gokhasdze",
+    "type": "co-commemorated"
+  }
+  ]
+};
+
+        // Global variables
+        let currentLanguage = 'ka'; // Start with Georgian
+        let originalData = { nodes: [], links: [] };
+        let filteredData = { nodes: [], links: [] };
+        let simulation, svg, g, tooltip;
+
+        // Translations
+        const translations = {
+            ka: {
+                title: "პროსოპოგრაფიული ქსელის ანალიზი",
+                subtitle: "ჯვრის მონასტრის მემორიალური ჩანაწერები (იერუსალიმი) — ციფრული სამეცნიერო გამოცემა",
+                loading: "პროსოპოგრაფიული მონაცემების ჩატვირთვა...",
+                roleLabel: "როლი:",
+                linkLabel: "კავშირი:",
+                searchLabel: "ძიება:",
+                searchPlaceholder: "სახელი...",
+                resetBtn: "გადაყენება",
+                persons: "პირები",
+                connections: "კავშირები",
+                legend: "აღნიშვნები",
+                allRoles: "ყველა",
+                royal: "მონარქი",
+                noble: "დიდებული",
+                ecclesiastical: "სასულიერო",
+                secular: "საერო",
+                civil: "საჯარო",
+                unknown: "უცნობი",
+                allLinks: "ყველა",
+                spouse: "ქორწინება",
+                kinship: "ნათესაობა",
+                commemoration: "ერთდროული ხსენება",
+                sibling: "ძმობა"
+            },
+            en: {
+                title: "Prosopographical Network Analysis",
+                subtitle: "Cross Monastery Memorial Records (Jerusalem) — Digital Scholarly Edition",
+                loading: "Loading prosopographical data...",
+                roleLabel: "Role:",
+                linkLabel: "Relationship:",
+                searchLabel: "Search:",
+                searchPlaceholder: "Name...",
+                resetBtn: "Reset",
+                persons: "Persons",
+                connections: "Connections",
+                legend: "Legend",
+                allRoles: "All",
+                royal: "Royal",
+                noble: "Noble",
+                ecclesiastical: "Ecclesiastical",
+                secular: "Secular",
+                unknown: "Unknown",
+                allLinks: "All",
+                spouse: "Marriage",
+                kinship: "Kinship",
+                commemoration: "Co-commemoration",
+                sibling: "Sibling"
+            }
+        };
+
+        // Data transformation functions
+        function extractPeriodFromServices(services) {
+            if (!services) return 'medieval';
+
+            const text = services.toLowerCase();
+
+            if (text.includes('მეფეთ მეფე') || text.includes('დედოფალი')) return '12th-13th';
+            if (text.includes('ათაბაგი')) return '13th-14th';
+            if (text.includes('გურიელი')) return '15th-16th';
+            if (text.includes('დადიანი')) return '13th-17th';
+            if (text.includes('ერისთავი')) return '12th-16th';
+
+            return 'medieval';
+        }
+
+        function transliterateGeorgian(georgianText) {
+            const transliterationMap = {
+                'ა': 'a', 'ბ': 'b', 'გ': 'g', 'დ': 'd', 'ე': 'e', 'ვ': 'v', 'ზ': 'z',
+                'თ': 't', 'ი': 'i', 'კ': 'k', 'ლ': 'l', 'მ': 'm', 'ნ': 'n', 'ო': 'o',
+                'პ': 'p', 'ჟ': 'zh', 'რ': 'r', 'ს': 's', 'ტ': 't', 'უ': 'u', 'ფ': 'p',
+                'ქ': 'q', 'ღ': 'gh', 'ყ': 'q', 'შ': 'sh', 'ჩ': 'ch', 'ც': 'ts', 'ძ': 'dz',
+                'წ': 'ts', 'ჭ': 'ch', 'ხ': 'kh', 'ჯ': 'j', 'ჰ': 'h', '_': ' ', 'ჲ': 'y'
+            };
+
+            return georgianText.split('').map(char => transliterationMap[char] || char).join('');
+        }
+
+        function transformData(rawData) {
+            const nodes = rawData.nodes.map(node => ({
+                id: node.id,
+                nameKa: node.name,
+                nameEn: transliterateGeorgian(node.name),
+                role: node.role,
+                titleKa: node.services ? node.services.split(':')[0] : '',
+                titleEn: node.role,
+                period: extractPeriodFromServices(node.services),
+                sex: node.sex,
+                services: node.services,
+                originalData: node
+            }));
+
+            const links = rawData.links.map(link => ({
+                source: link.source,
+                target: link.target,
+                type: link.type,
+                originalData: link
+            }));
+
+            return { nodes, links };
+        }
+
+        // Initialize visualization
+        function initVisualization() {
+            const container = d3.select('.visualization-container');
+            const containerRect = container.node().getBoundingClientRect();
+
+            const width = containerRect.width;
+            const height = Math.max(500, window.innerHeight - 200);
+
+            svg = d3.select('#network')
+                .attr('width', width)
+                .attr('height', height);
+
+            g = svg.append('g');
+
+            // Add zoom behavior
+            const zoom = d3.zoom()
+                .scaleExtent([0.2, 4])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+
+            svg.call(zoom);
+
+            // Create tooltip
+            tooltip = d3.select('body')
+                .append('div')
+                .attr('class', 'tooltip')
+                .style('opacity', 0);
+
+            // Initialize simulation with more grouping
+            simulation = d3.forceSimulation()
+                .force('link', d3.forceLink().id(d => d.id).distance(60).strength(0.8))
+                .force('charge', d3.forceManyBody().strength(-150))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(18))
+                .force('x', d3.forceX(width / 2).strength(0.1))
+                .force('y', d3.forceY(height / 2).strength(0.1));
+        }
+
+        function updateVisualization() {
+            g.selectAll('*').remove();
+
+            // Create links
+            const link = g.append('g')
+                .attr('class', 'links')
+                .selectAll('line')
+                .data(filteredData.links)
+                .enter().append('line')
+                .attr('class', d => `link ${d.type}`);
+
+            // Create nodes
+            const node = g.append('g')
+                .attr('class', 'nodes')
+                .selectAll('circle')
+                .data(filteredData.nodes)
+                .enter().append('circle')
+                .attr('class', d => `node ${d.role}`)
+                .attr('r', 8)  // Bigger dots
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended))
+                .on('mouseover', showTooltip)
+                .on('mouseout', hideTooltip);
+
+            // Update simulation
+            simulation
+                .nodes(filteredData.nodes)
+                .on('tick', ticked);
+
+            simulation.force('link')
+                .links(filteredData.links);
+
+            simulation.alpha(1).restart();
+
+            function ticked() {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+            }
+
+            updateStats();
+        }
+
+        function showTooltip(event, d) {
+            const name = currentLanguage === 'ka' ? d.nameKa : d.nameEn;
+            const altName = currentLanguage === 'ka' ? d.nameEn : d.nameKa;
+            const role = currentLanguage === 'ka' ?
+                translations.ka[d.role] || d.role :
+                translations.en[d.role] || d.role;
+            const services = d.services || (currentLanguage === 'ka' ? 'მსახურება არ არის ჩაწერილი' : 'No services recorded');
+
+            tooltip.transition()
+                .duration(200)
+                .style('opacity', .9);
+
+            tooltip.html(`
+                <strong>${name}</strong><br/>
+                <em>${altName}</em><br/>
+                ${currentLanguage === 'ka' ? 'როლი' : 'Role'}: ${role}<br/>
+                ${currentLanguage === 'ka' ? 'პერიოდი' : 'Period'}: ${d.period}<br/>
+                ${currentLanguage === 'ka' ? 'მსახურება' : 'Services'}: ${services.substring(0, 100)}${services.length > 100 ? '...' : ''}
+            `)
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 28) + 'px');
+        }
+
+        function hideTooltip() {
+            tooltip.transition()
+                .duration(500)
+                .style('opacity', 0);
+        }
+
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        // Filter functions
+        function applyFilters() {
+            const roleFilter = document.getElementById('roleFilter').value;
+            const linkFilter = document.getElementById('linkFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            let filteredNodes = originalData.nodes.filter(node => {
+                if (roleFilter !== 'all' && node.role !== roleFilter) return false;
+
+                if (searchTerm &&
+                    !node.nameKa.toLowerCase().includes(searchTerm) &&
+                    !node.nameEn.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            const nodeIds = new Set(filteredNodes.map(d => d.id));
+
+            let filteredLinks = originalData.links.filter(link => {
+                if (linkFilter !== 'all' && link.type !== linkFilter) return false;
+                return nodeIds.has(link.source.id || link.source) &&
+                       nodeIds.has(link.target.id || link.target);
+            });
+
+            filteredData = { nodes: filteredNodes, links: filteredLinks };
+            updateVisualization();
+        }
+
+        function updateStats() {
+            document.getElementById('nodeCount').textContent = filteredData.nodes.length;
+            document.getElementById('linkCount').textContent = filteredData.links.length;
+            document.getElementById('stats').style.display = 'block';
+            document.getElementById('legend').style.display = 'block';
+        }
+
+        function updateLanguage() {
+            const t = translations[currentLanguage];
+
+            // Update main header
+            document.getElementById('mainTitle').textContent = t.title;
+            document.getElementById('mainSubtitle').textContent = t.subtitle;
+
+            // Update controls
+            document.getElementById('roleLabel').textContent = t.roleLabel;
+            document.getElementById('linkLabel').textContent = t.linkLabel;
+            document.getElementById('searchLabel').textContent = t.searchLabel;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('resetBtn').textContent = t.resetBtn;
+
+
+            // Update options
+            document.getElementById('allRolesOpt').textContent = t.allRoles;
+            document.getElementById('royalOpt').textContent = t.royal;
+            document.getElementById('nobleOpt').textContent = t.noble;
+            document.getElementById('ecclesOpt').textContent = t.ecclesiastical;
+            document.getElementById('secularOpt').textContent = t.secular;
+            document.getElementById('unknownOpt').textContent = t.unknown;
+
+            document.getElementById('allLinksOpt').textContent = t.allLinks;
+            document.getElementById('spouseOpt').textContent = t.spouse;
+            document.getElementById('kinshipOpt').textContent = t.kinship;
+            document.getElementById('commemOpt').textContent = t.commemoration;
+            document.getElementById('siblingOpt').textContent = t.sibling;
+
+            // Update stats and legend
+            document.getElementById('personLabel').innerHTML = `${t.persons}: <span id="nodeCount">${filteredData.nodes.length}</span>`;
+            document.getElementById('connectionLabel').innerHTML = `${t.connections}: <span id="linkCount">${filteredData.links.length}</span>`;
+            document.getElementById('legendTitle').textContent = t.legend;
+            document.getElementById('royalLegend').textContent = t.royal;
+            document.getElementById('nobleLegend').textContent = t.noble;
+            document.getElementById('ecclesLegend').textContent = t.ecclesiastical;
+            document.getElementById('secularLegend').textContent = t.secular;
+            document.getElementById('unknownLegend').textContent = t.unknown;
+            document.getElementById('marriageLegend').textContent = t.spouse;
+            document.getElementById('kinshipLegend').textContent = t.kinship;
+            document.getElementById('commemLegend').textContent = t.commemoration;
+
+            // Update loading text
+            const loading = document.getElementById('loading');
+            if (loading.style.display !== 'none') {
+                loading.textContent = t.loading;
+            }
+        }
+
+        // Event listeners
+        document.getElementById('roleFilter').addEventListener('change', applyFilters);
+        document.getElementById('linkFilter').addEventListener('change', applyFilters);
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.getElementById('roleFilter').value = 'all';
+            document.getElementById('linkFilter').value = 'all';
+            document.getElementById('searchInput').value = '';
+            applyFilters();
+        });
+
+        document.getElementById('langToggle').addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'ka' ? 'en' : 'ka';
+            this.textContent = currentLanguage === 'ka' ? 'English' : 'ქართული';
+            updateLanguage();
+        });
+
+
+
+        // Responsive handling
+        window.addEventListener('resize', function() {
+            const container = d3.select('.visualization-container');
+            const containerRect = container.node().getBoundingClientRect();
+            const width = containerRect.width;
+            const height = Math.max(500, window.innerHeight - 200);
+
+            svg.attr('width', width).attr('height', height);
+            simulation.force('center', d3.forceCenter(width / 2, height / 2));
+            simulation.force('x', d3.forceX(width / 2).strength(0.1));
+            simulation.force('y', d3.forceY(height / 2).strength(0.1));
+            simulation.alpha(1).restart();
+        });
+
+        // Initialize the application
+        function startApplication() {
+            document.getElementById('loading').style.display = 'none';
+            originalData = transformData(PROSOPOGRAPHICAL_DATA);
+            filteredData = { ...originalData };
+            initVisualization();
+            updateVisualization();
+            updateLanguage(); // Set initial Georgian interface
+        }
+
+        // Start when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startApplication);
+        } else {
+            startApplication();
+        }
+    </script>
+</body>
+</html>

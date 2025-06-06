@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მუხლი 078 - ქართული სამონასტრო დოკუმენტები</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-bottom: 0.3rem;
+            color: #222;
+        }
+
+        .header .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .document-info {
+            background: #f9f9f9;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e5e5e5;
+            font-size: 0.9rem;
+        }
+
+        .document-info .title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .georgian-title {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #000;
+        }
+
+        .english-title {
+            font-family: 'Times New Roman', serif;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .metadata-item {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .metadata-label {
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .text-panel {
+            background: #fff;
+        }
+
+        .view-controls {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .view-controls button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #666;
+            border-bottom: 2px solid transparent;
+        }
+
+        .view-controls button.active {
+            color: #000;
+            border-bottom-color: #333;
+        }
+
+        .view-controls button:hover {
+            color: #000;
+        }
+
+        .georgian-text {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            font-size: 1.2rem;
+            line-height: 2.2;
+            margin: 1.5rem 0;
+            background: #f8f8f8;
+            padding: 2rem;
+            border-left: 4px solid #8B4513;
+            text-align: right;
+            direction: ltr;
+        }
+
+        .english-text {
+            font-family: 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 1.5rem 0;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-left: 3px solid #ddd;
+        }
+
+        .sidebar {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-section h3 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .person-entry {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .person-name {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .person-name-georgian {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .person-name-english {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .person-role {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .person-desc {
+            margin-top: 0.3rem;
+            line-height: 1.5;
+        }
+
+        .person-link, .place-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted #666;
+        }
+
+        .person-link:hover, .place-link:hover {
+            border-bottom-style: solid;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            color: #999;
+            margin: 0 5px;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            font-size: 0.9em;
+            border-radius: 3px;
+        }
+
+        .back-link:hover {
+            background: #555;
+        }
+
+        .couple-note {
+            background: #fff5ee;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border-left: 3px solid #ff8c00;
+        }
+
+        .couple-note-georgian {
+            background: #fff8f0;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border-left: 3px solid #ff8c00;
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-link">← უკან მონაცემთა ბაზაში</a>
+
+    <header class="header">
+        <nav class="breadcrumb">
+            <a href="../../index.html">წყაროები</a>
+            <span>›</span>
+            <span>მუხლი 078</span>
+        </nav>
+        <h1>ქართული სამონასტრო დოკუმენტები</h1>
+        <div class="subtitle">ჯვრის მონასტრის აღაპების ციფრული გამოცემა</div>
+    </header>
+
+    <div class="document-info">
+        <div class="title">
+            <div class="georgian-title">მუხლი 078: ავთანდილ ზედგინიძისა და გულშარის მოსახსენებელი</div>
+            <div class="english-title">Item 078: Memorial for Avtandil Zedginidze and Gulshar</div>
+        </div>
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">ტიპი:</span>
+                <span>ქმრისა და ცოლის მოსახსენებელი / Couple Memorial</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">თარიღი:</span>
+                <span>შუასაუკუნეები (XIII-XIV ს.) / Medieval period (XIII-XIV c.)</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">ფოლიო:</span>
+                <span>გვ. 74, ხაზები 9-10</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">არქივი:</span>
+                <span>ჯვრის მონასტერი</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="text-panel">
+            <div class="view-controls">
+                <button class="active" onclick="switchView('georgian')">ორიგინალი</button>
+                <button onclick="switchView('english')">თარგმანი</button>
+            </div>
+
+            <div id="georgian-view" class="tab-content active">
+                <div class="georgian-text">
+                    სულსა <span class="person-link">ავთანდილს ზედგინიძესა</span> შეუნდვენ ღმერთმან. და <span class="person-link">გულშარს</span> მისსა მეუღლესა შეუნდვენ ღმერთმან.
+                </div>
+
+                <div class="couple-note-georgian">
+                    <strong>ოჯახური მოსახსენებელი:</strong>ქმრისა და ცოლის ერთობლივი მოსახსენებელი.
+                </div>
+            </div>
+
+            <div id="english-view" class="tab-content">
+                <div class="english-text">
+                    (For the) soul of Avtandil Zedginidze, may God have mercy. And (for) Gulshar his wife, may God have mercy.
+                </div>
+
+                <div class="couple-note">
+                    <strong>Family Memorial:</strong> This joint memorial reflects the medieval Georgian practice of commemorating married couples together, showing respect for family bonds and marital sanctity.
+                </div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>მთავარი პირები / Key Figures</h3>
+
+                <div class="person-entry">
+                    <div class="person-name">
+                        <div class="person-name-georgian"><a href="../person/avtandil-zedginidze.html" class="person-link">ავთანდილ ზედგინიძე</a></div>
+                        <div class="person-name-english">Avtandil Zedginidze</div>
+                    </div>
+                    <div class="person-role">კეთილშობილი, ოჯახის მეთაური / Noble, Family Head</div>
+                    <div class="person-desc">გამორჩეული ზედგინიძეების კეთილშობილური ოჯახის წევრი, რომელიც ცოლთან ერთად მოისახსენება ამ მოსახსენებელ ლოცვაში.</div>
+                </div>
+
+                <div class="person-entry">
+                    <div class="person-name">
+                        <div class="person-name-georgian">გულშარი</div>
+                        <div class="person-name-english">Gulshar</div>
+                    </div>
+                    <div class="person-role">ავთანდილის ცოლი / Wife of Avtandil</div>
+                    <div class="person-desc">ავთანდილ ზედგინიძის მეუღლე, რომელიც ერთობლივად მოისახსენება ამ მოსახსენებელ ჩანაწერში, რაც მიუთითებს მათ მჭიდრო ქორწინებით კავშირზე.</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>მოსახსენებლის კონტექსტი</h3>
+                <div style="margin-bottom: 0.5rem;">ტიპი: <strong>სულის მოსახსენებელი ლოცვა</strong></div>
+                <div style="margin-bottom: 0.5rem;">ფორმატი: <strong>ერთობლივი მოსახსენებელი</strong></div>
+                <div style="margin-bottom: 0.5rem;">ფორმულა: <strong>სტანდარტული მოწყალების კურთხევა</strong></div>
+                <div style="border-top: 1px solid #ddd; padding-top: 0.5rem; margin-top: 0.5rem;">
+                    <strong>მარტივი მაგრამ ღირსეული მოსახსენებელი</strong>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>ოჯახური მნიშვნელობა</h3>
+                <div style="line-height: 1.6;">
+                    ეს ერთობლივი მოსახსენებელი ასახავს შუასაუკუნეების ქართულ პრაქტიკას დაქორწინებული წყვილების ერთად მოსახსენებლისა. ზედგინიძეების ოჯახი მონასტრის ჩანაწერებში რამდენჯერმე გვხვდება, რაც მიუთითებს ჯვრის მონასტრის საზოგადოებასთან მუდმივ მფარველობით ურთიერთობებზე.
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>ზედგინიძეების ოჯახი</h3>
+                <div style="line-height: 1.6;">
+                    ზედგინიძეები იყვნენ გავლენიანი კეთილშობილი ოჯახი შუასაუკუნეების საქართველოში. ავთანდილისა და გულშარის ერთობლივი მოსახსენებელი ავლენს ოჯახური კავშირების სიღრმესა და ქართული სამონასტრო ტრადიციების მნიშვნელობას.
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>ქართული ქორწინების ტრადიციები</h3>
+                <div style="margin-bottom: 0.5rem;">• <strong>ერთობლივი მოსახსენებელი:</strong> ქმრისა და ცოლის ერთად მოგებრა</div>
+                <div style="margin-bottom: 0.5rem;">• <strong>ოჯახური ღირებულებები:</strong> ქორწინების წმინდების პატივისცემა</div>
+                <div style="margin-bottom: 0.5rem;">• <strong>სამონასტრო მხარდაჭერა:</strong> ოჯახების მფარველობა მონასტრებისა</div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>დაკავშირებული დოკუმენტები</h3>
+                <div style="margin-bottom: 0.5rem;"><a href="item-093.html" style="color: #333; text-decoration: none; border-bottom: 1px dotted #666;">მუხლი 093: ავთანდილის შეწირულობის ქარტია</a></div>
+                <div style="margin-bottom: 0.5rem;"><a href="#" style="color: #333; text-decoration: none; border-bottom: 1px dotted #666;">ზედგინიძეების სხვა ჩანაწერები</a></div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        function switchView(viewType) {
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            document.querySelectorAll('.view-controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(viewType + '-view').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

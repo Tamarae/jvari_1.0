@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მეფე ალექსანდრე - King Aleksandre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Language display rules - Georgian first */
+        .lang-ka { display: block; }
+        .lang-en { display: none; }
+        body.english .lang-ka { display: none; }
+        body.english .lang-en { display: block; }
+
+        .georgian-main {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            direction: ltr;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            display: flex;
+            border: 1px solid #ccc;
+            background: white;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #666;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: #333;
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #f5f5f5;
+        }
+
+        .lang-btn:first-child {
+            border-right: 1px solid #ccc;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #333;
+        }
+
+        .person-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .person-title {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .person-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .main-content {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-item {
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        .georgian-text {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .manuscript-quote {
+            background: #f9f9f9;
+            border-left: 3px solid #8b0000;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .manuscript-reference {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #666;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border: 1px solid #e0e0e0;
+            margin-top: 0.5rem;
+        }
+
+        .related-sources {
+            list-style: none;
+            padding: 0;
+        }
+
+        .related-sources li {
+            padding: 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .related-sources li:hover {
+            background: #f8f8f8;
+        }
+
+        .related-sources li:last-child {
+            border-bottom: none;
+        }
+
+        .source-number {
+            font-family: 'Courier New', monospace;
+            background: #666;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+
+        .dynasty-info {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .dynasty-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .historical-context {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+            margin: 2rem 0;
+            line-height: 1.7;
+        }
+
+        .reign-period {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-left: 3px solid #666;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .title-explanation {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .search-container {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.2s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .search-results-info {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .person-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .person-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../../index.html" class="back-link">
+            <span class="lang-ka georgian-main">← უკან მონაცემთა ბაზაში</span>
+            <span class="lang-en">← Back to Database</span>
+        </a>
+
+        <div class="language-switch">
+            <button class="lang-btn active" data-lang="ka">ქართული</button>
+            <button class="lang-btn" data-lang="en">English</button>
+        </div>
+
+        <div class="header-content">
+            <div class="person-header">
+                <h1 class="lang-ka georgian-main">მეფე ალექსანდრე</h1>
+                <h1 class="lang-en">King Aleksandre</h1>
+
+                <div class="person-title">
+                    <span class="lang-ka georgian-main">მეფეთ მეფე</span>
+                    <span class="lang-en">King of Kings</span>
+                </div>
+
+                <div class="status-badge">
+                    <span class="lang-ka georgian-main">სამეფო ოჯახი</span>
+                    <span class="lang-en">Royal Family</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="person-content">
+            <div class="main-content">
+                <div class="title-explanation">
+                    <div class="dynasty-title">
+                        <span class="lang-ka georgian-main">ტიტული</span>
+                        <span class="lang-en">"King of Kings" Title Explanation</span>
+                    </div>
+                    <p class="lang-ka georgian-main">
+                        "მეფეთ მეფე" (Rex Regum) იყო საქართველოს მეფეების უზენაესი ტიტული, რომელიც
+                        აღნიშნავდა მათ ძალაუფლებას სხვა ადგილობრივ მმართველებზე და ვასალურ სამთავროებზე.
+                    </p>
+                    <p class="lang-en">
+                        "King of Kings" (Rex Regum) was the supreme title of Georgian monarchs, signifying
+                        their authority over other local rulers and vassal principalities.
+                    </p>
+                </div>
+
+                <div class="section-title">
+                    <span class="lang-ka georgian-main">ისტორიული კონტექსტი</span>
+                    <span class="lang-en">Historical Context</span>
+                </div>
+
+                <div class="historical-context">
+                    <p class="lang-ka georgian-main">
+                        მეფე ალექსანდრე ბაგრატიონთა დინასტიის წარმომადგენელია, რომელიც მართავდა
+                        საქართველოს "ოქროს ხანის" პერიოდში. მისი მემორიალური მსახურება იერუსალიმის
+                        ჯვრის მონასტერში ადასტურებს ქართული სამეფო ოჯახის მუდმივ მხარდაჭერას საზღვარგარეთ
+                        ქართული რელიგიური ინსტიტუტებისადმი.
+                    </p>
+
+                    <p class="lang-en">
+                        King Aleksandre represents the Bagrationi dynasty, which ruled Georgia during its "Golden Age."
+                        His memorial service at the Cross Monastery in Jerusalem confirms the Georgian royal family's
+                        continued support for Georgian religious institutions abroad.
+                    </p>
+                </div>
+
+                <div class="manuscript-quote">
+                    <p class="georgian-text">სულსა მეფეთ მეფესა ალექსანდრეს შეუნდვენ ღმერთმან.</p>
+                    <p class="lang-ka georgian-main">
+                        <strong>თარგმანი:</strong> მეფეთ მეფე ალექსანდრეს სულს ღმერთმა ნუგეშინისცემოს.
+                    </p>
+                    <p class="lang-en">
+                        <strong>Translation:</strong> For the soul of King of Kings Aleksandre, may God forgive him.
+                    </p>
+                    <div class="manuscript-reference">Item 076, lb. 1 ed. 1</div>
+                </div>
+
+                <div class="dynasty-info">
+                    <div class="dynasty-title">
+                        <span class="lang-ka georgian-main">ბაგრატიონთა დინასტია</span>
+                        <span class="lang-en">Bagrationi Dynasty</span>
+                    </div>
+                    <p class="lang-ka georgian-main">
+                        ბაგრატიონები იყვნენ საქართველოს მმართველი სამეფო დინასტია IX-XIX საუკუნეებში.
+                        XIII საუკუნეში ისინი ინარჩუნებდნენ მჭიდრო კავშირებს ბიზანტიისა და აღმოსავლეთის
+                        სხვა ქრისტიანულ სახელმწიფოებთან.
+                    </p>
+                    <p class="lang-en">
+                        The Bagrationis were the ruling royal dynasty of Georgia from the 9th to 19th centuries.
+                        In the 13th century, they maintained close ties with Byzantium and other Christian states
+                        of the Near East.
+                    </p>
+                </div>
+
+                <div class="reign-period">
+                    <div class="lang-ka georgian-main">
+                        <strong>მეფობის სავარაუდო პერიოდი:</strong> XIII საუკუნე
+                    </div>
+                    <div class="lang-en">
+                        <strong>Presumed Reign Period:</strong> 13th Century
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <span class="lang-ka georgian-main">კომენტარი</span>
+                    <span class="lang-en">Scholarly Analysis</span>
+                </div>
+
+                <p class="lang-ka georgian-main">
+                    მეფე ალექსანდრეს მოსახსენებელი წარმოადგენს ქართული სამეფო ოჯახის
+                    საერთაშორისო რელიგიურ ქსელში ჩართულობის მაგალითს. "მეფეთ მეფე" წოდების გამოყენება ხაზს უსვამს
+                    მის უზენაეს სტატუსს ქართულ სამეფო იერარქიაში. იერუსალიმის ჯვრის მონასტერში მისი
+                    მემორიალური ღვთისმსახურების ფაქტი ადასტურებს ქართული სამეფო ძალაუფლების გავლენას
+                    და ავტორიტეტს საღვთო მიწაზე.
+                </p>
+
+                <p class="lang-en">
+                    King Aleksandre's memorial represents a significant example of the Georgian royal family's
+                    international religious network. The use of the title "King of Kings" emphasizes his supreme
+                    status in the Georgian royal hierarchy. The fact of his memorial service at the Cross Monastery
+                    in Jerusalem confirms the influence and authority of Georgian royal power in the Holy Land.
+                </p>
+
+                <div class="historical-context">
+                    <div class="section-title">
+                        <span class="lang-ka georgian-main">საერთაშორისო კონტექსტი</span>
+                        <span class="lang-en">International Context</span>
+                    </div>
+                    <p class="lang-ka georgian-main">
+                        XIII საუკუნეში საქართველო იყო მნიშვნელოვანი რეგიონული ძალა, რომელიც ინარჩუნებდა
+                        დიპლომატიურ და რელიგიურ კავშირებს ბიზანტიისა და ახლო აღმოსავლეთის სხვა ქრისტიანულ
+                        სახელმწიფოებთან. იერუსალიმის ქართული მონასტრები წარმოადგენდნენ მნიშვნელოვან
+                        კულტურულ და დიპლომატიურ ცენტრებს ამ ქსელში.
+                    </p>
+
+                    <p class="lang-en">
+                        In the 13th century, Georgia was a significant regional power that maintained diplomatic
+                        and religious ties with Byzantium and other Christian states of the Near East. Georgian
+                        monasteries in Jerusalem represented important cultural and diplomatic centers in this network.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="info-section">
+                    <div class="section-title">
+                        <span class="lang-ka georgian-main">ძირითადი ინფორმაცია</span>
+                        <span class="lang-en">Basic Information</span>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span class="lang-ka georgian-main">სამეფო სახელი:</span>
+                            <span class="lang-en">Royal Name:</span>
+                        </div>
+                        <div class="info-value georgian-text">მეფე ალექსანდრე</div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span class="lang-ka georgian-main">ტიტული:</span>
+                            <span class="lang-en">Title:</span>
+                        </div>
+                        <div class="info-value">
+                            <span class="lang-ka georgian-main">მეფეთ მეფე</span>
+                            <span class="lang-en">King of Kings</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span class="lang-ka georgian-main">დინასტია:</span>
+                            <span class="lang-en">Dynasty:</span>
+                        </div>
+                        <div class="info-value">
+                            <span class="lang-ka georgian-main">ბაგრატიონები</span>
+                            <span class="lang-en">Bagrationi</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span class="lang-ka georgian-main">პერიოდი:</span>
+                            <span class="lang-en">Period:</span>
+                        </div>
+                        <div class="info-value">
+                            <span class="lang-ka georgian-main">XIII საუკუნე</span>
+                            <span class="lang-en">13th Century</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="section-title">
+                        <span class="lang-ka georgian-main">რელიგიური მნიშვნელობა</span>
+                        <span class="lang-en">Religious Significance</span>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span class="lang-ka georgian-main">მემორიალური ტიპი:</span>
+                            <span class="lang-en">Memorial Type:</span>
+                        </div>
+                        <div class="info-value">
+                            <span class="lang-ka georgian-main">სამეფო მემორიალი</span>
+                            <span class="lang-en">Royal Memorial</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">
+                            <span class="lang-ka georgian-main">ლოცვის ტიპი:</span>
+                            <span class="lang-en">Prayer Type:</span>
+                        </div>
+                        <div class="info-value">
+                            <span class="lang-ka georgian-main">სულის მშვიდობისათვის</span>
+                            <span class="lang-en">For Soul's Peace</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="section-title">
+                        <span class="lang-ka georgian-main">დაკავშირებული წყაროები</span>
+                        <span class="lang-en">Related Sources</span>
+                    </div>
+
+                    <ul class="related-sources">
+                        <li onclick="openItemPage('item-076')">
+                            <span class="source-number">076</span>
+                            <span class="lang-ka georgian-main">მეფე ალექსანდრეს მემორიალი</span>
+                            <span class="lang-en">Memorial for King Aleksandre</span>
+                        </li>
+                        <li onclick="openItemPage('item-081')">
+                            <span class="source-number">081</span>
+                            <span class="lang-ka georgian-main">სამეფო ოჯახის აღაპი</span>
+                            <span class="lang-en">Royal Family Agape</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <div class="section-title">
+                        <span class="lang-ka georgian-main">ხელნაწერები</span>
+                        <span class="lang-en">Manuscripts</span>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="manuscript-reference">MS Leipzig V-1085</div>
+                        <div class="manuscript-reference">MS Jerusalem 24-25</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+
+                // Update button states
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update body class
+                if (lang === 'en') {
+                    document.body.classList.add('english');
+                } else {
+                    document.body.classList.remove('english');
+                }
+            });
+        });
+
+        // Navigation functions
+        function openPersonPage(personId) {
+            window.location.href = `${personId}.html`;
+        }
+
+        function openItemPage(itemId) {
+            window.location.href = `../item/${itemId}.html`;
+        }
+    </script>
+</body>
+</html>

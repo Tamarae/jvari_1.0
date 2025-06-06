@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>იერუსალიმის ჯვრის მონასტრის აღაპები - პროსოპოგრაფიული მონაცემთა ბაზა</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', 'Times New Roman', serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            display: flex;
+            border: 1px solid #ccc;
+            background: white;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #666;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: #333;
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #f5f5f5;
+        }
+
+        .lang-btn:first-child {
+            border-right: 1px solid #ccc;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .header-content {
+            text-align: center;  /* Add this line to center the text */
+        }
+
+        .subtitle {
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .meta {
+            font-size: 0.875rem;
+            color: #888888;
+            margin-top: 1rem;
+        }
+
+
+        .georgian-main {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            direction: ltr;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-panel {
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .stats-panel h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: normal;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px dotted #eee;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .network-viz {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            min-height: 300px;
+            position: relative;
+        }
+
+        .network-viz h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        #network-svg {
+            width: 100%;
+            height: 250px;
+            border: 1px solid #eee;
+        }
+
+        .network-controls {
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .network-controls button {
+            padding: 0.3rem 0.8rem;
+            margin: 0 0.2rem;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .network-controls button:hover {
+            background: #f5f5f5;
+        }
+
+        .network-legend {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Enhanced Network Visualization Styles - ADD TO YOUR EXISTING CSS */
+
+        /* Update your existing .network-viz class with these additions */
+        .network-viz {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-height: 450px; /* Increased height */
+        }
+
+        /* Update your existing #network-svg */
+        #network-svg {
+            width: 100%;
+            height: 400px; /* Increased from 250px */
+            border: 1px solid #eee;
+            background: linear-gradient(45deg, #fafafa 0%, #f0f0f0 100%);
+            border-radius: 6px;
+        }
+
+        /* Enhanced network controls */
+        .network-controls {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .network-controls button {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .network-controls button:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        /* Network filters */
+        .network-filters {
+            margin-top: 0.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .network-filters select {
+            padding: 0.3rem;
+            border: 1px solid #ccc;
+            font-size: 0.7rem;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* Enhanced D3 Network Styles */
+        .node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            transform: scale(1.1);
+        }
+
+        .node circle {
+            stroke-width: 2px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+            transition: all 0.3s ease;
+        }
+
+        .node:hover circle {
+            stroke-width: 3px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+        }
+
+        .node text {
+            font-size: 9px;
+            font-weight: 600;
+            pointer-events: none;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+        }
+
+        .node.highlighted text {
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .link {
+            fill: none;
+            stroke-opacity: 0.4;
+            transition: all 0.3s ease;
+        }
+
+        .link.parent-child {
+            stroke: #ff7f0e;
+            stroke-dasharray: 4,2;
+            stroke-width: 2px;
+        }
+
+        .link.spouse {
+            stroke: #d62728;
+            stroke-width: 3px;
+        }
+
+        .link.co-commemorated {
+            stroke: #2ca02c;
+            stroke-width: 1.5px;
+        }
+
+        .link.family {
+            stroke: #ff6b6b;
+            stroke-width: 2px;
+        }
+
+        .link.marriage {
+            stroke: #ff1744;
+            stroke-width: 3px;
+        }
+
+        .link.economic {
+            stroke: #4caf50;
+            stroke-width: 2px;
+        }
+
+        .link.highlighted {
+            stroke-opacity: 0.9;
+            stroke-width: 4px;
+            filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.3));
+        }
+
+        .link.faded {
+            stroke-opacity: 0.1;
+        }
+
+        /* Enhanced node role colors */
+        .node.royal circle {
+            fill: #8B4513;
+            stroke: #654321;
+        }
+
+        .node.nobility circle {
+            fill: #4682B4;
+            stroke: #2F4F4F;
+        }
+
+        .node.clergy circle {
+            fill: #9370DB;
+            stroke: #663399;
+        }
+
+        .node.administrative circle {
+            fill: #228B22;
+            stroke: #006400;
+        }
+
+        .node.female circle {
+            stroke: #e377c2;
+            stroke-width: 3px;
+        }
+
+        .node.selected circle {
+            stroke: #ffff00;
+            stroke-width: 4px;
+        }
+
+        /* Network tooltip */
+        .network-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Enhanced legend */
+        .network-legend {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 0.5rem;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .legend-item {
+            display: inline-block;
+            margin: 0 8px 4px 0;
+            white-space: nowrap;
+        }
+
+        .search-panel {
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .search-input, .search-select {
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+            background: white;
+            color: #333;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border-radius: 0;
+        }
+
+        .search-select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+
+        .search-input:focus, .search-select:focus {
+            outline: none;
+            border-color: #999;
+        }
+
+        /* Network visualization styles */
+        .node {
+            cursor: pointer;
+            stroke-width: 2px;
+        }
+
+        .node.royal { fill: #8B4513; stroke: #654321; }
+        .node.nobility { fill: #4682B4; stroke: #2F4F4F; }
+        .node.clergy { fill: #9370DB; stroke: #663399; }
+        .node.administrative { fill: #228B22; stroke: #006400; }
+
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+            stroke-width: 1.5px;
+        }
+
+        .link.family { stroke: #ff6b6b; stroke-width: 2px; }
+        .link.marriage { stroke: #ff1744; stroke-width: 3px; }
+        .link.economic { stroke: #4caf50; stroke-width: 2px; }
+
+        .node-label {
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .tab-navigation {
+            display: flex;
+            margin-bottom: 2rem;
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: white;
+            cursor: pointer;
+            border-right: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab.active {
+            background: #f8f8f8;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .tab:hover:not(.active) {
+            background: #f5f5f5;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .search-container {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.2s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .search-results-info {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .person-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .person-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .person-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+
+        .person-title {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border: 1px solid #ccc;
+            font-size: 0.75rem;
+            font-weight: normal;
+            margin-top: 0.3rem;
+            background: #f8f8f8;
+            color: #555;
+        }
+
+        .source-item {
+            border: 1px solid #e0e0e0;
+            background: white;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+        }
+
+        .source-item:hover {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .source-header {
+            background: #f8f8f8;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .source-number {
+            background: #666;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .source-content {
+            padding: 1.5rem;
+        }
+
+        .source-text {
+            font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-left: 3px solid #ddd;
+        }
+
+        .person-link {
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px dotted #666;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .person-link:hover {
+            border-bottom-style: solid;
+            color: #007acc;
+        }
+
+        .lang-ka { display: block; }
+        .lang-en { display: none; }
+        body.english .lang-ka { display: none; }
+        body.english .lang-en { display: block; }
+    </style>
+</head>
+<body class="georgian">
+    <div class="header">
+        <div class="language-switch">
+            <button class="lang-btn active" data-lang="ka">ქართული</button>
+            <button class="lang-btn" data-lang="en">English</button>
+
+        </div>
+        <div class="header-content">
+            <h1 class="georgian-main">იერუსალიმის ჯვრის მონასტრის აღაპები</h1>
+            <div class="subtitle">Jerusalem Cross Monastery Commemorative Records</div>
+            <div class="subtitle">XI–XVII Centuries</div>
+            <div class="meta">Based on Leipzig MS V-1085 and Jerusalem MSS 24-25</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tab-navigation">
+
+          <div class="tab active" data-tab="home">
+              <span class="lang-en">home</span>
+              <span class="lang-ka georgian-main">მიმოხილვა</span>
+          </div>
+
+
+            <div class="tab" data-tab="prosopography">
+                <span class="lang-en">Prosopography</span>
+                <span class="lang-ka georgian-main">პროსოპოგრაფია</span>
+            </div>
+            <div class="tab" data-tab="sources">
+                <span class="lang-en">Sources</span>
+                <span class="lang-ka georgian-main">ტექსტი</span>
+            </div>
+            <div class="tab" data-tab="research">
+                <span class="lang-en">Research</span>
+                <span class="lang-ka georgian-main">კვლევა</span>
+            </div>
+
+        </div>
+
+
+
+      <div id="home-content" class="tab-content active">
+        <div class="dashboard">
+            <div class="stats-panel">
+                <h3 class="lang-en">Database Overview</h3>
+                <h3 class="lang-ka georgian-main">ბაზის მიმოხილვა</h3>
+                <div id="databaseStats">
+                    <!-- Statistics will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="network-viz">
+                <h3 class="lang-en">Social Network Graph</h3>
+                <h3 class="lang-ka georgian-main">სოციალური ქსელი</h3>
+
+                <iframe src="prosopographical-network.html"
+                        width="100%"
+                        height="700"
+                        frameborder="0"
+                        style="border: 1px solid #ddd; border-radius: 4px;">
+                </iframe>
+            </div>
+
+            <div class="stats-panel">
+                <h3 class="lang-en">Economic Data</h3>
+                <h3 class="lang-ka georgian-main">ეკონომიკური მონაცემები</h3>
+                <div id="economicStats">
+                    <!-- Economic statistics will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+      </div>
+        <!-- Enhanced Prosopography Tab with Dashboard -->
+      <div id="prosopography-content" class="tab-content active">
+          <div class="search-panel">
+              <div class="search-grid">
+                  <input type="text" class="search-input lang-en" id="searchInput" placeholder="Search by name">
+                  <input type="text" class="search-input lang-ka georgian-main" id="searchInputKa" placeholder="ძიება სახელით">
+
+                  <select class="search-select lang-en" id="socialClassSelect">
+                      <option value="">All Social Classes</option>
+                  </select>
+                  <select class="search-select lang-ka georgian-main" id="socialClassSelectKa">
+                      <option value="">ყველა სოციალური კლასი</option>
+                  </select>
+
+                  <select class="search-select lang-en" id="familySelect">
+                      <option value="">All Families</option>
+                  </select>
+                  <select class="search-select lang-ka georgian-main" id="familySelectKa">
+                      <option value="">ყველა ოჯახი</option>
+                  </select>
+
+                  <select class="search-select lang-en" id="periodSelect">
+                      <option value="">All Periods</option>
+                  </select>
+                  <select class="search-select lang-ka georgian-main" id="periodSelectKa">
+                      <option value="">ყველა პერიოდი</option>
+                  </select>
+              </div>
+          </div>
+
+          <div id="searchResultsInfo" class="search-results-info" style="display: none;"></div>
+
+        <div class="main-content" id="mainContent">
+            <!-- Person cards will be populated by JavaScript -->
+        </div>
+    </div>
+
+
+        <!-- Sources Tab -->
+        <div id="sources-content" class="tab-content">
+            <div id="sources-list"></div>
+        </div>
+
+        <!-- Research Tab -->
+<div id="research-content" class="tab-content">
+    <div style="background: white; border: 1px solid #e0e0e0; padding: 3rem; line-height: 1.7;">
+
+        <!-- Primary Research Document -->
+        <div style="background: white; border: 1px solid #e0e0e0; padding: 2rem; margin-bottom: 2rem;">
+            <div class="lang-ka georgian-main">
+                <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: normal; color: #333;">მასალები იერუსალიმის ქართული კოლონიის ისტორიისათვის</h2>
+                <p style="color: #666; font-size: 1rem; margin-bottom: 1rem;">ელენე მეტრეველი, 1962</p>
+                <p style="margin-bottom: 1.5rem; color: #555;">ჯვარის მონასტრის მოსახსენებელთა ჩანაწერების საფუძველზე (XI—XVII სს.)</p>
+                <a href="pages/research/jerusalem-materials.html"
+                   style="color: #007acc; text-decoration: none; font-size: 0.9rem; border-bottom: 1px dotted #007acc;">
+                    სრული დოკუმენტის ნახვა →
+                </a>
+            </div>
+            <div class="lang-en">
+                <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: normal; color: #333;">Materials for the History of the Georgian Colony in Jerusalem</h2>
+                <p style="color: #666; font-size: 1rem; margin-bottom: 1rem;">Elene Metreveli, 1962</p>
+                <p style="margin-bottom: 1.5rem; color: #555;">Based on commemorative records from the Cross Monastery (XI—XVII centuries)</p>
+                <a href="pages/research/jerusalem-materials.html"
+                   style="color: #007acc; text-decoration: none; font-size: 0.9rem; border-bottom: 1px dotted #007acc;">
+                    View Full Document →
+                </a>
+            </div>
+        </div>
+
+        <!-- Research Overview -->
+        <div class="lang-ka georgian-main">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #333; font-weight: normal;">კვლევის მიმოხილვა</h3>
+            <p style="margin-bottom: 1.5rem; color: #555;">იერუსალიმის ჯვრის მონასტრის აღაპების (მოსახსენებელთა) პუბლიკაცია. ეს მასალა მნიშვნელოვანი პირველწყაროა პალესტინის ქართული კოლონიის ისტორიისათვის.</p>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: #666; font-weight: bold;">კვლევითი მიმართულებები:</h4>
+                <ul style="margin-left: 1.5rem; color: #555; line-height: 1.6;">
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">პროსოპოგრაფია</span> — პირების იდენტიფიკაცია და გენეალოგიური ანალიზი</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">ქრონოლოგია</span> — ხელნაწერი წყაროების დათარიღება</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">პალეოგრაფია</span> — ხელწერისა და ხელნაწერი ტრადიციების შესწავლა</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: #666; font-weight: bold;">ხელნაწერი წყაროები:</h4>
+                <ul style="margin-left: 1.5rem; color: #555; line-height: 1.6;">
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">ლაიფციგის ხნ. V-1085</span> — 102 მოსახსენებელი ჩანაწერი</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">იერუსალიმის ხნ. 24-25</span> — სვინაქსარი 318 აღაპით</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">დამატებითი ფრაგმენტები</span> — მოსახსენებელი სიები</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lang-en">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #333; font-weight: normal;">Research Overview</h3>
+            <p style="margin-bottom: 1.5rem; color: #555;">Publication of agapes (memorial services) from the Monastery of the Cross in Jerusalem. This material is an important primary source for the history of the Georgian colony in Palestine.</p>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: #666; font-weight: bold;">Research Areas:</h4>
+                <ul style="margin-left: 1.5rem; color: #555; line-height: 1.6;">
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">Prosopography</span> — Identification and genealogical analysis of individuals</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">Chronology</span> — Dating and temporal analysis of manuscript sources</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">Paleography</span> — Study of handwriting and manuscript traditions</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="font-size: 1rem; margin-bottom: 0.75rem; color: #666; font-weight: bold;">Manuscript Sources:</h4>
+                <ul style="margin-left: 1.5rem; color: #555; line-height: 1.6;">
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">Leipzig MS V-1085</span> — 102 commemorative records</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">Jerusalem MSS 24-25</span> — Synaxarion with 318 agapes</li>
+                    <li style="margin-bottom: 0.5rem;"><span style="font-weight: bold;">Additional fragments</span> — Various commemorative lists</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Global variables to hold our fetched data
+            let allPersons = [];
+            let allSources = [];
+            let filteredPersons = [];
+
+            // --- DATA FETCHING ---
+            fetch('database.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Database loaded successfully:", data);
+                    allPersons = data.persons;
+                    allSources = data.sources;
+                    filteredPersons = [...allPersons];
+
+                    // --- INITIALIZE THE PAGE AFTER DATA IS LOADED ---
+                    initializePage();
+                })
+                .catch(error => {
+                    console.error("Could not load database.json:", error);
+                    document.getElementById('mainContent').innerHTML = `<p style="color:red;">Error: Could not load the data. Please check the console.</p>`;
+                });
+
+            // --- INITIALIZATION FUNCTION ---
+            function initializePage() {
+                // Populate all sections
+                populateStatistics();
+                populateFilters();
+                renderPersonCards();
+                renderSources();
+
+                // Set up event listeners
+                setupEventListeners();
+
+                // Set initial language state
+                handleLanguageSwitch(document.body.classList.contains('english') ? 'en' : 'ka');
+            }
+
+            // --- RENDER FUNCTIONS ---
+            function renderPersonCards() {
+                const grid = document.getElementById('mainContent');
+                if (!grid) return;
+                const isGeorgian = document.body.classList.contains('georgian');
+                grid.innerHTML = filteredPersons.map(person => `
+                    <div class="person-card" onclick="openPersonPage('${person.id}')">
+                        <div class="person-name">${isGeorgian ? person.nameKa : person.nameEn}</div>
+                        <div class="person-title">${isGeorgian ? person.titleKa : person.titleEn}</div>
+                        <div class="status-badge">${getStatusLabel(person.status, isGeorgian)}</div>
+                        <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dotted #ddd; font-size: 0.8rem; color: #666;">
+                            <strong>${isGeorgian ? 'წყაროები:' : 'Sources:'}</strong> ${person.items.join(', ')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function renderSources() {
+                const list = document.getElementById('sources-list');
+                if (!list) return;
+                const isGeorgian = document.body.classList.contains('georgian');
+                list.innerHTML = allSources.map(source => `
+                    <div class="source-item" onclick="openSourcePage('${source.id}')">
+                        <div class="source-header">
+                            <span class="source-number">${source.number}</span>
+                        </div>
+                        <div class="source-content">
+                            <div style="font-size: 1.1rem; font-weight: bold; margin-bottom: 0.5rem;">
+                                ${isGeorgian ? source.titleKa : source.titleEn}
+                            </div>
+                            <div class="source-text">${source.textKa.substring(0, 150)}...</div>
+                            <div style="margin-top: 1rem;">
+                                <strong style="font-size: 0.85rem;">${isGeorgian ? 'ხსენებული პირები:' : 'Mentioned Persons:'}</strong><br>
+                                ${source.persons.map(personName => {
+                                    const person = allPersons.find(p => p.nameEn === personName);
+                                    return person ? `<span class="person-link" onclick="event.stopPropagation(); openPersonPage('${person.id}')">${personName}</span>` : `<span>${personName}</span>`;
+                                }).join(' ')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // --- DATA & FILTER FUNCTIONS ---
+            function populateStatistics() {
+                // This function can now use `allPersons` and `allSources` to calculate real stats
+                // For now, we'll keep your placeholder values but show how it would work
+                const totalPersons = allPersons.length;
+                const totalItems = allSources.length;
+
+                const dbStatsContainer = document.getElementById('databaseStats');
+                if (dbStatsContainer) {
+                    dbStatsContainer.innerHTML = `
+                        <div class="stat-item"><span>Total Persons</span><span class="stat-value">${totalPersons}</span></div>
+                        <div class="stat-item"><span>Total Items</span><span class="stat-value">${totalItems}</span></div>
+                        <!-- Add more dynamic stats here -->
+                    `;
+                }
+                // ... populate other stats panels
+            }
+
+            function populateFilters() {
+                const socialClasses = [...new Set(allPersons.map(p => p.status).filter(s => s))];
+                const classSelect = document.getElementById('socialClassSelect');
+                const classSelectKa = document.getElementById('socialClassSelectKa');
+
+                socialClasses.forEach(s_class => {
+                    const label = getStatusLabel(s_class, false);
+                    const labelKa = getStatusLabel(s_class, true);
+                    classSelect.innerHTML += `<option value="${s_class}">${label}</option>`;
+                    classSelectKa.innerHTML += `<option value="${s_class}">${labelKa}</option>`;
+                });
+                // You can add similar logic for families, periods, etc.
+            }
+
+            function performFilter() {
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const searchTermKa = document.getElementById('searchInputKa').value.toLowerCase();
+                const socialClass = document.getElementById('socialClassSelect').value;
+
+                filteredPersons = allPersons.filter(person => {
+                    const nameMatch = person.nameEn.toLowerCase().includes(searchTerm) || person.nameKa.toLowerCase().includes(searchTermKa);
+                    const classMatch = socialClass ? person.status === socialClass : true;
+                    return nameMatch && classMatch;
+                });
+                renderPersonCards();
+            }
+
+            // --- EVENT LISTENERS & HELPERS ---
+            function setupEventListeners() {
+                // Tab functionality
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const tabName = this.getAttribute('data-tab');
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                        this.classList.add('active');
+                        document.getElementById(tabName + '-content').classList.add('active');
+                    });
+                });
+
+                // Language switch
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.addEventListener('click', () => handleLanguageSwitch(btn.dataset.lang));
+                });
+
+                // Search and filter inputs
+                document.getElementById('searchInput').addEventListener('input', performFilter);
+                document.getElementById('searchInputKa').addEventListener('input', performFilter);
+                document.getElementById('socialClassSelect').addEventListener('change', performFilter);
+                document.getElementById('socialClassSelectKa').addEventListener('change', function(e) {
+                     document.getElementById('socialClassSelect').value = e.target.value;
+                     performFilter();
+                });
+            }
+
+            function handleLanguageSwitch(lang) {
+                const isGeorgian = lang === 'ka';
+                document.body.classList.toggle('georgian', isGeorgian);
+                document.body.classList.toggle('english', !isGeorgian);
+
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+
+                renderPersonCards();
+                renderSources();
+            }
+
+            // --- UTILITY FUNCTIONS ---
+            function getStatusLabel(status, isGeorgian) {
+                const labels = {
+                    'royal': isGeorgian ? 'სამეფო' : 'Royal',
+                    'main': isGeorgian ? 'ძირითადი' : 'Main',
+                    'noble': isGeorgian ? 'აზნაური' : 'Noble',
+                    'clergy': isGeorgian ? 'სასულიერო' : 'Clergy',
+                    'administrative': isGeorgian ? 'მოხელე' : 'Administrative',
+                    'spouse': isGeorgian ? 'მეუღლე' : 'Spouse'
+                    // Add all your status types here
+                };
+                return labels[status] || status;
+            }
+        });
+
+        // --- GLOBAL HELPER FUNCTIONS ---
+        function openPersonPage(personId) {
+            window.location.href = `pages/person/${personId}.html`;
+        }
+
+        function openSourcePage(sourceId) {
+            window.location.href = `pages/item/${sourceId}.html`;
+        }
+    </script>
+
+</body>
+</html>
