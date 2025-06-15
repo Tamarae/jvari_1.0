@@ -2921,7 +2921,7 @@
                      <lb n="18" ed="18"/>
                      <term type="service" subtype="agape" xml:id="service_agape_061">აღაპი</term>,
                      <date type="liturgical" when="--04-11" corresp="#maundy_thursday">დიდს ხუთშაბათს გარდაიჴდიდენ</date>.
-                     <seg type="formula" subtype="donation_money" xml:id="donation_formula_002">ასი მარჩილი მოგუცა</seg>. და
+                     <seg type="formula" xml:id="donation_formula_002"><term type="donation"><num value="100">ასი</num> <term type="coin" key="morchili">მარჩილი</term></term> მოგუცა</seg>. და
                      <seg type="formula" subtype="curse_trinity" xml:id="curse_formula_003">ვინც დააკლოს და არ გადაი<lb n="19" ed="19"/>ხადოს, რისხავმსცა მამა, მე და სული წმიდაჲ და ყოველნი წმიდანი <expan>ღ<ex>მრთ</ex>ის<ex>ა</ex>ნი</expan></seg>.
                      <seg type="formula" subtype="liturgical_amen" xml:id="amen_formula_001">ა{მი}ნ</seg>.
                   </p>
@@ -3227,7 +3227,7 @@
                      <seg type="donation" xml:id="donation_formula_004">მრავალი გაეცა</seg>, აგრევე <seg type="donation" xml:id="donation_formula_005">ამა საუფლოთა და წმი<lb n="7" ed="7"/>დათა ადგილთა მოიღო</seg>:
                      
                      <seg type="property_purchase" 
-                        xml:id="property_purchase_001">ას ფლურად ერთი დიდი ყანა იყიდა</seg>.
+                        xml:id="property_purchase_001"><term type="donation"><num value="100">ას</num> <term type="coin" key="florin">ფლურად</term></term> ერთი დიდი ყანა იყიდა</seg>.
                      
                      <date type="liturgical" 
                         when="--03-17" 
@@ -3257,7 +3257,7 @@
                      <seg type="curse" 
                         xml:id="curse_formula_005">ვინ არა გარდაიჴადოს და დააკლოს, ღმერთმან იგი დააკლოს სასუფეველსა</seg>. აგრევე
                      <seg type="donation" 
-                        xml:id="donation_formula_006">ასი ფლუ<lb n="10" ed="10"/>რი ნაღდი მოგუცა, ხაზნაშიგან ჩავდევით</seg>.
+                        xml:id="donation_formula_006"><term type="donation"><num value="100">ასი</num> <term type="coin" key="florin">ფლუ<lb n="10" ed="10"/>რი</term></term> ნაღდი მოგუცა, ხაზნაშიგან ჩავდევით</seg>.
                      
                      <seg type="memorial_candle" 
                         xml:id="eternal_046">მისთვის ერთი კანდელი დავკიდეთ, სამარადისოდ ენ<lb n="11" ed="11"/>თებოდეს და ზეთი ამა ჯუარის მონასტრისაგან მიეცემოდეს, ვიდრე ესე მონასტერი იყოს, არა<lb n="12" ed="12"/>მოიშალოს</seg>.
@@ -3267,7 +3267,7 @@
                      
                      <lb n="13" ed="13"/>
                      <seg type="donation" 
-                        xml:id="donation_formula_008">ლ ფლური სხუაჲ ჩასაწერლად და შენდობაჲ ითქმოდეს დაუკლებლად</seg>.
+                        xml:id="donation_formula_008"><term type="donation"><num value="30">ლ</num> <term type="coin" key="florin">ფლური</term></term> სხუაჲ ჩასაწერლად და შენდობაჲ ითქმოდეს დაუკლებლად</seg>.
                      
                      <persName type="noble" 
                         key="ქაიხოსრო ათაბაგი" 
@@ -3310,7 +3310,7 @@
                      <seg type="blessing" 
                         xml:id="blessing_formula_075">შეუნდვეს ღმერთმან</seg>,
                      <seg type="donation" 
-                        xml:id="donation_formula_011">თხუთმეტი ფლური შესავლად მოგუცა</seg>.
+                        xml:id="donation_formula_011"><term type="donation"><num value="15">თხუთმეტი</num> <term type="coin" key="florin">ფლური</term></term> შესავლად მოგუცა</seg>.
                   </p>
                   
                   <note type="summary">Major foundation charter by Atabag Mzechabuk for his brother Qaikosro with extensive donations and perpetual services</note>
@@ -3375,7 +3375,7 @@
                      <seg type="blessing" 
                         xml:id="blessing_formula_076">ამისნი გამთავებელნი ღმერთმან აკურთხნეს</seg>,
                      <seg type="donation" 
-                        xml:id="donation_formula_012">ას და ხუთი ძუელი ფლური გამოეგზავნა</seg>.
+                        xml:id="donation_formula_012"><term type="donation"><num value="105">ას და ხუთი</num> <term type="coin" key="florin">ძუელი ფლური</term></term> გამოეგზავნა</seg>.
                   </p>
                   
                   <note type="summary">Perpetual requiem foundation by Cross Monastery for Ramin Gabelisdze Amirejib during Apostles' Fast</note>
@@ -3532,7 +3532,7 @@
                      </placeName>
                      
                      <seg type="payment" 
-                        xml:id="financial_transaction_001">ასოთხმოცდა სამი ფლური ნასყიდ</seg> და
+                        xml:id="financial_transaction_001"><term type="donation"><num value="183">ასოთხმოცდა სამი</num> <term type="coin" key="florin">ფლური</term></term> ნასყიდ</seg> და
                      
                      <lb n="32" ed="32"/>
                      <seg type="perpetuity" 
@@ -3846,7 +3846,7 @@
                      </persName>.
                      
                      <seg type="donation" 
-                        xml:id="donation_formula_015">დაჭირებასა<lb n="6" ed="6"/>შიგან მოგუაჴმარა შუჲდასი თეთრი. ამა შუჲდასსა თეთრსა შიგან ასი თეთრი ჯორისა საფასოსა<lb n="7" ed="7"/>შიგან მოგუცა სამასი სამწიროსა და სამასი <expan>ჩ<ex>უე</ex>ნ</expan> მოგუაჴმარა</seg>, და
+                        xml:id="donation_formula_015">დაჭირებასა<lb n="6" ed="6"/>შიგან მოგუაჴმარა <term type="donation"><num value="700">შუჲდასი</num> <term type="coin" key="tetri">თეთრი</term></term>. ამა შუჲდასსა თეთრსა შიგან ასი თეთრი ჯორისა საფასოსა<lb n="7" ed="7"/>შიგან მოგუცა სამასი სამწიროსა და სამასი <expan>ჩ<ex>უე</ex>ნ</expan> მოგუაჴმარა</seg>, და
                      
                      <seg type="memorial" 
                         xml:id="daily_prayer_001"><expan>ს<ex>ა</ex>ლ<ex>ო</ex>ც<ex>ა</ex>ვი</expan> გაუჩინეთ<lb n="8" ed="8"/>ყოველსა დღესა</seg>
@@ -3862,7 +3862,7 @@
                   <note type="key_figures">Natel Gethsemane (donor with geographic designation)</note>
                   <note type="classification">Daily memorial foundation, significant financial endowment</note>
                   <note type="geographic_connection">Gethsemane connection - possibly Jerusalem pilgrimage related</note>
-                  <note type="financial_data">White money donation, 100 whites for horse price, 300 for poor, 300 for monastery</note>
+                  <note type="financial_data">Tetri donation, 100 Tetri for horse price, 300 for poor, 300 for monastery</note>
                   <note type="services">Daily prayer (სალოცავი) - perpetual daily commemoration</note>
                   <note type="charitable_aspect">Includes provision for the poor (სამწირო)</note>
                </item>

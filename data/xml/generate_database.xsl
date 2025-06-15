@@ -10,8 +10,44 @@
     <xsl:key name="families-by-key" match="tei:addName[@type='patronymic' and @key]" use="@key"/>
     <xsl:key name="categories-by-type" match="tei:roleName[@type]" use="substring-before(concat(@type, '_'), '_')"/>
 
+    <!-- ===== START: NEW STAT VARIABLES ===== -->
+    <xsl:variable name="totalPersons" select="count(//tei:persName[@key and generate-id(.) = generate-id(key('persons-by-key', @key)[1])])"/>
+    <xsl:variable name="totalFamilies" select="count(//tei:addName[@type='patronymic' and @key and generate-id(.)=generate-id(key('families-by-key', @key)[1])])"/>
+    <!-- ===== END: NEW STAT VARIABLES ===== -->
+
+    <!-- Add these new named templates anywhere outside the main template -->
+    <xsl:template name="translate-role-ka">
+        <xsl:param name="type"/>
+        <xsl:choose>
+            <xsl:when test="$type = 'clergy'">სასულიერო</xsl:when>
+            <xsl:when test="$type = 'noble'">დიდებული</xsl:when>
+            <xsl:when test="$type = 'administrative'">მოხელე</xsl:when>
+            <xsl:when test="$type = 'royal'">მონარქი</xsl:when>
+            <xsl:when test="$type = 'secular'">საერო</xsl:when>
+            <xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="translate-role-en">
+        <xsl:param name="type"/>
+        <xsl:choose>
+            <xsl:when test="$type = 'clergy'">Clergy</xsl:when>
+            <xsl:when test="$type = 'noble'">Noble</xsl:when>
+            <xsl:when test="$type = 'administrative'">Administrative</xsl:when>
+            <xsl:when test="$type = 'royal'">Royal</xsl:when>
+            <xsl:when test="$type = 'secular'">Secular</xsl:when>
+            <xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+
+
+
+
     <xsl:template match="/">
         <xsl:variable name="all-items" select="//tei:item"/>
+        <xsl:variable name="totalFlorins" select="sum(//tei:num[following-sibling::tei:term[1][@type='coin' and @key='florin']]/@value)"/>
+        <xsl:variable name="totalTetri" select="sum(//tei:num[following-sibling::tei:term[1][@type='coin' and @key='tetri']]/@value)"/>
 
         <xsl:text>{"persons": [</xsl:text>
         <xsl:for-each select="$all-items//tei:persName[@key and generate-id(.) = generate-id(key('persons-by-key', @key)[1])]">
@@ -130,6 +166,50 @@
             <xsl:text>]}</xsl:text>
             <xsl:if test="position() != last()"><xsl:text>,</xsl:text></xsl:if>
         </xsl:for-each>
-        <xsl:text>]}</xsl:text>
+
+        <!-- Comma after the sources array -->
+        <xsl:text>],</xsl:text>
+
+        <!-- ============================================== -->
+        <!-- ===== START: CORRECTED STATS OBJECT ===== -->
+        <!-- ============================================== -->
+        <xsl:text>"stats": {</xsl:text>
+
+        <xsl:text>"totalFlorins": </xsl:text><xsl:value-of select="$totalFlorins"/><xsl:text>,</xsl:text>
+        <xsl:text>"totalTetri": </xsl:text><xsl:value-of select="$totalTetri"/><xsl:text>,</xsl:text>
+        <xsl:text>"totalPersons": </xsl:text><xsl:value-of select="$totalPersons"/><xsl:text>,</xsl:text>
+        <xsl:text>"totalFamilies": </xsl:text><xsl:value-of select="$totalFamilies"/><xsl:text>,</xsl:text>
+
+        <xsl:text>"roleCounts": [</xsl:text>
+
+        <xsl:for-each select="//tei:roleName[@type and generate-id(.)=generate-id(key('categories-by-type', substring-before(concat(@type, '_'), '_'))[1])]">
+             <xsl:sort select="substring-before(concat(@type, '_'), '_')"/>
+             <xsl:variable name="cleanType" select="substring-before(concat(@type, '_'), '_')"/>
+
+             <xsl:text>{"type":"</xsl:text><xsl:value-of select="$cleanType"/><xsl:text>",</xsl:text>
+             <xsl:text>"displayKa":"</xsl:text>
+             <xsl:call-template name="translate-role-ka"><xsl:with-param name="type" select="$cleanType"/></xsl:call-template>
+             <xsl:text>",</xsl:text>
+             <xsl:text>"displayEn":"</xsl:text>
+             <xsl:call-template name="translate-role-en"><xsl:with-param name="type" select="$cleanType"/></xsl:call-template>
+             <xsl:text>",</xsl:text>
+             <xsl:text>"count":</xsl:text><xsl:value-of select="count(//tei:roleName[starts-with(@type, $cleanType)])"/>
+             <xsl:text>}</xsl:text>
+
+             <!-- This comma logic is correct for an array -->
+             <xsl:if test="position() != last()"><xsl:text>,</xsl:text></xsl:if>
+        </xsl:for-each>
+
+        <!-- Close the roleCounts array. NO COMMA HERE, as it's the last item in the stats object. -->
+        <xsl:text>]</xsl:text>
+
+        <!-- Close the stats object -->
+        <xsl:text>}</xsl:text>
+        <!-- ============================================ -->
+        <!-- ===== END: CORRECTED STATS OBJECT ===== -->
+        <!-- ============================================ -->
+
+        <!-- Final closing brace for the whole JSON file -->
+        <xsl:text>}</xsl:text>
     </xsl:template>
 </xsl:stylesheet>
