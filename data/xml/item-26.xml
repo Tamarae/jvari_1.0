@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 26</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="26" xml:id="item_026" corresp="Marr 19">
+                  <lb n="12" ed="12"/>
+                  <p>
+                     <date type="liturgical" when="--04-03" corresp="#lent_fifth_wednesday" xml:lang="ka">მეხუთესა ოთხშაბათსა</date>
+                     <term type="service" subtype="requiem" xml:id="service_requiem_008">პანაშჳდი</term>
+                     
+                     <persName xml:id="pers_mikael_grigol_jer026" type="relative" role="commemorated" ref="#auth_pers_mikael_grigol" key="მიქაელ, გრიგოლის ძმა" xml:lang="ka">
+                        <forename>მ<expan>ი</expan>ქ<expan>აე</expan>ლი<supplied>სი</supplied></forename>
+                        <note type="relationship" xml:id="brother_026">გ<supplied>რი</supplied>გ<supplied>ო</supplied>ლის ძმისა</note>
+                     </persName>,
+                     
+                     <seg type="formula" subtype="blessing_abbreviated" xml:id="blessing_formula_022">შეუნდვენ</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Fifth Wednesday requiem for Mikael, brother of Grigol</note>
+                  <note type="key_figures" xml:lang="en">Mikael: Brother of Grigol, commemorated with requiem on fifth Wednesday of Lent</note>
+                  <note type="liturgical_calendar_order">092</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

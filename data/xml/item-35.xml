@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 35</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="35" xml:id="item_035" corresp="Marr 25">
+                  <lb n="27" ed="27"/>
+                  <p>
+                     <date type="liturgical" when="--04-14" corresp="#easter_tuesday" xml:lang="ka">აღვსებისა სამშაბათსა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_025">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_031">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_021">საუკუნოჲ</term>
+                     
+                     <persName xml:id="pers_ivane_goboysdze_jer035" type="main" role="commemorated" ref="#auth_pers_ivane_goboysdze" key="ივანე გობოჲსძე" xml:lang="ka">
+                        <forename>ივანე</forename>
+                        <addName type="patronymic" ref="#auth_pers_goboy">გობოჲს ძისაჲ</addName>
+                     </persName>,
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_032">შე<lb n="28" ed="28"/>უნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Easter Tuesday liturgy and agape memorial for Ivane Goboysdze</note>
+                  <note type="key_figures" xml:lang="en">Ivane Goboysdze: Son of Goboy, brother of Saghir, commemorated with eternal memorial on Easter Tuesday</note>
+                  <note type="liturgical_calendar_order">104</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

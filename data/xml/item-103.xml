@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 103</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="103" xml:id="item_103">
+                  <lb n="13" ed="13"/>
+                  <p>
+                     <seg type="colophon" xml:id="synaxarion_colophon_001">მეორედ შეიკაზმა წმიდაჲ ესე და სულთა განმანათლებელი სჳნაქსარი ჴელითა</seg>
+                     
+                     <persName type="scribe" key="გრიგოლ, სვინაქსარის შემკაზმავი" role="scribe" xml:id="pers_grigol_synaxarion_scribe_jer118" ref="#grigol_synaxarion_compiler">
+                        <forename>გრიგოლისითა</forename>
+                        <note type="virtue">ყოველთა<lb n="14" ed="14"/>კაცთა უცოდვილესისა</note>
+                     </persName>,
+                     
+                     <seg type="blessing" xml:id="blessing_formula_086">მიეცინ სასყიდელი შრომისაჲ უფალმან და შეუნდვნეს<lb n="15" ed="15"/>ღმერთმან</seg>,
+                     <seg type="liturgical" xml:id="liturgical_amen_003">ა{მი}ნ</seg>.
+                  </p>
+                  
+                  <note type="summary">Final colophon recording second compilation of the Synaxarion by scribe Grigol</note>
+                  <note type="key_figures">Grigol (synaxarion compiler/scribe, described as most sinless among all men)</note>
+                  <note type="classification">Manuscript colophon, scribal attribution</note>
+                  <note type="compilation_note">Second compilation/arrangement of the holy synaxarion</note>
+                  <note type="spiritual_function">Described as "soul-enlightening synaxarion"</note>
+                  <note type="scribal_virtue">Grigol praised as "most sinless among all men"</note>
+                  <note type="divine_reward">Prayer for divine reward for labor and divine mercy</note>
+                  <note type="manuscript_significance">Marks completion of major liturgical compilation work</note>
+                  <note type="project_conclusion">Final item in the Jerusalem Colony memorial manuscript</note>
+               </item>
+        </body>
+    </text>
+</TEI>

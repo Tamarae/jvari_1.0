@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 15</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="15" xml:id="item_015" corresp="Marr 10">
+                  <lb n="20" ed="20"/>
+                  <p>
+                     <date type="liturgical" when="--03-09" corresp="#lent_second_saturday" xml:lang="ka">მეორესა შაბათსა წმიდათა მარხვათასა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_008">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_012">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_006">საუკუნოჲ</term>
+                     
+                     <persName xml:id="pers_duda_ghltisdze_jer015" type="main" role="commemorated" ref="#auth_pers_duda_ghltisdze" key="დუდა ღლტისძე" xml:lang="ka">
+                        <forename>დუდაჲსი</forename>
+                        <addName type="patronymic" ref="#auth_pers_ghlti">ღლტის ძისაჲ</addName>
+                        <note type="gender" xml:id="daughter_015">ასულისაჲ</note>
+                     </persName>,
+                     
+                     <lb n="21" ed="21"/>
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_013">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Second Saturday of Lent liturgy and agape memorial for Duda, daughter of Ghlti</note>
+                  <note type="key_figures" xml:lang="en">Duda Ghltisdze: Daughter of Ghlti, commemorated with eternal memorial on second Saturday of Lent</note>
+                  <note type="liturgical_calendar_order">068</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

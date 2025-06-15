@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 37</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="37" xml:id="item_037">
+                  <lb n="31" ed="31"/>
+                  <p>
+                     <date type="liturgical" when="--04-11" corresp="#holy_saturday" xml:lang="ka">დიდსა შაბათსა</date>
+                     <term type="service" subtype="agape" xml:id="service_agape_033">აღაპი</term>
+                     
+                     <persName xml:id="pers_saakisi_jer037" type="main" role="commemorated" ref="#auth_pers_saakisi" key="სააკისი" xml:lang="ka">
+                        <forename>სააკისი</forename>
+                     </persName>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Holy Saturday agape memorial for Saakisi</note>
+                  <note type="key_figures" xml:lang="en">Saakisi: Individual commemorated with agape on Holy Saturday</note>
+                  <note type="liturgical_calendar_order">101</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

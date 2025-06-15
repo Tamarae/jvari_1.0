@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 4</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="4" xml:id="item_004">
+                  <lb n="5" ed="5"/>
+                  <p>
+                     <date type="liturgical" when="--04-01" corresp="#passion_monday" xml:lang="ka">ჴორციელსა ორშაბათსა</date> 
+                     
+                     <term type="service" subtype="requiem" xml:id="service_requiem_003" xml:lang="ka">პანაშვიდი</term> 
+                     
+                     <persName xml:id="pers_beqa_jer001" type="main" role="commemorated" ref="#auth_pers_beqa" key="ბექა" xml:lang="ka">
+                        <forename>ბე<supplied>ქა</supplied>სი</forename>
+                     </persName>, 
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_002" xml:lang="ka">შეუნდვნეს ღმერთმან</seg>.
+                  </p>
+                  
+                  <!-- Metadata for presentation system -->
+                  <note type="presentation_summary" xml:lang="en">
+                     Monday requiem service for Beqa during Passion Week
+                  </note>
+                  <note type="key_figures" xml:lang="en">
+                     Beqa: Person commemorated with simple requiem service
+                  </note>
+                  <note type="identification_note" xml:lang="en">
+                     May be same person mentioned again in Item 19
+                  </note>
+                  <note type="liturgical_calendar_order">004</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No monetary amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 36</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="36" xml:id="item_036" corresp="Marr 26">
+                  <lb n="29" ed="29"/>
+                  <p>
+                     <date type="liturgical" when="--04-15" corresp="#easter_wednesday" xml:lang="ka">აღვსებისა ოთხშაბათსა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_026">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_032">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_022">საუკუნოჲ</term>
+                     
+                     <persName xml:id="pers_saghir_laskhaysdze_jer036" type="main" role="commemorated" ref="#auth_pers_saghir_laskhaysdze" key="საღირ ლაშხაჲსძე" xml:lang="ka">
+                        <forename>საღირ</forename>
+                        <addName type="patronymic" ref="#auth_pers_laskhay">ლაშხ<expan>ა</expan>ჲს შვი<lb n="30" ed="30"/>ლისაჲ</addName>
+                     </persName>,
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_033">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Easter Wednesday liturgy and agape memorial for Saghir Laskhaysdze</note>
+                  <note type="key_figures" xml:lang="en">Saghir Laskhaysdze: Son of Laskhay, commemorated with eternal memorial on Easter Wednesday</note>
+                  <note type="liturgical_calendar_order">105</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

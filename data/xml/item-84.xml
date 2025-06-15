@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 84</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="84" xml:id="item_084">
+                  <lb n="16" ed="16"/>
+                  <p>
+                     გაუჩინეთ <orgName type="monastic_community" ref="#org_cross_monastery">ჩუენ <roleName type="clergy" ref="#auth_role_cross_father">ჯუარის მამამან</roleName></orgName>
+                     
+                     <persName xml:id="pers_nikifore_crossfather_jer098" type="clergy" role="donor" ref="#auth_pers_nikifore_crossfather" key="ნიკიფორე_ჯუარისმამა" xml:lang="ka">
+                        <forename>ნიკიფორემ</forename>
+                        <roleName type="clergy" ref="#auth_role_cross_father">ჯუარის მამა</roleName>
+                     </persName>,
+                     
+                     <persName xml:id="pers_teodore_bishop_jer099" type="clergy" role="donor" ref="#auth_pers_teodore_bishop" key="თეოდორე_ეპისკოპოსი" xml:lang="ka">
+                        <forename>თეოდორემ</forename>
+                        <roleName type="clergy_high" ref="#auth_role_bishop">ეპისკოპოსმან</roleName>
+                     </persName> და
+                     
+                     <seg type="formula" subtype="monastic_brotherhood" xml:id="brotherhood_formula_001">სრულობით<lb n="17" ed="17"/>ძმათ</seg>
+                     
+                     <persName xml:id="pers_pata_gurieli_jer100" type="noble" role="donor" ref="#auth_pers_pata_gurieli" key="პატა_ბატონი_გურიელი" xml:lang="ka">
+                        <forename>პატას</forename>
+                        <roleName type="noble" ref="#auth_role_lord_gurieli">ბატონს გურიელს</roleName>
+                     </persName> და
+                     
+                     <persName xml:id="pers_mariam_qortozisdaughter_jer101" type="noble" role="donor" ref="#auth_pers_mariam_qortozisdaughter" key="მარიამ_ქორთოძისასული_გურიელმეუღლე" xml:lang="ka">
+                        <forename>მარიამს</forename>
+                        <addName type="patronymic" ref="#auth_pers_qortozi">ქორთო<supplied>ძ</supplied>ის ასულსა</addName>
+                        <addName type="relationship" ref="#pers_pata_gurieli_jer100">თანამეცხედრესა მათსა ბატონს</addName>
+                     </persName>
+                     
+                     <lb n="18" ed="18"/>
+                     <term type="service" subtype="agape" xml:id="service_agape_061">აღაპი</term>,
+                     <date type="liturgical" when="--04-11" corresp="#maundy_thursday">დიდს ხუთშაბათს გარდაიჴდიდენ</date>.
+                     <seg type="formula" subtype="donation_money" xml:id="donation_formula_002">ასი მარჩილი მოგუცა</seg>. და
+                     <seg type="formula" subtype="curse_trinity" xml:id="curse_formula_003">ვინც დააკლოს და არ გადაი<lb n="19" ed="19"/>ხადოს, რისხავმსცა მამა, მე და სული წმიდაჲ და ყოველნი წმიდანი <expan>ღ<ex>მრთ</ex>ის<ex>ა</ex>ნი</expan></seg>.
+                     <seg type="formula" subtype="liturgical_amen" xml:id="amen_formula_001">ა{მი}ნ</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Foundation donation by monastic and noble community for Maundy Thursday agape meal, including monetary gift and protective curse</note>
+                  <note type="key_figures" xml:lang="en">Nikifore: Cross Father and donor; Teodore: Bishop and co-donor; Lord Pata Gurieli: Noble donor; Mariam Qortozisdaughter: Noble spouse and co-donor, wife of Pata Gurieli</note>
+                  <note type="liturgical_calendar_order">084</note>
+                  <note type="item_classification">foundation_donation</note>
+                  <note type="financial_summary">100 marchili donated</note>
+               </item>
+        </body>
+    </text>
+</TEI>

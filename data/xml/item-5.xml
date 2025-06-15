@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 5</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="5" xml:id="item_005" corresp="Marr 3">
+                  <lb n="6" ed="6"/>
+                  <p>
+                     <date type="liturgical" when="--04-08" corresp="#all_souls_monday" xml:lang="ka">ყველიერისა ორშაბათსა</date> 
+                     
+                     <term type="service" subtype="requiem" xml:id="service_requiem_004" xml:lang="ka">პანაშჳდი</term> 
+                     
+                     <persName xml:id="pers_tsotne_qvelivaysdze_jer001" type="main" role="commemorated" ref="#auth_pers_tsotne_qvelivaysdze" key="ცოტნე ქველივაჲსძე" xml:lang="ka">
+                        <forename>ცოტნე</forename>
+                        <addName type="patronymic" ref="#auth_pers_qvelivayi" key="ქველივაჲსძე">ქველივაჲს ძისაჲ</addName>
+                     </persName>, 
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_003" xml:lang="ka">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <!-- Metadata for presentation system -->
+                  <note type="presentation_summary" xml:lang="en">
+                     All Souls Monday requiem for Tsotne Qvelivaysdze
+                  </note>
+                  <note type="key_figures" xml:lang="en">
+                     Tsotne Qvelivaysdze: Son of Qvelivayi, commemorated with requiem service
+                  </note>
+                  <note type="name_analysis" xml:lang="en">
+                     Patronymic indicates father named Qvelivayi; Georgian noble family
+                  </note>
+                  <note type="liturgical_calendar_order">005</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No monetary amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

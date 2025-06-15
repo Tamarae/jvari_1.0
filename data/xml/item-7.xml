@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 7</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="7" xml:id="item_007" corresp="Marr 4">
+                  <lb n="8" ed="8"/>
+                  <p>
+                     <date type="liturgical" when="--04-09" corresp="#easter_tuesday" xml:lang="ka">სამშაბათსა</date> 
+                     
+                     <term type="service" subtype="agape" xml:id="service_agape_004" xml:lang="ka">აღაპი</term> 
+                     
+                     <persName xml:id="pers_saghiri_brother_jer001" type="relative" role="commemorated" ref="#auth_pers_saghiri_brother" key="საღირა" xml:lang="ka">
+                        <forename>საღირისი</forename>
+                        <note type="relationship" xml:lang="ka">მისისა ძმისა</note>
+                     </persName>, 
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_005" xml:lang="ka">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <!-- Metadata for presentation system -->
+                  <note type="presentation_summary" xml:lang="en">
+                     Tuesday agape for Saghiri, described as someone's brother
+                  </note>
+                  <note type="key_figures" xml:lang="en">
+                     Saghiri: Family member commemorated through relative's initiative
+                  </note>
+                  <note type="relationship_analysis" xml:lang="en">
+                     Referred to as "his brother" - relationship context unclear without antecedent
+                  </note>
+                  <note type="liturgical_calendar_order">007</note>
+                  <note type="item_classification">family_memorial</note>
+                  <note type="financial_summary">No monetary amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

@@ -1,120 +1,166 @@
-<!DOCTYPE html
-  SYSTEM "about:legacy-compat">
+<!DOCTYPE html>
 <html lang="ka">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>მუხლი 8 - ქართული სამონასტრო დოკუმენტები</title>
-      <style>
-                    * { margin: 0; padding: 0; box-sizing: border-box; }
-                    body { font-family: 'BPG Nino Mtavruli', 'Sylfaen', 'Times New Roman', serif; line-height: 1.7; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 2rem; }
-                    .header { border-bottom: 1px solid #ddd; padding-bottom: 1.5rem; margin-bottom: 2rem; }
-                    .header h1 { font-size: 1.8rem; font-weight: normal; margin-bottom: 0.3rem; color: #222; }
-                    .header .subtitle { font-size: 0.95rem; color: #666; font-style: italic; }
-                    .document-info { background: #f9f9f9; padding: 1rem; margin-bottom: 2rem; border: 1px solid #e5e5e5; font-size: 0.9rem; }
-                    .document-info .title { font-weight: bold; margin-bottom: 0.5rem; }
-                    .georgian-title { font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif; font-size: 1.1rem; margin-bottom: 0.3rem; color: #000; }
-                    .english-title { font-family: 'Times New Roman', serif; font-size: 0.9rem; color: #666; font-style: italic; }
-                    .metadata { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-                    .metadata-item { display: flex; gap: 0.5rem; }
-                    .metadata-label { font-weight: bold; min-width: 80px; }
-                    .main-content { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; margin-bottom: 2rem; }
-                    .text-panel { background: #fff; }
-                    .view-controls { margin-bottom: 1.5rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; }
-                    .view-controls button { background: none; border: none; padding: 0.5rem 1rem; margin-right: 1rem; cursor: pointer; font-size: 0.9rem; color: #666; border-bottom: 2px solid transparent; }
-                    .view-controls button.active { color: #000; border-bottom-color: #333; }
-                    .georgian-text { font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif; font-size: 1.2rem; line-height: 2.2; margin: 1.5rem 0; background: #f0f8f0; padding: 2rem; border-left: 4px solid #228B22; }
-                    .english-text { font-family: 'Times New Roman', serif; font-size: 1rem; line-height: 1.8; margin: 1.5rem 0; background: #f9f9f9; padding: 1.5rem; border-left: 3px solid #ddd; }
-                    .sidebar { font-size: 0.9rem; }
-                    .sidebar-section { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
-                    .sidebar-section:last-child { border-bottom: none; }
-                    .sidebar-section h3 { font-size: 1rem; font-weight: bold; margin-bottom: 1rem; color: #222; }
-                    .person-entry { margin-bottom: 1rem; padding-bottom: 0.5rem; }
-                    .person-name { font-weight: bold; color: #000; }
-                    .person-name-georgian { font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif; font-size: 1.05rem; margin-bottom: 0.2rem; }
-                    .person-name-english { font-size: 0.85rem; color: #666; font-style: italic; }
-                    .person-role { font-size: 0.85rem; color: #666; font-style: italic; }
-                    .person-link { color: inherit; text-decoration: none; border-bottom: 1px dotted #666; }
-                    .tab-content { display: none; }
-                    .tab-content.active { display: block; }
-                    .breadcrumb { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9em; }
-                    .breadcrumb a { color: #333; text-decoration: none; }
-                    .breadcrumb span { margin: 0 5px; }
-                    .back-link { position: fixed; top: 20px; right: 20px; background: #333; color: white; padding: 5px 10px; text-decoration: none; font-size: 0.9em; border-radius: 3px; }
-                </style>
-   </head>
-   <body><a href="../../index.html" class="back-link">← უკან მონაცემთა ბაზაში</a><header class="header">
-         <nav class="breadcrumb"><a href="../../index.html">წყაროები</a><span>›</span><span>მუხლი 8</span></nav>
-         <h1>ქართული სამონასტრო დოკუმენტები</h1>
-         <div class="subtitle">ჯვრის მონასტრის აღაპების ციფრული გამოცემა</div>
-      </header>
-      <div class="document-info">
-         <div class="title">
-            <div class="georgian-title">
-               მუხლი 8:
-               ყველიერისა ხუთშაბათსა</div>
-            <div class="english-title">
-               Item 8:
-               
-               Thursday agape for Prokhore, a father/priest of the Cross Monastery
-               </div>
-         </div>
-         <div class="metadata">
-            <div class="metadata-item"><span class="metadata-label">ტიპი:</span><span>clergy_memorial</span></div>
-            <div class="metadata-item"><span class="metadata-label">თარიღი:</span><span>--04-11</span></div>
-            <div class="metadata-item"><span class="metadata-label">ფოლიო:</span><span>გვ. , ხ. 9</span></div>
-            <div class="metadata-item"><span class="metadata-label">არქივი:</span><span>ჯვრის მონასტერი</span></div>
-         </div>
-      </div>
-      <div class="main-content">
-         <div class="text-panel">
-            <div class="view-controls"><button class="active" onclick="switchView('georgian')">ქართული ორიგინალი</button><button onclick="switchView('english')">ინგლისური ანალიზი</button></div>
-            <div id="georgian-view" class="tab-content active">
-               <div class="georgian-text">
-                  <strong>ყველიერისა ხუთშაბათსა</strong> 
-                  
-                  <strong>აღაპი</strong> 
-                  
-                  <a href="../person/prokhore_father.html" class="person-link">
-                     
-                     
-                     </a>, 
-                  
-                  .
-                  </div>
-            </div>
-            <div id="english-view" class="tab-content">
-               <div class="english-text">
-                  <p><strong>Summary:</strong>
-                     Thursday agape for Prokhore, a father/priest of the Cross Monastery
-                     </p>
-                  <p><strong>Significance:</strong></p>
-                  <p><strong>Financials:</strong>No monetary amounts specified</p>
-               </div>
-            </div>
-         </div>
-         <aside class="sidebar">
-            <div class="sidebar-section">
-               <h3>მთავარი პირები / Key Figures</h3>
-               <div class="person-entry">
-                  <div class="person-name">
-                     <div class="person-name-georgian"><a href="../person/prokhore_father.html" class="person-link">პროხორესი მამისა</a></div>
-                     <div class="person-name-english">პროხორე ჯვარის მამა</div>
-                  </div>
-                  <div class="person-role" style="text-transform: capitalize;">commemorated</div>
-               </div>
-            </div>
-            <div class="sidebar-section">
-               <h3>ლიტურგიული ტერმინები / Liturgical Terms</h3>
-               <div>აღაპი (agape)</div>
-            </div>
-         </aside>
-      </div><script>
-                    function switchView(viewType) {
-                    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                    document.querySelectorAll('.view-controls button').forEach(btn => btn.classList.remove('active'));
-                    document.getElementById(viewType + '-view').classList.add('active');
-                    event.target.classList.add('active');
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>იერუსალიმის ჯვრის მონასტრის აღაპები - პროსოპოგრაფიული მონაცემთა ბაზა</title>
+<link rel="stylesheet" href="../../style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+</head>
+<body class="lang-ka-active">
+<div class="page-top-bar"><a href="../../index.html#prosopography" class="back-link"><span class="lang-ka georgian-main">← უკან მონაცემთა ბაზაში</span><span class="lang-en">← Back to Database</span></a></div>
+<div class="container">
+<header class="header"><div class="header-top-controls">
+<a href="../../index.html#prosopography" class="back-link"><span class="lang-ka georgian-main">← უკან მონაცემთა ბაზაში</span><span class="lang-en">← Back to Database</span></a><div class="lang-toggle">
+<button id="btn-ka" class="active" onclick="switchLang('ka')">ქართული</button><button id="btn-en" onclick="switchLang('en')">English</button>
+</div>
+</div>
+<div class="header-content">
+<h1 class="georgian-main">იერუსალიმის ჯვრის მონასტრის აღაპები</h1>
+<div class="subtitle">Jerusalem Cross Monastery Commemorative Records</div>
+<div class="subtitle">XI–XVII Centuries</div>
+<div class="meta">Based on Leipzig MS V-1085 and Jerusalem MSS 24-25</div>
+<div class="item-navigation">
+<div class="nav-prev"><a href="item-7.html"><span class="lang-ka">← წინა</span><span class="lang-en">← Previous</span></a></div>
+<div class="nav-current-item">
+<span class="lang-ka">ჩანაწერი 8</span><span class="lang-en">Item 8</span>
+</div>
+<div class="nav-next"><a href="item-9.html"><span class="lang-ka">შემდეგი →</span><span class="lang-en">Next →</span></a></div>
+</div>
+</div></header><div class="scholarly-viewer">
+<div class="manuscript-panel">
+<div class="panel-header"><div class="panel-title-text">
+<span class="lang-ka">ხელნაწერის აღწერა</span><span class="lang-en">Manuscript Description</span>
+</div></div>
+<div id="manuscript-details-view">
+<div class="metadata-section">
+<div class="metadata-title">
+<span class="lang-ka">იდენტიფიკატორი</span><span class="lang-en">Identifier</span>
+</div>
+<div class="metadata-item">
+<span class="metadata-label"><span class="lang-ka">საცავი:</span><span class="lang-en">Repository:</span></span><span class="metadata-value">Leipzig University Library</span>
+</div>
+<div class="metadata-item">
+<span class="metadata-label"><span class="lang-ka">შიფრი:</span><span class="lang-en">ID No:</span></span><span class="metadata-value">V-1085</span>
+</div>
+</div>
+<div class="metadata-section">
+<div class="metadata-title">
+<span class="lang-ka">ფიზიკური აღწერა</span><span class="lang-en">Physical Description</span>
+</div>
+<div class="metadata-item">
+<span class="metadata-label"><span class="lang-ka">მასალა:</span><span class="lang-en">Support:</span></span><span class="metadata-value">Parchment</span>
+</div>
+<div class="metadata-item">
+<span class="metadata-label"><span class="lang-ka">ხელი:</span><span class="lang-en">Hand:</span></span><span class="metadata-value">Georgian Nuskhuri script</span>
+</div>
+</div>
+<div class="metadata-section">
+<div class="metadata-title">
+<span class="lang-ka">ისტორია</span><span class="lang-en">History</span>
+</div>
+<div class="metadata-item">
+<span class="metadata-label"><span class="lang-ka">წარმომავლობა:</span><span class="lang-en">Origin:</span></span><span class="metadata-value">Jerusalem, Cross Monastery</span>
+</div>
+<div class="metadata-item">
+<span class="metadata-label"><span class="lang-ka">თარიღი:</span><span class="lang-en">Date:</span></span><span class="metadata-value">Medieval period</span>
+</div>
+</div>
+</div>
+<div class="sidebar-section">
+<div class="panel-header"><div class="panel-title-text">
+<span class="lang-ka">მთავარი პირები</span><span class="lang-en">Key Figures</span>
+</div></div>
+<a href="../person/prokhore_cross_father.html" class="person-link"><div class="person-name-georgian">პროხორე ჯვარის მამა →</div>
+<div class="person-role">
+<span class="lang-ka">commemorated</span><span class="lang-en">commemorated</span>
+</div></a>
+</div>
+</div>
+<div class="text-apparatus-container">
+<div class="text-panel">
+<div class="panel-header">
+<div class="panel-title-text">
+<span class="lang-ka">ტექსტი</span><span class="lang-en">Transcription</span>
+</div>
+<div class="view-mode-switch">
+<label><input type="radio" name="view-mode" value="critical" checked onchange="switchTextView('critical')"> Critical</label><label><input type="radio" name="view-mode" value="diplomatic" onchange="switchTextView('diplomatic')"> Diplomatic</label>
+</div>
+</div>
+<div class="transcription-viewer">
+<div id="critical-view" class="transcription-text"><div class="line">
+<div class="line-number">9</div>
+<div class="line-content">
+<em>ყველიერისა ხუთშაბათსა </em><em>აღაპი </em><a href="../person/prokhore_cross_father.html"><strong>პროხორესი მამისა </strong></a>, შეუნდვენ ღმერთმან <span class="seg-type-label">formula</span> . </div>
+</div></div>
+<div id="diplomatic-view" class="transcription-text" style="display:none;"><div class="line">
+<div class="line-number">9</div>
+<div class="line-content">
+<em>ⴗⴅⴄⴊⴈⴄⴐⴈⴑⴀ ⴞⴓⴇⴘⴀⴁⴀⴇⴑⴀ </em><em>ⴀⴖⴀⴎⴈ </em><a href="../person/prokhore_cross_father.html"><strong>
+                        ⴎⴐⴍⴞⴍⴐⴄⴑⴈ
+                        ⴋⴀⴋⴈⴑⴀ
+                     </strong></a>, ⴘⴄⴓⴌⴃⴅⴄⴌ ⴖⴋⴄⴐⴇⴋⴀⴌ  . </div>
+</div></div>
+</div>
+</div>
+<div class="apparatus-panel">
+<div class="panel-header"><div class="panel-title-text">
+<span class="lang-ka">სამეცნიერო აპარატი და შენიშვნები</span><span class="lang-en">Scholarly Apparatus and Notes</span>
+</div></div>
+<div class="apparatus-viewer">
+<div class="apparatus-note">
+<span class="note-type"><span class="lang-ka">მთავარი პირები:</span><span class="lang-en">key figures:
+                                                </span></span><span class="note-content">Prokhore: Clergy member, father/priest associated with Cross Monastery</span>
+</div>
+<div class="apparatus-note">
+<span class="note-type"><span class="lang-ka">institutional connection:</span><span class="lang-en">institutional connection:
+                                                </span></span><span class="note-content">"მამა" indicates priestly role; connection to Cross Monastery institutional structure</span>
+</div>
+<div class="apparatus-note">
+<span class="note-type"><span class="lang-ka">ლიტურგიკული რიგი:</span><span class="lang-en">liturgical calendar order:
+                                                </span></span><span class="note-content">008</span>
+</div>
+<div class="apparatus-note">
+<span class="note-type"><span class="lang-ka">კლასიფიკაცია:</span><span class="lang-en">item classification:
+                                                </span></span><span class="note-content">clergy_memorial</span>
+</div>
+<div class="apparatus-note">
+<span class="note-type"><span class="lang-ka">financial summary:</span><span class="lang-en">financial summary:
+                                                </span></span><span class="note-content">No monetary amounts specified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+                    function switchLang(lang) {
+                        const body = document.body;
+                        const btnKa = document.getElementById('btn-ka');
+                        const btnEn = document.getElementById('btn-en');
+                        body.classList.toggle('lang-ka-active', lang === 'ka');
+                        body.classList.toggle('lang-en-active', lang === 'en');
+                        btnKa.classList.toggle('active', lang === 'ka');
+                        btnEn.classList.toggle('active', lang === 'en');
+                        document.querySelectorAll('.page-top-bar .lang-ka, .header .lang-ka, .manuscript-panel .lang-ka, .panel-title-text .lang-ka').forEach(el => {
+                            el.style.display = (lang === 'ka') ? 'block' : 'none';
+                        });
+                        document.querySelectorAll('.page-top-bar .lang-en, .header .lang-en, .manuscript-panel .lang-en, .panel-title-text .lang-en').forEach(el => {
+                            el.style.display = (lang === 'en') ? 'block' : 'none';
+                        });
                     }
-                </script></body>
+
+                    function switchTextView(view) {
+                        document.getElementById('critical-view').style.display = 'none';
+                        document.getElementById('diplomatic-view').style.display = 'none';
+                        document.getElementById(view + '-view').style.display = 'block';
+                    }
+
+                    document.addEventListener('DOMContentLoaded', function() {
+                        switchLang('ka');
+                        switchTextView('critical');
+                    });
+                </script>
+</body>
 </html>

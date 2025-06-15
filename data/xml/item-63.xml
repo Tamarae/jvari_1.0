@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 63</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="63" xml:id="item_063">
+                  <lb n="8" ed="8"/>
+                  <p>
+                     <date type="liturgical" when="--05-27" corresp="#samaritan_woman_wednesday" xml:lang="ka">სამარიტელისა ოთხშაბათსა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_040">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_050">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_037">საუკუნო</term>
+                     
+                     <persName xml:id="pers_shalva_qenifnveli_jer063" type="noble" role="commemorated" ref="#auth_pers_shalva_qenifnveli" key="შალვა_ქენიფნველი_ერისთავი" xml:lang="ka">
+                        <roleName type="noble" ref="#auth_role_eristavi">ერისთვისა</roleName>
+                        <forename>
+                           <expan>შ<ex>ა</ex>ლვ<ex>ა</ex>ს</expan>
+                        </forename>
+                        <addName type="patronymic" ref="#auth_pers_qenifnv">
+                           <expan>ქენიფნვ<ex>ე</ex>ლსა</expan>
+                        </addName>
+                     </persName>,
+                     
+                     <lb n="9" ed="9"/>
+                     <persName xml:id="pers_pipa_shalvason_jer064" type="relative" role="commemorated" ref="#auth_pers_pipa_shalvason" key="პიპა_შალვასშვილი" xml:lang="ka">
+                        <forename>პიპასი</forename>
+                        <addName type="relationship" ref="#pers_shalva_qenifnveli_jer063">შვილსა</addName>
+                     </persName> და
+                     
+                     <persName xml:id="pers_tamari_pipawife_jer065" type="spouse" role="commemorated" ref="#auth_pers_tamari_pipawife" key="თამარი_პიპასმეუღლე" xml:lang="ka">
+                        <forename>თამარისი</forename>
+                        <addName type="relationship" ref="#pers_pipa_shalvason_jer064">მისისა მეუღლ<supplied>ი</supplied>სა</addName>
+                     </persName>,
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_053">შეუნდვენ ღმერთმან</seg>, და
+                     <seg type="formula" subtype="curse_protection" xml:id="curse_formula_001">ვი<supplied>ნ</supplied>ცა შეცვალოს,<lb n="10" ed="10"/>კრულმცა</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Eternal memorial with liturgy and agape meal for noble family: Eristavi Shalva Qenifnveli, his son Pipa, and Pipa's wife Tamari, with protective curse formula</note>
+                  <note type="key_figures" xml:lang="en">Eristavi Shalva Qenifnveli: Noble commemorated, high-ranking official; Pipa: Son of Shalva; Tamari: Wife of Pipa, daughter-in-law of Shalva</note>
+                  <note type="liturgical_calendar_order">063</note>
+                  <note type="item_classification">noble_family_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

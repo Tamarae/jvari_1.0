@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 9</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="9" xml:id="item_009" corresp="Marr 6">
+                  <lb n="10" ed="10"/>
+                  <p>
+                     <date type="liturgical" when="--04-13" corresp="#all_souls_saturday" xml:lang="ka">ყველიერისა შაბათსა</date> 
+                     
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_004" xml:lang="ka">წირვაჲ</term> და 
+                     
+                     <term type="service" subtype="agape" xml:id="service_agape_006" xml:lang="ka">აღაპი</term> 
+                     
+                     <term type="memorial_type" subtype="eternal" xml:id="memorial_eternal_002" xml:lang="ka">საუკუნოჲ</term> და 
+                     
+                     <term type="service" subtype="requiem" xml:id="service_requiem_005" xml:lang="ka">პანაშჳდი</term> 
+                     
+                     <persName xml:id="pers_saghir_gareyanysdze_jer001" type="main" role="commemorated" ref="#auth_pers_saghir_gareyanysdze" key="საღირ გარეყანისძე" xml:lang="ka">
+                        <forename>საღირ</forename>
+                        <addName type="patronymic" ref="#auth_pers_gareyani" key="გარეყანისძე">გარეყანის ძისაჲ</addName>
+                     </persName>, 
+                     
+                     <lb n="11" ed="11"/>
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_007" xml:lang="ka">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <!-- Metadata for presentation system -->
+                  <note type="presentation_summary" xml:lang="en">
+                     Saturday eternal memorial with full services for Saghir Gareyanysdze
+                  </note>
+                  <note type="key_figures" xml:lang="en">
+                     Saghir Gareyanysdze: Son of Gareyani, commemorated with comprehensive eternal memorial
+                  </note>
+                  <note type="service_analysis" xml:lang="en">
+                     Full memorial package: liturgy, agape, eternal memorial status, and requiem
+                  </note>
+                  <note type="name_note" xml:lang="en">
+                     Same forename as Saghiri in Item 7 - different people based on patronymics
+                  </note>
+                  <note type="liturgical_calendar_order">009</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No monetary amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

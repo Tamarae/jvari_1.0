@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 68</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="68" xml:id="item_068">
+                  <lb n="19" ed="19"/>
+                  <p>
+                     <date type="liturgical" when="--05-30" corresp="#saturday_before_pentecost" xml:lang="ka">სულისა წმიდისა მოსლვისა წინა შაბათსა</date>
+                     <term type="service" subtype="agape" xml:id="service_agape_054">აღაპი</term>
+                     <term type="service" subtype="requiem" xml:id="service_requiem_017">პანაჰშჳდითა</term>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_044">ორისა ხუცისა წირვითა</term>
+                     
+                     <persName xml:id="pers_saba_mimtsaysdze_jer075" type="main" role="commemorated" ref="#auth_pers_saba_mimtsaysdze" key="საბა_მიმცაჲსძე_საღირყოფილი" xml:lang="ka">
+                        <forename>საბა</forename>
+                        <addName type="patronymic" ref="#auth_pers_mimtsays">მიმც<expan>ა</expan>ჲს ძისა</addName>
+                        <roleName type="clerical_former" ref="#auth_role_priest_former">საღირ<lb n="20" ed="20"/>ყოფილისა</roleName>
+                     </persName>
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Agape meal with requiem and double priestly liturgy for former priest Saba Mimtsaysdze on Saturday before Pentecost</note>
+                  <note type="key_figures" xml:lang="en">Saba Mimtsaysdze: Former priest commemorated with special clerical honors, son of Mimtsays</note>
+                  <note type="liturgical_calendar_order">068</note>
+                  <note type="item_classification">clerical_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 2</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="2" xml:id="item_002" corresp="Marr 1">
+                  <lb n="2" ed="2"/>
+                  <p>
+                     <date type="liturgical" when="--03-30" corresp="#holy_saturday" xml:lang="ka">ჴორციელისა შაბათსა</date> 
+                     
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_001" xml:lang="ka">წირვაჲ</term> და 
+                     
+                     <term type="service" subtype="agape" xml:id="service_agape_001" xml:lang="ka">აღაპი</term> 
+                     
+                     <orgName type="monastic_community" xml:id="org_cross_brothers_002" ref="#auth_org_cross_monastery" xml:lang="ka">ძმათავე</orgName>.
+                  </p>
+                  
+                  <!-- Metadata for presentation system -->
+                  <note type="presentation_summary" xml:lang="en">
+                     Liturgy and agape meal for the monastic community on Holy Saturday
+                  </note>
+                  <note type="item_classification">communal_celebration</note>
+                  <note type="liturgical_calendar_order">002</note>
+               </item>
+        </body>
+    </text>
+</TEI>

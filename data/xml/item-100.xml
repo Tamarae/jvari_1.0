@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 100</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="100" xml:id="item_100">
+                  <lb n="4" ed="4"/>
+                  <p>
+                     <seg type="invocation" xml:id="god_invocation_003">სახელითა <expan>ღ<ex>მრთ</ex>ისაჲთა</expan></seg>
+                     <seg type="temporal" xml:id="temporal_formula_001">მას ჟამსა ოდეს</seg>
+                     სულ<supplied>თ</supplied>...
+                  </p>
+                  
+                  <note type="summary">Incomplete foundation formula beginning with divine invocation</note>
+                  <note type="classification">Fragment - foundation charter opening</note>
+                  <note type="manuscript_condition">Text breaks off after temporal formula</note>
+                  <note type="formula_type">Standard Georgian charter opening with divine invocation</note>
+                  <note type="temporal_element">Contains "at that time when" temporal formula typical of charters</note>
+               </item>
+        </body>
+    </text>
+</TEI>

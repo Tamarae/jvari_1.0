@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 86</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="86" xml:id="item_086">
+                  <lb n="24" ed="24"/>
+                  <p>
+                     გაუჩინეთ <orgName type="monastic_community" ref="#org_cross_monastery" xml:id="org_cross_monastery_jer104">ჩუენ, ჯუარისა მამამან და ერთსულობით <expan>საღ<ex>მრთ</ex>ომან</expan> კრებულმან</orgName>,
+                     
+                     <persName type="main" key="ბედან ჭილასძე" role="commemorated" xml:id="pers_bedani_chilaysdze_jer104" ref="#bedani_chilaysdze">
+                        <forename>ბედანის</forename>
+                        <addName type="patronymic" key="ჭილასძე">ჭილას<lb n="25" ed="25"/>ძესა</addName>
+                     </persName> და
+                     
+                     <persName type="spouse" key="კანდაკე, ბედან ჭილასძეს მეუღლე" role="commemorated" xml:id="pers_kandake_bedaniwife_jer104" ref="#kandake_bedaniwife">
+                        <forename>კანდაკეს</forename>
+                        <note type="relationship">მისსა მეუღლესა</note>
+                     </persName>
+                     
+                     <seg type="service" subtype="agape" xml:id="agape_064" corresp="#liturgy_good_friday #liturgy_easter_saturday">ორი საუკუნო აღაპი</seg>
+                     
+                     <date type="liturgical" when="--04-10" xml:id="liturgy_052" corresp="#good_friday">აღდგომისა პარასკევსა</date> და
+                     <date type="liturgical" when="--04-11" xml:id="liturgy_053" corresp="#easter_saturday">აღ<lb n="26" ed="26"/>დგომისა შაბათსა</date>.
+                     
+                     <seg type="monastic_status" xml:id="monastery_formula_002">ორნიცა მონაზონნი იყვნენ ჯუარისა სასლსა შინა</seg>,
+                     <seg type="protection" xml:id="protection_formula_001">ვერავინ დააკლოს</seg>.
+                  </p>
+                  
+                  <note type="summary">Double agape foundation for monk Bedani Chilaysdze and his wife Kandake on Good Friday and Easter Saturday</note>
+                  <note type="key_figures">Bedani Chilaysdze (monk), Kandake (his wife, also monastic)</note>
+                  <note type="calendar_order">Good Friday, Easter Saturday (Holy Week sequence)</note>
+                  <note type="classification">Monastic couple memorial, dual-service foundation</note>
+                  <note type="special_elements">Both were monks at Cross Monastery, protection clause included</note>
+               </item>
+        </body>
+    </text>
+</TEI>

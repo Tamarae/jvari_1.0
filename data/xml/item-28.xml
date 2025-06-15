@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 28</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="28" xml:id="item_028" corresp="Marr 20">
+                  <lb n="15" ed="15"/>
+                  <p>
+                     <date type="liturgical" when="--04-07" corresp="#palm_sunday" xml:lang="ka">კჳრიაკესა ბაიაობისასა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_019">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_024">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_015">საუკუნო</term>
+                     
+                     <persName xml:id="pers_giorgi_king_kings_jer028" type="royal" role="commemorated" ref="#auth_pers_giorgi_king_kings" key="მეფეთ მეფე გიორგი" xml:lang="ka">
+                        <roleName type="royal" ref="#auth_role_king_kings">მეფეთ-მეფისა</roleName>
+                        <forename>გ<expan>იორგ</expan>ისი</forename>
+                     </persName>,
+                     
+                     <lb n="16" ed="16"/>
+                     <seg type="formula" subtype="blessing_eternal" xml:id="blessing_formula_025">საუკუნომცა არს საჴსენებელი მისი</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Palm Sunday liturgy and agape memorial for King of Kings Giorgi</note>
+                  <note type="key_figures" xml:lang="en">King of Kings Giorgi: Supreme royal figure commemorated with eternal memorial and eternal remembrance blessing on Palm Sunday</note>
+                  <note type="liturgical_calendar_order">097</note>
+                  <note type="item_classification">royal_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 83</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="83" xml:id="item_083">
+                  <lb n="15" ed="15"/>
+                  <p>
+                     <persName xml:id="pers_rusa_amirejibwife_jer097" type="spouse" role="commemorated" ref="#auth_pers_rusa_amirejibwife" key="რუსა_ამირეჯიბმეუღლე" xml:lang="ka">
+                        <forename>რუსასა</forename>
+                        <addName type="relationship" ref="#auth_pers_amirejib">ამირეჯიბისა მეუღლესა</addName>
+                     </persName>
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_071">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Memorial for Rusa, wife of Amirejib</note>
+                  <note type="key_figures" xml:lang="en">Rusa: Commemorated spouse of Amirejib</note>
+                  <note type="liturgical_calendar_order">083</note>
+                  <note type="item_classification">spouse_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

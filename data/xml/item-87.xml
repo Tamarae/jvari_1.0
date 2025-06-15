@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 87</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="87" xml:id="item_087">
+                  <lb n="27" ed="27"/>
+                  <p>
+                     <date type="liturgical" when="--12-22" xml:id="liturgy_054" corresp="#patriarchs_sunday">ქრისტეს შობისა წინა კჳრიაკესა მამათმთავართა დღესასწაულსა</date>
+                     
+                     გაუჩინეთ <seg type="service" subtype="agape" xml:id="agape_065" corresp="#liturgy_patriarchs_sunday">საუკუნო აღა<lb n="28" ed="28"/>პი</seg>
+                     
+                     <persName type="main" key="ყალანდარი" role="commemorated" xml:id="pers_qalandar_jer105" ref="#qalandar">
+                        <forename>ყალანდარსა</forename>
+                     </persName>.
+                  </p>
+                  
+                  <note type="summary">Eternal agape foundation for Qalandar on Sunday of the Holy Patriarchs</note>
+                  <note type="key_figures">Qalandar (commemorated person)</note>
+                  <note type="calendar_order">Sunday before Christmas (December 22)</note>
+                  <note type="classification">Individual memorial, pre-Christmas observance</note>
+                  <note type="liturgical_context">Sunday of the Holy Patriarchs (Forefathers Sunday in Eastern tradition)</note>
+               </item>
+        </body>
+    </text>
+</TEI>

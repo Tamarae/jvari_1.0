@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 50</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="50" xml:id="item_050" corresp="Marr 37">
+                  <lb n="20" ed="20"/>
+                  <p>
+                     <date type="liturgical" when="--05-05" corresp="#myrrhbearers_tuesday" xml:lang="ka">სამშაბათსა მენელსაცხებლეთა</date>
+                     <term type="service" subtype="requiem" xml:id="service_requiem_013">პანაშჳდი</term>
+                     
+                     <persName xml:id="pers_mikael_lashkhisshvili_jer050" type="main" role="commemorated" ref="#auth_pers_mikael_lashkhisshvili" key="მიქაელ_ლაშხისშვილი" xml:lang="ka">
+                        <forename>მიქაელისი</forename>
+                        <addName type="patronymic" ref="#auth_pers_lashkhi">ლაშხის შვილთა</addName>
+                     </persName> და
+                     
+                     <persName xml:id="pers_giorgi_lashkhisshvili_jer051" type="main" role="commemorated" ref="#auth_pers_giorgi_lashkhisshvili" key="გიორგი_ლაშხისშვილი" xml:lang="ka">
+                        <forename>
+                           <expan>გ<ex>იორ</ex>გ<ex>ი</ex>სი</expan>
+                        </forename>
+                        <addName type="patronymic" ref="#auth_pers_lashkhi">ლაშხის შვილთა</addName>
+                     </persName>,
+                     
+                     <lb n="21" ed="21"/>
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_046">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Requiem service for two brothers, Mikael and Giorgi, sons of Lashkhi, held on Tuesday of Myrrhbearers week</note>
+                  <note type="key_figures" xml:lang="en">Mikael Lashkhisshvili: Commemorated deceased, son of Lashkhi; Giorgi Lashkhisshvili: Commemorated deceased, brother of Mikael, son of Lashkhi</note>
+                  <note type="liturgical_calendar_order">050</note>
+                  <note type="item_classification">sibling_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

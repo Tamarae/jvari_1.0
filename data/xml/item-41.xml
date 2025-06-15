@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 41</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="41" xml:id="item_041" corresp="Marr 28">
+                  <lb n="1" ed="1"/>
+                  <p>
+                     <date type="liturgical" when="--04-17" corresp="#easter_friday" xml:lang="ka">აღვსებისა პარასკევსა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_029">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_037">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_025">საუკუნოჲ</term>
+                     
+                     <persName xml:id="pers_qundos_chakhubisdze_jer041" type="main" role="commemorated" ref="#auth_pers_qundos_chakhubisdze" key="ყუნდოს ჭახუბისძე" xml:lang="ka">
+                        <forename>ყუნდოს</forename>
+                        <addName type="patronymic" ref="#auth_pers_chakhubi">ჭახუბის ძისაჲ</addName>
+                     </persName>,
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_037">შე<lb n="2" ed="2"/>უნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Easter Friday liturgy and agape memorial for Qundos Chakhubisdze</note>
+                  <note type="key_figures" xml:lang="en">Qundos Chakhubisdze: Son of Chakhubi, commemorated with eternal memorial on Easter Friday</note>
+                  <note type="liturgical_calendar_order">107</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

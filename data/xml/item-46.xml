@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 46</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="46" xml:id="item_046" corresp="Marr 33">
+                  <lb n="11" ed="11"/>
+                  <p>
+                     <date type="liturgical" when="--05-07" corresp="#second_thursday_zatik" xml:lang="ka">მეორესა ხუთშაბათსა ზატიკთასა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_033">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_041">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_029">საუკუნოჲ</term>
+                     
+                     <persName xml:id="pers_natel_quabulisdze_jer046" type="main" role="commemorated" ref="#auth_pers_natel_quabulisdze" key="ნათელ ქუაბულისძე" xml:lang="ka">
+                        <forename>ნათელ</forename>
+                        <addName type="patronymic" ref="#auth_pers_quabuli">ქუა<lb n="12" ed="12"/>ბულის ძისა</addName>
+                        <note type="gender">ასულისაჲ</note>
+                     </persName>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Second Thursday liturgy and agape memorial for Natel Quabulisdze (daughter)</note>
+                  <note type="key_figures" xml:lang="en">Natel Quabulisdze: Daughter of Quabuli, commemorated with eternal memorial on second Thursday of Easter season</note>
+                  <note type="liturgical_calendar_order">127</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

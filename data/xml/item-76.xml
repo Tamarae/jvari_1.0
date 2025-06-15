@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 76</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="76" xml:id="item_076" corresp="Marr 53">
+                  <lb n="7" ed="7"/>
+                  <p>
+                     <term type="memorial" xml:id="memorial_soul_001">სულსა</term>
+                     
+                     <persName xml:id="pers_aleksandre_king_jer089" type="royal" role="commemorated" ref="#auth_pers_king_aleksandre" key="მეფეთ_მეფე_ალექსანდრე" xml:lang="ka">
+                        <roleName type="royal" ref="#auth_role_king_of_kings">მეფეთ მეფესა</roleName>
+                        <forename>ალექსანდრეს</forename>
+                     </persName>
+                     
+                     <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_063">შეუნდვენ ღმერთმან</seg>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Simple memorial for the soul of King of Kings Aleksandre</note>
+                  <note type="key_figures" xml:lang="en">King of Kings Aleksandre: Royal commemorated, high-ranking Georgian monarch</note>
+                  <note type="liturgical_calendar_order">076</note>
+                  <note type="item_classification">royal_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

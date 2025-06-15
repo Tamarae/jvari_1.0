@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 89</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="89" xml:id="item_089">
+                  <lb n="30" ed="30"/>
+                  <p>
+                     გაუჩინეთ <orgName type="monastic_community" ref="#org_cross_monastery" xml:id="org_cross_monastery_jer107">ჩუენ, ჯუარის მამამან და არჰიმადრიტმან</orgName>
+                     
+                     <persName type="clergy" key="ნიკიფორე (ნიკიფო) ჩოლაყაშვილი, ჯვარისა მამა" role="donor" xml:id="pers_nikifore_archimandrite_jer107" ref="#nikifore_archimandrite">
+                        <forename>ნიკიფორემ</forename>
+                        <roleName type="clergy_high" key="არქიმანდრიტი">არჰიმადრიტმან</roleName>
+                     </persName> და
+                     
+                     <persName type="clergy" key="თეოდოსე ეპისკოპოსი წმ. საბას მონასტრისა" role="donor" xml:id="pers_teodose_bishop_jer107" ref="#teodose_bishop">
+                        <forename>თეო<lb n="31" ed="31"/>დოსემ</forename>
+                        <roleName type="clergy_high">ეპისკოპოზმან</roleName>
+                     </persName>
+                     
+                     და <persName type="clergy" key="მარკოზ მღვდელ-მონაზონი" role="donor" xml:id="pers_markoz_priest_monk_jer107" ref="#markoz_priest_monk">
+                        <forename>მარკოზ</forename>
+                        <roleName type="clergy" key="მღვდელ-მონაზონი">მღუდელ-მონაზონმან</roleName>
+                     </persName> და
+                     
+                     <seg type="institutional" xml:id="monastery_formula_003">სულობით ძმათა კრებულთა</seg>,
+                     
+                     <persName type="noble" key="ვახტანგ გურიელი" role="commemorated" xml:id="pers_vakhtang_gurieli_jer107" ref="#vakhtang_gurieli">
+                        <forename>ვახტანგს</forename>
+                        კურთხეულსა <roleName type="noble" key="გურიელი">გურიელ<lb n="32" ed="32"/>სა</roleName>
+                     </persName>
+                     
+                     <seg type="service" subtype="agape" xml:id="agape_066" corresp="#liturgy_ascension">აღაპი</seg>
+                     <date type="liturgical" when="--05-09" xml:id="liturgy_055" corresp="#ascension_day">ბზობისა დღესა</date>, და
+                     
+                     <seg type="curse" xml:id="curse_formula_004">ვინცა მოშალოს, რისხავმსცა ღმერთი და ყოველნი მის<lb n="33" ed="33"/>ნი წმიდანი</seg>.
+                  </p>
+                  
+                  <note type="summary">High clergy foundation for blessed Guriel Vakhtang on Ascension Day with protective curse</note>
+                  <note type="key_figures">Nikifore (archimandrite), Teodose (bishop), Markoz (priest-monk), Vakhtang Gurieli (blessed noble)</note>
+                  <note type="calendar_order">Ascension Day (May 9)</note>
+                  <note type="classification">High-status clerical foundation, noble commemoration</note>
+                  <note type="donors">Three-tier clergy: archimandrite, bishop, priest-monk plus monastic community</note>
+                  <note type="commemorated_status">Vakhtang described as "blessed" (კურთხეული) Gurieli prince</note>
+                  <note type="protective_element">Divine and saintly wrath curse for violators</note>
+               </item>
+        </body>
+    </text>
+</TEI>

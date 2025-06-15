@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 19</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="19" xml:id="item_019">
+                  <lb n="28" ed="28"/>
+                  <p>
+                     <date type="liturgical" corresp="#lent_third_sunday" xml:lang="ka">ამასვე დღესა</date>
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_012">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_016">აღაპი</term>
+                     
+                     <persName xml:id="pers_beqa_jer019" type="main" role="commemorated" ref="#auth_pers_beqa" key="ბექა" xml:lang="ka">
+                        <forename>ბექას<supplied>ა</supplied>ჲ</forename>
+                     </persName>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Same day liturgy and agape memorial for Beqa</note>
+                  <note type="key_figures" xml:lang="en">Beqa: Individual commemorated with liturgy and agape on the same day as previous memorial</note>
+                  <note type="liturgical_calendar_order">076</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 99</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="99" xml:id="item_099">
+                  <lb n="1" ed="1"/>
+                  <p>
+                     <persName type="main" key="არდაშირ-ყოფილი ათანასე, მახასძე" role="commemorated" xml:id="pers_atanase_makhasdze_jer116" ref="#atanase_makhasdze_formerly_ardashir">
+                        <forename>ათანასე<supplied>ს</supplied></forename>
+                        <addName type="patronymic" key="მახასძე">მახას ძესა</addName>
+                        <note type="former_name">არდაშ<supplied>ირ</supplied>ს-ყოფილსა</note>
+                     </persName>
+                     
+                     <date type="liturgical" xml:id="liturgy_067" corresp="#unspecified_saint_day">ას დღესა</date>
+                     <seg type="service" subtype="requiem" xml:id="requiem_022" corresp="#liturgy_saint_day">პანაშჳდი</seg>
+                     
+                     <persName type="clergy" xml:id="pers_nikoloz_saint_jer116" role="commemorated" ref="#saint_nikoloz">
+                        <forename>ნიკოლოზ</forename>
+                        <roleName type="saint">წმი<lb n="2" ed="2"/>დასა</roleName>
+                     </persName>
+                     
+                     <seg type="ritual" xml:id="incomplete_ritual_001">გარდაი...<gap reason="illegible"/>ადეს, რაოდენცა ძმანი იყვნენ, შენდობასა ... <gap reason="illegible"/>ნებდით</seg>.
+                     
+                     <persName type="same" ref="#არდაშირ-ყოფილი ათანასე, მახასძე" role="commemorated" corresp="#pers_atanase_makhasdze_jer116">
+                        <forename>ათანასეს</forename>
+                     </persName>
+                     
+                     <seg type="blessing" xml:id="blessing_formula_083"><expan>შ<ex>ეუნდვე</ex>ნ</expan> ღმერთმან</seg>
+                  </p>
+                  
+                  <note type="summary">Incomplete requiem entry for Atanase Makhasdze (formerly Ardashir) and Saint Nikoloz</note>
+                  <note type="key_figures">Atanase Makhasdze (formerly Ardashir), Saint Nikoloz</note>
+                  <note type="classification">Incomplete manuscript entry, name conversion commemoration</note>
+                  <note type="name_conversion">Ardashir (Persian name) converted to Atanase (Christian name)</note>
+                  <note type="manuscript_condition">Text partially illegible with gaps</note>
+                  <note type="liturgical_context">Saint's day observance (unspecified which saint)</note>
+                  <note type="religious_significance">Documents conversion from Persian to Christian identity</note>
+               </item>
+        </body>
+    </text>
+</TEI>

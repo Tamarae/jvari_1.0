@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 70</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="70" xml:id="item_070">
+                  <lb n="23" ed="23"/>
+                  <p>
+                     <gap reason="illegible"/>...
+                     <term type="service" subtype="liturgy" xml:id="service_liturgy_046">წირვაჲ</term> და
+                     <term type="service" subtype="agape" xml:id="service_agape_056">აღაპი</term>
+                     <term type="memorial_type" xml:id="memorial_eternal_041">საუკონოჲ</term>
+                     
+                     <persName xml:id="pers_grigol_fanaskerteli_repeat_jer079" type="main" role="commemorated" ref="#auth_pers_grigol_fanaskerteli" key="გრიგოლ_ფანასკერტელი" xml:lang="ka">
+                        <forename>
+                           <expan>გ<ex>რი</ex>გ<ex>ო</ex>ლ</expan>
+                        </forename>
+                        <addName type="patronymic" ref="#auth_pers_fanaskert">
+                           <supplied>ფა</supplied>ნაკერ<supplied>ტელისა</supplied>
+                        </addName>
+                     </persName>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Incomplete eternal memorial entry for Grigol Fanaskerteli with missing date information</note>
+                  <note type="key_figures" xml:lang="en">Grigol Fanaskerteli: Commemorated deceased, repeated entry from item 62, suggesting ongoing memorial obligations</note>
+                  <note type="liturgical_calendar_order">070</note>
+                  <note type="item_classification">eternal_memorial_incomplete</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>

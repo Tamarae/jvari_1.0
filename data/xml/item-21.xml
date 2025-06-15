@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Cross Monastery Memorial Records - Item 21</title>
+            </titleStmt>
+            <sourceDesc>
+                
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <item xmlns="http://www.tei-c.org/ns/1.0" n="21" xml:id="item_021">
+                  <lb n="3" ed="3"/>
+                  <p>
+                     <date type="liturgical" when="--03-26" corresp="#lent_fourth_thursday" xml:lang="ka">მეოთხესა კჳრასა</date>
+                     <term type="service" subtype="agape" xml:id="service_agape_018">აღაპი</term>
+                     
+                     <persName xml:id="pers_galinoz_berisdze_jer021" type="main" role="commemorated" ref="#auth_pers_galinoz_berisdze" key="გალინოზ ბერჲსა ძე" xml:lang="ka">
+                        <forename>
+                           <supplied>
+                              <expan>გ<ex>ა</ex>ლინ<ex>ო</ex>ზ<ex>ისა</ex></expan>
+                           </supplied>
+                        </forename>
+                        <addName type="patronymic" ref="#auth_pers_beri">ბერისა ძისა</addName>
+                     </persName>.
+                  </p>
+                  
+                  <note type="presentation_summary" xml:lang="en">Fourth Thursday agape memorial for Galinoz, son of Beri</note>
+                  <note type="key_figures" xml:lang="en">Galinoz: Son of Beri, commemorated with agape on fourth Thursday of Lent</note>
+                  <note type="liturgical_calendar_order">085</note>
+                  <note type="item_classification">individual_memorial</note>
+                  <note type="financial_summary">No amounts specified</note>
+               </item>
+        </body>
+    </text>
+</TEI>
