@@ -15,7 +15,7 @@
             <item xmlns="http://www.tei-c.org/ns/1.0" n="79" xml:id="item_079" corresp="Marr 56">
                   <lb n="11" ed="11"/>
                   <p>
-                     <persName xml:id="pers_father_zedginidze_jer093" type="relative" role="commemorated" ref="#auth_pers_zedginidze_father" key="მამა_ზედგინიძე" xml:lang="ka">
+                     <persName xml:id="pers_father_zedginidze_jer093" type="relative" role="commemorated" ref="#auth_pers_zedginidze_father" key="მამა ზედგინიძე" xml:lang="ka">
                         <addName type="family" ref="#auth_family_zedginidze">ზედგინიძეს</addName>
                         <addName type="relationship">მამისასა</addName>
                      </persName>

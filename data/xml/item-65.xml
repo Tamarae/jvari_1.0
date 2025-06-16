@@ -21,11 +21,11 @@
                      <persName xml:id="pers_goboy_sons_group_jer067" type="group" role="commemorated" ref="#auth_pers_goboy_sons" key="გობოჲს_ძეები_მიცვალებული" xml:lang="ka">
                         <addName type="relationship" ref="#auth_pers_goboy">გობოჲს ძეთა მიცვალებულთაჲ</addName>:
                         <lb n="14" ed="14"/>
-                        <persName xml:id="pers_zviad_goboysdze_jer068" ref="#auth_pers_zviad_goboysdze" key="ზვად_გობოჲსძე">ზჳადისაჲ</persName>,
-                        <persName xml:id="pers_ivane_goboysdze_jer069" ref="#auth_pers_ivane_goboysdze" key="ივანე_გობოჲსძე">ივანესი</persName>,
-                        <persName xml:id="pers_kueche_goboysdze_jer070" ref="#auth_pers_kueche_goboysdze" key="კუეჭე_გობოჲსძე">კუეჭესი</persName>,
-                        <persName xml:id="pers_beshqen_goboysdze_jer071" ref="#auth_pers_beshqen_goboysdze" key="ბეშქენ_გობოჲსძე">ბეშქენისი</persName> და
-                        <persName xml:id="pers_sargis_goboysdze_jer072" ref="#auth_pers_sargis_goboysdze" key="სარგის_გობოჲსძე">სარგისისი</persName>
+                        <persName xml:id="pers_zviad_goboysdze_jer068" ref="#auth_pers_zviad_goboysdze" key="ზვად გობოჲსძე">ზჳადისაჲ</persName>,
+                        <persName xml:id="pers_ivane_goboysdze_jer069" ref="#auth_pers_ivane_goboysdze" key="ივანე გობოჲსძე">ივანესი</persName>,
+                        <persName xml:id="pers_kueche_goboysdze_jer070" ref="#auth_pers_kueche_goboysdze" key="კუეჭე გობოჲსძე">კუეჭესი</persName>,
+                        <persName xml:id="pers_beshqen_goboysdze_jer071" ref="#auth_pers_beshqen_goboysdze" key="ბეშქენ გობოჲსძე">ბეშქენისი</persName> და
+                        <persName xml:id="pers_sargis_goboysdze_jer072" ref="#auth_pers_sargis_goboysdze" key="სარგის გობოჲსძე">სარგისისი</persName>
                      </persName>,
                      
                      <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_055">შეუნდვენ ღმერთმან</seg>.

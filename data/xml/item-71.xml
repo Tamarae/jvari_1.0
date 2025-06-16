@@ -19,7 +19,7 @@
                      <term type="service" subtype="liturgy" xml:id="service_liturgy_047">წირვაჲ</term> და
                      <term type="service" subtype="agape" xml:id="service_agape_057">აღაპი</term>
                      
-                     <persName xml:id="pers_shota_mechurchletukhutsesi_jer080" type="main" role="commemorated" ref="#auth_pers_shota_mechurchletukhutsesi" key="შოთა_მეჭურჭლეთუხუცესი" xml:lang="ka">
+                     <persName xml:id="pers_shota_mechurchletukhutsesi_jer080" type="main" role="commemorated" ref="#auth_pers_shota_mechurchletukhutsesi" key="შოთა მეჭურჭლეთუხუცესი" xml:lang="ka">
                         <forename>შოთაჲსა</forename>
                         <roleName type="administrative" ref="#auth_role_mechurchletukhutsesi">მე<lb n="25" ed="25"/>ჭურჭლეთ უხუცესისაჲ</roleName>
                      </persName>,

@@ -15,7 +15,7 @@
             <item xmlns="http://www.tei-c.org/ns/1.0" n="75" xml:id="item_075" corresp="Marr 52">
                   <lb n="32" ed="32"/>
                   <p>
-                     <persName xml:id="pers_pimen_matsqvereli_jer085" type="clergy" role="donor" ref="#auth_pers_pimen_matsqvereli" key="პიმენ_მაწყვერელი_ჯვარისმამა" xml:lang="ka">
+                     <persName xml:id="pers_pimen_matsqvereli_jer085" type="clergy" role="donor" ref="#auth_pers_pimen_matsqvereli" key="პიმენ მაწყვერელი ჯვარის მამა" xml:lang="ka">
                         <forename>პიმენ</forename>
                         თქუენ <roleName type="clergy_high" ref="#auth_role_archbishop">მაწყუჱრელმან მთავარებისკოპოსმან</roleName> და
                         <roleName type="clergy" ref="#auth_role_cross_father">ჯუარისა მამამან</roleName>
@@ -28,7 +28,7 @@
                      
                      და <orgName type="monastic_community" ref="#org_cross_monastery">ჩუენ გავიჩინეთ ჯუარისა მამამან</orgName>
                      
-                     <persName xml:id="pers_ioane_modzghvari_jer086" type="clergy" role="donor" ref="#auth_pers_ioane_modzghvari" key="იოანე_მოძღუარი" xml:lang="ka">
+                     <persName xml:id="pers_ioane_modzghvari_jer086" type="clergy" role="donor" ref="#auth_pers_ioane_modzghvari" key="იოანე მოძღუარი" xml:lang="ka">
                         <forename>იოანე</forename>
                         <roleName type="clergy" ref="#auth_role_teacher">მოძღუარმან</roleName>
                      </persName> და

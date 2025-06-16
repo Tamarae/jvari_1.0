@@ -19,7 +19,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_058">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_042">საუკუნო</term>
                      
-                     <persName xml:id="pers_ghobiari_gamrekeli_jer081" type="main" role="commemorated" ref="#auth_pers_ghobiari_gamrekeli" key="ღობიარ_გამრეკელი_ერისთავთერისთავი" xml:lang="ka">
+                     <persName xml:id="pers_ghobiari_gamrekeli_jer081" type="main" role="commemorated" ref="#auth_pers_ghobiari_gamrekeli" key="ღობიარ გამრეკელი ერისთავთ ერისთავი" xml:lang="ka">
                         <roleName type="noble" ref="#auth_role_eristavi_eristavi">ერისთავთ ერისთავისა</roleName>
                         <forename>ღობიარი<lb n="27" ed="27"/>სა</forename>
                         <addName type="patronymic" ref="#auth_pers_gamrek">გამრეკელისა</addName>

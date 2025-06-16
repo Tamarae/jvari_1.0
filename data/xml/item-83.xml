@@ -15,7 +15,7 @@
             <item xmlns="http://www.tei-c.org/ns/1.0" n="83" xml:id="item_083">
                   <lb n="15" ed="15"/>
                   <p>
-                     <persName xml:id="pers_rusa_amirejibwife_jer097" type="spouse" role="commemorated" ref="#auth_pers_rusa_amirejibwife" key="რუსა_ამირეჯიბმეუღლე" xml:lang="ka">
+                     <persName xml:id="pers_rusa_amirejibwife_jer097" type="spouse" role="commemorated" ref="#auth_pers_rusa_amirejibwife" key="რუსა, ამირეჯიბის მეუღლე " xml:lang="ka">
                         <forename>რუსასა</forename>
                         <addName type="relationship" ref="#auth_pers_amirejib">ამირეჯიბისა მეუღლესა</addName>
                      </persName>

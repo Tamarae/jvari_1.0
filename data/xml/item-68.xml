@@ -20,7 +20,7 @@
                      <term type="service" subtype="requiem" xml:id="service_requiem_017">პანაჰშჳდითა</term>
                      <term type="service" subtype="liturgy" xml:id="service_liturgy_044">ორისა ხუცისა წირვითა</term>
                      
-                     <persName xml:id="pers_saba_mimtsaysdze_jer075" type="main" role="commemorated" ref="#auth_pers_saba_mimtsaysdze" key="საბა_მიმცაჲსძე_საღირყოფილი" xml:lang="ka">
+                     <persName xml:id="pers_saba_mimtsaysdze_jer075" type="main" role="commemorated" ref="#auth_pers_saba_mimtsaysdze" key="საბა მიმცაჲსძე საღირყოფილი" xml:lang="ka">
                         <forename>საბა</forename>
                         <addName type="patronymic" ref="#auth_pers_mimtsays">მიმც<expan>ა</expan>ჲს ძისა</addName>
                         <roleName type="clerical_former" ref="#auth_role_priest_former">საღირ<lb n="20" ed="20"/>ყოფილისა</roleName>

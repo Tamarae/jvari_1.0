@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_050">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_037">საუკუნო</term>
                      
-                     <persName xml:id="pers_shalva_qenifnveli_jer063" type="noble" role="commemorated" ref="#auth_pers_shalva_qenifnveli" key="შალვა_ქენიფნველი_ერისთავი" xml:lang="ka">
+                     <persName xml:id="pers_shalva_qenifnveli_jer063" type="noble" role="commemorated" ref="#auth_pers_shalva_qenifnveli" key="შალვა ქენიფნველი ერისთავი" xml:lang="ka">
                         <roleName type="noble" ref="#auth_role_eristavi">ერისთვისა</roleName>
                         <forename>
                            <expan>შ<ex>ა</ex>ლვ<ex>ა</ex>ს</expan>
@@ -31,12 +31,12 @@
                      </persName>,
                      
                      <lb n="9" ed="9"/>
-                     <persName xml:id="pers_pipa_shalvason_jer064" type="relative" role="commemorated" ref="#auth_pers_pipa_shalvason" key="პიპა_შალვასშვილი" xml:lang="ka">
+                     <persName xml:id="pers_pipa_shalvason_jer064" type="relative" role="commemorated" ref="#auth_pers_pipa_shalvason" key="პიპა შალვასშვილი" xml:lang="ka">
                         <forename>პიპასი</forename>
                         <addName type="relationship" ref="#pers_shalva_qenifnveli_jer063">შვილსა</addName>
                      </persName> და
                      
-                     <persName xml:id="pers_tamari_pipawife_jer065" type="spouse" role="commemorated" ref="#auth_pers_tamari_pipawife" key="თამარი_პიპასმეუღლე" xml:lang="ka">
+                     <persName xml:id="pers_tamari_pipawife_jer065" type="spouse" role="commemorated" ref="#auth_pers_tamari_pipawife" key="თამარი, პიპას მეუღლე" xml:lang="ka">
                         <forename>თამარისი</forename>
                         <addName type="relationship" ref="#pers_pipa_shalvason_jer064">მისისა მეუღლ<supplied>ი</supplied>სა</addName>
                      </persName>,

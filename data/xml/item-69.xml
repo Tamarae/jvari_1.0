@@ -22,19 +22,19 @@
                         <expan>ღ<ex>მრ</ex>თივ</expan> გჳრგჳნოს<lb n="22" ed="22"/>ნისა
                      </seg>
                      
-                     <persName xml:id="pers_giorgi_king_jer076" type="royal" role="reference" ref="#auth_pers_king_giorgi" key="მეფეთ_მეფე_გიორგი" xml:lang="ka">
+                     <persName xml:id="pers_giorgi_king_jer076" type="royal" role="reference" ref="#auth_pers_king_giorgi" key="მეფეთ მეფე გიორგი" xml:lang="ka">
                         <roleName type="royal" ref="#auth_role_king_of_kings">მეფეთ მეფისა დიდისა</roleName>
                         <forename>
                            <expan>გ<ex>იორგ</ex>ის</expan>
                         </forename>
                      </persName>
                      
-                     <persName xml:id="pers_mother_king_giorgi_jer077" type="mother" role="commemorated" ref="#auth_pers_giorgi_mother" key="დედა_მეფეთმეფე_გიორგისა" xml:lang="ka">
+                     <persName xml:id="pers_mother_king_giorgi_jer077" type="mother" role="commemorated" ref="#auth_pers_giorgi_mother" key="დედა მეფეთ მეფე გიორგისა" xml:lang="ka">
                         <addName type="relationship" ref="#pers_giorgi_king_jer076">დედისა</addName>
                      </persName>
                      <supplied>და</supplied>
                      
-                     <persName xml:id="pers_wife_king_giorgi_jer078" type="spouse" role="commemorated" ref="#auth_pers_giorgi_wife" key="ცოლი_მეფეთმეფე_გიორგისა" xml:lang="ka">
+                     <persName xml:id="pers_wife_king_giorgi_jer078" type="spouse" role="commemorated" ref="#auth_pers_giorgi_wife" key="ცოლი მეფეთ მეფე გიორგისა" xml:lang="ka">
                         <addName type="relationship" ref="#pers_giorgi_king_jer076">მე<supplied>უ</supplied>ღლი<supplied>სა</supplied> მისსა</addName>
                         <forename>მესაჲ(?)</forename>
                      </persName>,

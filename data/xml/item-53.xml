@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_045">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_032">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_khazhik_zosime_jer054" type="main" role="commemorated" ref="#auth_pers_khazhik_zosime" key="ზოსიმე_ხაჟიკ" xml:lang="ka">
+                     <persName xml:id="pers_khazhik_zosime_jer054" type="main" role="commemorated" ref="#auth_pers_khazhik_zosime" key="ზოსიმე ხაჟიკ" xml:lang="ka">
                         <forename>ხაჟიკ</forename>
                         <addName type="former_name" ref="#auth_pers_zosime">ყოფილისა<lb n="26" ed="26"/>ზოსიმესი</addName>
                      </persName>,

@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_051">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_038">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_tamar_mamlaqnisdaughter_jer066" type="main" role="commemorated" ref="#auth_pers_tamar_mamlaqnisdaughter" key="თამარ_მამლაქნისძისასული" xml:lang="ka">
+                     <persName xml:id="pers_tamar_mamlaqnisdaughter_jer066" type="main" role="commemorated" ref="#auth_pers_tamar_mamlaqnisdaughter" key="თამარ, მამლაქნისძის ასული" xml:lang="ka">
                         <forename>თამარ</forename>
                         <addName type="patronymic" ref="#auth_pers_mamlaqnisdze">მამლაქნის ძისა</addName>
                         <addName type="gender">ასულისაჲ</addName>

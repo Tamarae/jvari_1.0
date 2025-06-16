@@ -17,7 +17,7 @@
                   <p>
                      <term type="memorial" xml:id="memorial_soul_002">სულსა</term>
                      
-                     <persName xml:id="pers_janibeg_zedginidze_jer090" type="main" role="commemorated" ref="#auth_pers_janibeg_zedginidze" key="ჯანიბეგ_ზედგინიძე" xml:lang="ka">
+                     <persName xml:id="pers_janibeg_zedginidze_jer090" type="main" role="commemorated" ref="#auth_pers_janibeg_zedginidze" key="ჯანიბეგ ზედგინიძე " xml:lang="ka">
                         <forename>ჯანიბეგისა</forename>
                         <addName type="family" ref="#auth_family_zedginidze">ზედგინიძე</addName>
                      </persName>,

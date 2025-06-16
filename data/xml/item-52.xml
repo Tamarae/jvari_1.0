@@ -18,7 +18,7 @@
                      <date type="liturgical" when="--05-15" corresp="#fourth_friday_pentecost" xml:lang="ka">მეოთხესა პარასკევსა ზატიკთასა</date>
                      <term type="service" subtype="requiem" xml:id="service_requiem_014">პანაშჳდი</term>
                      
-                     <persName xml:id="pers_marushiani_nioraysdze_jer053" type="main" role="commemorated" ref="#auth_pers_marushiani_nioraysdze" key="მარუშიან_ნიორაჲსძე" xml:lang="ka">
+                     <persName xml:id="pers_marushiani_nioraysdze_jer053" type="main" role="commemorated" ref="#auth_pers_marushiani_nioraysdze" key="მარუშიან ნიორაჲსძე" xml:lang="ka">
                         <forename>მარუშიანისაჲ</forename>
                         <addName type="patronymic" ref="#auth_pers_niorays">ნიორაჲს ძისა</addName>
                      </persName>,

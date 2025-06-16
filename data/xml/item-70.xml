@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_056">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_041">საუკონოჲ</term>
                      
-                     <persName xml:id="pers_grigol_fanaskerteli_repeat_jer079" type="main" role="commemorated" ref="#auth_pers_grigol_fanaskerteli" key="გრიგოლ_ფანასკერტელი" xml:lang="ka">
+                     <persName xml:id="pers_grigol_fanaskerteli_repeat_jer079" type="main" role="commemorated" ref="#auth_pers_grigol_fanaskerteli" key="გრიგოლ ფანასკერტელი" xml:lang="ka">
                         <forename>
                            <expan>გ<ex>რი</ex>გ<ex>ო</ex>ლ</expan>
                         </forename>

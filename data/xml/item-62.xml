@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_049">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_036">საუკუნო</term>
                      
-                     <persName xml:id="pers_grigol_fanaskerteli_jer062" type="main" role="commemorated" ref="#auth_pers_grigol_fanaskerteli" key="გრიგოლ_ფანასკერტელი" xml:lang="ka">
+                     <persName xml:id="pers_grigol_fanaskerteli_jer062" type="main" role="commemorated" ref="#auth_pers_grigol_fanaskerteli" key="გრიგოლ ფანასკერტელი" xml:lang="ka">
                         <forename>
                            <expan>გრიგ<ex>ო</ex>ლ</expan>
                         </forename>

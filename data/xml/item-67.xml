@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_053">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_040">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_saba_abazasdze_jer074" type="main" role="commemorated" ref="#auth_pers_saba_abazasdze" key="საბა_აბაზასძე" xml:lang="ka">
+                     <persName xml:id="pers_saba_abazasdze_jer074" type="main" role="commemorated" ref="#auth_pers_saba_abazasdze" key="საბა აბაზასძე" xml:lang="ka">
                         <forename>საბა</forename>
                         <addName type="patronymic" ref="#auth_pers_abazas">აბაზას ძისაა</addName>
                      </persName>,

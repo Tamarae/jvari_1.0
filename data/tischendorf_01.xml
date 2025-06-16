@@ -2722,7 +2722,7 @@
                         type="spouse" 
                         role="commemorated"
                         ref="#auth_pers_gulshar_avtandilwife"
-                        key="გულშარ, ავთანდილის მეუღლე"
+                        key="გულშარ, ავთანდილ ზედგინიძის მეუღლე"
                         xml:lang="ka">
                         <forename>
                            <expan>გ<ex>უ</ex>ლშარს</expan>
@@ -3513,10 +3513,10 @@
                         <addName type="patronymic">ზედგინიძეს</addName>
                      </persName> და
                      
-                     <persName type="spouse" 
+                     <persName xml:id="pers_gulshar_avtandilwife_jer112"
+                        type="spouse" 
                         key="გულშარ, ავთანდილ ზედგინიძის მეუღლე" 
                         role="commemorated"
-                        xml:id="pers_gulshar_avtandilwife_jer111"
                         ref="#auth_pers_gulshar_avtandilwife">
                         <forename>გულშარს</forename>
                         <note type="relationship"><expan>თქ<ex>უე</ex>ნსა</expan> მეუღლესა</note>

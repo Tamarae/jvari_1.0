@@ -17,7 +17,7 @@
                   <p>
                      <term type="memorial" xml:id="memorial_soul_001">სულსა</term>
                      
-                     <persName xml:id="pers_aleksandre_king_jer089" type="royal" role="commemorated" ref="#auth_pers_king_aleksandre" key="მეფეთ_მეფე_ალექსანდრე" xml:lang="ka">
+                     <persName xml:id="pers_aleksandre_king_jer089" type="royal" role="commemorated" ref="#auth_pers_king_aleksandre" key="მეფეთ მეფე ალექსანდრე" xml:lang="ka">
                         <roleName type="royal" ref="#auth_role_king_of_kings">მეფეთ მეფესა</roleName>
                         <forename>ალექსანდრეს</forename>
                      </persName>

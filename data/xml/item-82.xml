@@ -15,7 +15,7 @@
             <item xmlns="http://www.tei-c.org/ns/1.0" n="82" xml:id="item_082">
                   <lb n="14" ed="14"/>
                   <p>
-                     <persName xml:id="pers_meliqzedeg_bedieli_jer096" type="clergy" role="commemorated" ref="#auth_pers_meliqzedeg_bedieli" key="მელიქზედეგ_ბედიელი" xml:lang="ka">
+                     <persName xml:id="pers_meliqzedeg_bedieli_jer096" type="clergy" role="commemorated" ref="#auth_pers_meliqzedeg_bedieli" key="მელიქზედეგ ბედიელი" xml:lang="ka">
                         <roleName type="clergy_high" ref="#auth_role_bedieli">ბედიელსა</roleName>
                         <forename>მელიქზედეგს</forename>
                      </persName>

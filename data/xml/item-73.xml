@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_059">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_044">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_chargaz_afaqisdze_jer082" type="main" role="commemorated" ref="#auth_pers_chargaz_afaqisdze" key="ჩარგაზ_აფაქისძე" xml:lang="ka">
+                     <persName xml:id="pers_chargaz_afaqisdze_jer082" type="main" role="commemorated" ref="#auth_pers_chargaz_afaqisdze" key="ჩარგაზ აფაქისძე" xml:lang="ka">
                         <forename>ჩარგაზ</forename>
                         <addName type="patronymic" ref="#auth_pers_afaqis">აფაქის ძისაჲ</addName>
                      </persName> და

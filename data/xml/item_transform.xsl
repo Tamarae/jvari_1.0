@@ -230,7 +230,7 @@
     <xsl:template name="person-entry">
         <xsl:variable name="person_filename" select="substring-after(@ref, '#auth_pers_')"/>
         <a href="../person/{$person_filename}.html" class="person-link">
-            <div class="person-name-georgian"><xsl:value-of select="@key"/> →</div>
+            <div class="person-name-georgian"><xsl:value-of select="@key"/> &#8603;</div>
             <div class="person-role">
                 <span class="lang-ka"><xsl:value-of select="@role"/></span>
                 <span class="lang-en"><xsl:value-of select="@role"/></span>

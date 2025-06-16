@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_048">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_035">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_ivane_makhujagiani_jer061" type="main" role="commemorated" ref="#auth_pers_ivane_makhujagiani" key="ივანე_მახუჯაგიანი" xml:lang="ka">
+                     <persName xml:id="pers_ivane_makhujagiani_jer061" type="main" role="commemorated" ref="#auth_pers_ivane_makhujagiani" key="ივანე მახუჯაგიანი" xml:lang="ka">
                         <forename>ივანესი</forename>
                         <addName type="patronymic" ref="#auth_pers_makhujagi">მახუჯაგიანისა</addName>
                      </persName> და

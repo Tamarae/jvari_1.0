@@ -17,7 +17,7 @@
                   <p>
                      <term type="memorial" xml:id="memorial_soul_004">სულსა</term>
                      
-                     <persName xml:id="pers_tamar_queen_aleksandrewife_jer095" type="royal" role="commemorated" ref="#auth_pers_queen_tamar_aleksandrewife" key="თამარ_დედოფალი_ალექსანდრემეუღლე" xml:lang="ka">
+                     <persName xml:id="pers_tamar_queen_aleksandrewife_jer095" type="royal" role="commemorated" ref="#auth_pers_queen_tamar_aleksandrewife" key="თამარ დედოფალი, ალექსანდრეს მეუღლე" xml:lang="ka">
                         <roleName type="royal" ref="#auth_role_dedopali">დედოფლისა</roleName>
                         <forename>
                            <expan>თ<ex>ა</ex>მ<ex>ა</ex>რს</expan>

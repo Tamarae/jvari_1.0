@@ -17,14 +17,14 @@
                   <p>
                      <term type="memorial" xml:id="memorial_soul_003">სულსა</term>
                      
-                     <persName xml:id="pers_avtandil_zedginidze_jer091" type="main" role="commemorated" ref="#auth_pers_avtandil_zedginidze" key="ავთანდილ_ზედგინიძე" xml:lang="ka">
+                     <persName xml:id="pers_avtandil_zedginidze_jer091" type="main" role="commemorated" ref="#auth_pers_avtandil_zedginidze" key="ავთანდილ ზედგინიძე" xml:lang="ka">
                         <forename>ავთანდილს</forename>
                         <addName type="family" ref="#auth_family_zedginidze">ზედგინიძესა</addName>
                      </persName>
                      
                      <seg type="formula" subtype="blessing_standard" xml:id="blessing_formula_065">შეუნდვენ ღმერთმან</seg>. და
                      
-                     <persName xml:id="pers_gulshar_avtandilwife_jer092" type="spouse" role="commemorated" ref="#auth_pers_gulshar_avtandilwife" key="გულშარ_ავთანდილმეუღლე" xml:lang="ka">
+                     <persName xml:id="pers_gulshar_avtandilwife_jer092" type="spouse" role="commemorated" ref="#auth_pers_gulshar_avtandilwife" key="გულშარ, ავთანდილის მეუღლე" xml:lang="ka">
                         <forename>
                            <expan>გ<ex>უ</ex>ლშარს</expan>
                         </forename>

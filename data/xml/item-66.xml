@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_052">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_039">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_basili_bueghvesdze_jer073" type="main" role="commemorated" ref="#auth_pers_basili_bueghvesdze" key="ბასილი_ბუეღუესძე" xml:lang="ka">
+                     <persName xml:id="pers_basili_bueghvesdze_jer073" type="main" role="commemorated" ref="#auth_pers_basili_bueghvesdze" key="ბასილი ბუეღუესძე" xml:lang="ka">
                         <forename>ბასილი</forename>
                         <addName type="patronymic" ref="#auth_pers_bueghves">ბუეღუ<lb n="16" ed="16"/>ეს ძისა</addName>
                      </persName>,

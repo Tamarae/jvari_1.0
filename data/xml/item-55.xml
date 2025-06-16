@@ -21,7 +21,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_047">აღაპი</term> ...
                      <gap reason="illegible"/>
                      
-                     <persName xml:id="pers_unknown_pipason_jer056" type="main" role="commemorated" ref="#auth_pers_pipa_son" key="პიპას_შვილი" xml:lang="ka">
+                     <persName xml:id="pers_unknown_pipason_jer056" type="main" role="commemorated" ref="#auth_pers_pipa_son" key="პიპას შვილი" xml:lang="ka">
                         <addName type="patronymic" ref="#auth_pers_pipa">შვილსა პიპა<supplied>ს</supplied></addName>
                      </persName>,
                      

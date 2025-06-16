@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_046">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_033">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_giorgi_falqozisdze_jer055" type="main" role="commemorated" ref="#auth_pers_giorgi_falqozisdze" key="გიორგი_ფალქოზისძე" xml:lang="ka">
+                     <persName xml:id="pers_giorgi_falqozisdze_jer055" type="main" role="commemorated" ref="#auth_pers_giorgi_falqozisdze" key="გიორგი ფალქოზისძე" xml:lang="ka">
                         <forename>ნოით</forename>
                         <addName type="patronymic" ref="#auth_pers_falqozi">ფალ<lb n="28" ed="28"/>ქოზის ძისა</addName>
                         <forename>

@@ -20,7 +20,7 @@
                      <term type="service" subtype="agape" xml:id="service_agape_060">აღაპი</term>
                      <term type="memorial_type" xml:id="memorial_eternal_045">საუკუნოჲ</term>
                      
-                     <persName xml:id="pers_dzagan_abuletisdze_jer084" type="main" role="commemorated" ref="#auth_pers_dzagan_abuletisdze" key="ძაგან_აბულეთისძე" xml:lang="ka">
+                     <persName xml:id="pers_dzagan_abuletisdze_jer084" type="main" role="commemorated" ref="#auth_pers_dzagan_abuletisdze" key="ძაგან აბულეთისძე" xml:lang="ka">
                         <forename>
                            <supplied>ძაგანისი</supplied>
                         </forename>
