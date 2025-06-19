@@ -227,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             database = data;
-            // Kick off the entire page setup now that we have the data
             initializePage();
         })
         .catch(error => {
@@ -241,18 +240,19 @@ document.addEventListener('DOMContentLoaded', function() {
         filteredPersons = [...(database.persons || [])];
 
         populateDatabaseOverview(database.stats);
+        // THIS FUNCTION CALL IS NOW UPDATED
         populateEconomicStats(database.stats);
         populateFilters();
         renderSources();
         setupEventListeners();
-        performFilterAndRender(); // Perform initial sort and render
+        performFilterAndRender();
         handleLanguageSwitch(document.body.classList.contains('english') ? 'en' : 'ka');
     }
 
     // --- RENDER FUNCTIONS ---
     function renderResults() {
         if (!mainContent) return;
-        sortPersons(); // Always sort before rendering
+        sortPersons();
 
         const isGeorgian = !document.body.classList.contains('english');
 
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="mention-count">${person.sourcesDisplay}</div>
                 </a>`;
             }).join('');
-        } else { // List view
+        } else {
             mainContent.className = 'main-content list-view';
             const headerHTML = `
                 <div class="person-list-item header-row">
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const groupedSources = d3.group(database.sources, d => d.source);
         let html = '';
         groupedSources.forEach((items, sourceName) => {
-            html += `<div class="source-group expanded">`;
+            html += `<div class="source-group">`;
             html += `<div class="source-group-header">${sourceName || 'Uncategorized'}</div>`;
             html += `<div class="source-item-list">${items.map(item => `
                 <a href="pages/item/${item.id}.html">
@@ -325,14 +325,26 @@ document.addEventListener('DOMContentLoaded', function() {
         container.innerHTML = html;
     }
 
+    // --- THIS FUNCTION IS COMPLETELY REPLACED ---
     function populateEconomicStats(stats) {
-        if (!stats) return;
         const container = document.getElementById('economicStats');
         if (!container) return;
-        let html = '';
-        if (stats.totalFlorins > 0) html += `<div class="stat-item"><span class="lang-en">Total Florins Mentioned</span><span class="lang-ka georgian-main">ჯამური ფლური</span><span class="stat-value">${stats.totalFlorins}</span></div>`;
-        if (stats.totalTetri > 0) html += `<div class="stat-item"><span class="lang-en">Total Tetri Mentioned</span><span class="lang-ka georgian-main">ჯამური თეთრი</span><span class="stat-value">${stats.totalTetri}</span></div>`;
-        if (html === '') html = `<div class="stat-item"><span class="lang-en">No specific coin amounts found.</span><span class="lang-ka georgian-main">კონკრეტული მონეტები არ მოიძებნა.</span></div>`;
+
+        // Check if the new economicData array exists and has items
+        if (!stats || !stats.economicData || stats.economicData.length === 0) {
+            container.innerHTML = `<div class="stat-item"><span class="lang-en">No specific coin amounts found.</span><span class="lang-ka georgian-main">კონკრეტული მონეტები არ მოიძებნა.</span></div>`;
+            return;
+        }
+
+        // Build the HTML by looping through the new array
+        const html = stats.economicData.map(coin => {
+            return `<div class="stat-item">
+                        <span class="lang-en">${coin.labelEn}</span>
+                        <span class="lang-ka georgian-main">${coin.labelKa}</span>
+                        <span class="stat-value">${coin.total}</span>
+                    </div>`;
+        }).join('');
+
         container.innerHTML = html;
     }
 
@@ -358,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- EVENT LISTENERS ---
+    // --- EVENT LISTENERS (unchanged) ---
     function setupEventListeners() {
         document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', function() {
             document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
@@ -380,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- DATA PROCESSING & FILTERING ---
+    // --- DATA PROCESSING & UTILITY FUNCTIONS (unchanged) ---
     function performFilterAndRender() {
         const searchTermKa = document.getElementById('searchInputKa').value.toLowerCase();
         const searchTermEn = document.getElementById('searchInput').value.toLowerCase();
@@ -394,7 +406,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         renderResults();
     }
-
     function sortPersons() {
         const nameKey = document.body.classList.contains('english') ? 'nameEn' : 'nameKa';
         const locale = document.body.classList.contains('english') ? 'en-US' : 'ka';
@@ -402,19 +413,17 @@ document.addEventListener('DOMContentLoaded', function() {
             filteredPersons.sort((a, b) => (b.items?.length || 0) - (a.items?.length || 0));
         } else if (currentSort === 'name_desc') {
             filteredPersons.sort((a, b) => (b[nameKey] || '').localeCompare(a[nameKey] || '', locale));
-        } else { // name_asc
+        } else {
             filteredPersons.sort((a, b) => (a[nameKey] || '').localeCompare(b[nameKey] || '', locale));
         }
     }
-
-    // --- UTILITY FUNCTIONS ---
     function syncAndFilter(targetId, value) { document.getElementById(targetId).value = value; performFilterAndRender(); }
     function setView(view) { currentView = view; renderResults(); }
     function handleLanguageSwitch(lang) {
         document.body.classList.toggle('english', lang === 'en');
         document.querySelectorAll('.lang-btn').forEach(b => { b.classList.toggle('active', b.dataset.lang === lang); });
         renderResults();
-        renderSources(); // Re-render sources to apply language-specific visibility
+        renderSources();
     }
     function getPrimaryRoleLabel(role, isGeorgian) {
         const labels = {'donor': ['შემომწირველი', 'Donor'],'scribe': ['გადამწერი', 'Scribe'],'commemorated': ['მოხსენიებული', 'Commemorated']};
