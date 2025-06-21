@@ -4,96 +4,42 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>შალვა ქუაბულის ძისაჲ - Shalva Quabulisdze</title>
-      <style>
-                           /* Your full CSS goes here */
-                            * { margin: 0; padding: 0; box-sizing: border-box; }
-                            body { font-family: 'Times New Roman', serif; background: #fafafa; color: #333; line-height: 1.6; }
-                            .lang-ka { display: block; } .lang-en { display: none; }
-                            body.english .lang-ka { display: none; } body.english .lang-en { display: block; }
-                            .georgian-main { font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif; direction: ltr; }
-                            .header { background: white; border-bottom: 1px solid #ddd; padding: 2rem 0; position: relative; }
-                            .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center; }
-                            .language-switch { position: absolute; top: 1rem; right: 2rem; display: flex; border: 1px solid #ccc; background: white; }
-                            .lang-btn { padding: 0.5rem 1rem; border: none; background: white; cursor: pointer; font-size: 0.9rem; color: #666; }
-                            .lang-btn.active { background: #333; color: white; }
-                            .lang-btn:first-child { border-right: 1px solid #ccc; }
-                            .back-link { position: absolute; top: 1rem; left: 2rem; color: #666; text-decoration: none; font-size: 0.9rem; }
-                            .person-header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: normal; color: #333; }
-                            .person-title { font-size: 1.2rem; color: #666; font-style: italic; margin-bottom: 0.5rem; }
-                            .status-badge { display: inline-block; padding: 0.3rem 0.8rem; background: #f0f0f0; border: 1px solid #ddd; font-size: 0.85rem; color: #555; margin-top: 0.5rem; }
-                            .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-                            .person-content { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; margin-top: 2rem; }
-                            .main-content, .info-section { background: white; border: 1px solid #e0e0e0; padding: 2rem; }
-                            .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-                            .section-title { font-size: 1.1rem; font-weight: bold; color: #333; margin-bottom: 1rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem; }
-                            .info-item { margin: 1rem 0; line-height: 1.5; }
-                            .info-label { font-weight: bold; color: #555; margin-bottom: 0.25rem; }
-                            .info-value { color: #333; }
-                            .georgian-text { font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif; font-size: 1.1rem; color: #333; }
-                            .manuscript-quote { background: #f9f9f9; border-left: 3px solid #8b0000; padding: 1.5rem; margin: 1.5rem 0; font-style: italic; color: #555; }
-                            .manuscript-reference { font-family: 'Courier New', monospace; font-size: 0.85rem; color: #666; background: #f5f5f5; padding: 0.5rem; border: 1px solid #e0e0e0; margin-top: 0.5rem; }
-                            .related-sources { list-style: none; padding: 0; }
-                            .related-sources li a { text-decoration: none; color: inherit; display: block; padding: 0.75rem; }
-                            .related-sources li { border-bottom: 1px solid #f0f0f0; transition: background 0.2s ease; padding: 0; }
-                            .related-sources li:hover { background: #f8f8f8; }
-                            .source-number { font-family: 'Courier New', monospace; background: #666; color: white; padding: 0.2rem 0.5rem; font-size: 0.75rem; margin-right: 0.5rem; }
-                        </style>
+      <title>შალვა ქუაბულისძე</title>
+      <link rel="stylesheet" href="../../style.css">
    </head>
-   <body class="georgian">
-      <div class="header"><a href="../../index.html" class="back-link"><span class="lang-ka georgian-main">← უკან</span><span class="lang-en">← Back</span></a><div class="language-switch"><button class="lang-btn active" data-lang="ka">ქართული</button><button class="lang-btn" data-lang="en">English</button></div>
+   <body class="lang-ka-active">
+      <div class="header"><a href="../../index.html" class="back-link"><span class="lang-ka georgian-main">← უკან</span><span class="lang-en">← Back</span></a><div class="language-switch"><button class="lang-btn active" data-lang="ka" onclick="switchLang('ka')">ქართული</button><button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button></div>
          <div class="header-content">
             <div class="person-header">
-               <h1 class="lang-ka georgian-main">შალვა ქუაბულის ძისაჲ</h1>
-               <h1 class="lang-en">Shalva Quabulisdze</h1>
-               <div class="person-title"><span class="lang-ka georgian-main"></span><span class="lang-en"></span></div>
-               <div class="status-badge"><span class="lang-ka georgian-main">main</span><span class="lang-en" style="text-transform: capitalize;">main</span></div>
+               <h1 class="lang-ka georgian-main">შალვა ქუაბულისძე</h1>
+               <h1 class="lang-en">შალვა ქუაბულისძე</h1>
+               <div class="person-title"><span class="lang-ka georgian-main"></span><span class="lang-en">საერო</span></div>
             </div>
          </div>
       </div>
       <div class="container">
          <div class="person-content">
             <div class="main-content">
-               <div class="section-title"><span class="lang-ka georgian-main">ისტორიული კონტექსტი</span><span class="lang-en">Historical Context</span></div>
-               <p>Shalva Quabulisdze: Son of Quabuli, likely related to Natel Quabulisdze, commemorated
-                  with requiem on fourth Monday of Easter season</p>
                <div class="section-title"><span class="lang-ka georgian-main">ხსენება ხელნაწერში</span><span class="lang-en">Mention in Manuscript</span></div>
                <div class="manuscript-quote">
                   <p class="georgian-text">მეოთხესა ორშაბათსა ზატიკთასა პანაშჳდი შალვა ქუაბულის ძისაჲ , შეუნდვენ ღმერთმან.</p>
-                  <div class="manuscript-reference">
-                     Item 49</div>
+                  <div class="manuscript-reference">Item 49</div>
                </div>
             </div>
             <div class="sidebar">
                <div class="info-section">
-                  <div class="section-title"><span class="lang-ka georgian-main">ძირითადი ინფორმაცია</span><span class="lang-en">Basic Information</span></div>
-                  <div class="info-item">
-                     <div class="info-label lang-ka georgian-main">ქართული სახელი:</div>
-                     <div class="info-label lang-en">Georgian Name:</div>
-                     <div class="info-value georgian-text">შალვა ქუაბულის ძისაჲ</div>
-                  </div>
-                  <div class="info-item">
-                     <div class="info-label lang-ka georgian-main">სოციალური სტატუსი:</div>
-                     <div class="info-label lang-en">Social Status:</div>
-                     <div class="info-value" style="text-transform: capitalize;">main</div>
-                  </div>
-               </div>
-               <div class="info-section">
                   <div class="section-title"><span class="lang-ka georgian-main">დაკავშირებული წყაროები</span><span class="lang-en">Related Sources</span></div>
-                  <ul class="related-sources">
-                     <li><a href="../item/item-49.html"><span class="source-number">49</span><span class="lang-en">Fourth Monday requiem for Shalva Quabulisdze</span><span class="lang-ka georgian-main">მეოთხესა ორშაბათსა ზატიკთასა</span></a></li>
-                  </ul>
+                  <ul class="related-sources"></ul>
                </div>
             </div>
          </div>
       </div><script>
-                            document.querySelectorAll('.lang-btn').forEach(btn => {
-                                btn.addEventListener('click', function() {
-                                    const lang = this.getAttribute('data-lang');
-                                    document.body.classList.toggle('english', lang === 'en');
-                                    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-                                    this.classList.add('active');
-                                });
-                            });
-                        </script></body>
+                                function switchLang(lang) {
+                                    document.body.classList.toggle('lang-ka-active', lang === 'ka');
+                                    document.body.classList.toggle('lang-en-active', lang !== 'ka');
+                                    document.querySelectorAll('.language-switch .lang-btn').forEach(b => b.classList.remove('active'));
+                                    document.querySelector(`.language-switch .lang-btn[data-lang='${lang}']`).classList.add('active');
+                                }
+                                document.addEventListener('DOMContentLoaded', () => switchLang('ka'));
+                            </script></body>
 </html>

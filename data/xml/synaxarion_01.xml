@@ -1061,7 +1061,7 @@
                             <lb n="34" ed="34"/>
                             <date type="liturgical" corresp="#october_5"><supplied>ამასვე დღესა</supplied></date> <gap reason="illegible"/> 
                             <persName xml:id="pers_giorgi_kharazi_jer24_033" type="main" role="commemorated" ref="#auth_pers_giorgi_kharazi" key="გიორგი ხარაზი">
-                                <supplied><forename>გ<ex>იორ</ex>გ<ex>ი</ex></forename></supplied> <addName type="administrative" key="ხარაზი">ხარა<supplied>ზი</supplied>ს<ex>ა</ex>ჲ</addName>
+                                <supplied><forename><expan>გ<ex>იორ</ex>გ<ex>ი</ex></expan></forename></supplied> <addName type="administrative" key="ხარაზი"><expan>ხარა<supplied>ზი</supplied>ს<ex>ა</ex>ჲ</expan></addName>
                             </persName>.
                             <lb n="35" ed="35"/>
                             <term type="service" subtype="requiem" xml:id="jer24_service_requiem_010">პანაშჳდი</term>.

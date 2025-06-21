@@ -1,0 +1,46 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="ka">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>გიორგი, მეფეთ მეფე</title>
+      <link rel="stylesheet" href="../../style.css">
+   </head>
+   <body class="lang-ka-active">
+      <div class="header"><a href="../../index.html" class="back-link"><span class="lang-ka georgian-main">← უკან</span><span class="lang-en">← Back</span></a><div class="language-switch"><button class="lang-btn active" data-lang="ka" onclick="switchLang('ka')">ქართული</button><button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button></div>
+         <div class="header-content">
+            <div class="person-header">
+               <h1 class="lang-ka georgian-main">გიორგი, მეფეთ მეფე</h1>
+               <h1 class="lang-en">გიორგი, მეფეთ მეფე</h1>
+               <div class="person-title"><span class="lang-ka georgian-main">მეფეთ მეფისა</span><span class="lang-en">მეფეთ მეფე</span></div>
+            </div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="person-content">
+            <div class="main-content">
+               <div class="section-title"><span class="lang-ka georgian-main">ხსენება ხელნაწერში</span><span class="lang-en">Mention in Manuscript</span></div>
+               <div class="manuscript-quote">
+                  <p class="georgian-text">თუესა დეკენბერსა კე ქრისტეს შობასა წირვაჲ და აღაპი საუკუნო მეფეთ მეფისა გიორგისთჳს
+                     . საუკუნოცა არს საჴსენებელი მათი, ამინ.</p>
+                  <div class="manuscript-reference">Item 126</div>
+               </div>
+            </div>
+            <div class="sidebar">
+               <div class="info-section">
+                  <div class="section-title"><span class="lang-ka georgian-main">დაკავშირებული წყაროები</span><span class="lang-en">Related Sources</span></div>
+                  <ul class="related-sources"></ul>
+               </div>
+            </div>
+         </div>
+      </div><script>
+                                function switchLang(lang) {
+                                    document.body.classList.toggle('lang-ka-active', lang === 'ka');
+                                    document.body.classList.toggle('lang-en-active', lang !== 'ka');
+                                    document.querySelectorAll('.language-switch .lang-btn').forEach(b => b.classList.remove('active'));
+                                    document.querySelector(`.language-switch .lang-btn[data-lang='${lang}']`).classList.add('active');
+                                }
+                                document.addEventListener('DOMContentLoaded', () => switchLang('ka'));
+                            </script></body>
+</html>

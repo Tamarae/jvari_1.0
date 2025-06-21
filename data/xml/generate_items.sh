@@ -1,63 +1,56 @@
 #!/bin/zsh
 
+# --- jvari_3.0 FINAL, FAST Build Script (Saxon-HE for Java) ---
+echo "--- Starting Unified & Fast Build Process ---"
+
 # --- Configuration ---
-echo "--- jvari_2.0 Build Script (v2) ---"
-MASTER_FILES=("tischendorf_01.xml" "synaxarion_01.xml")
-OUTPUT_DIR_ITEMS="../../pages/item"
-DATABASE_OUTPUT_PATH="../../database.json"
+PROJECT_ROOT_GUESS=$(pwd | sed 's|/data/xml$||')
+ABSOLUTE_SAXON_PATH="${PROJECT_ROOT_GUESS}/tools/SaxonHE12-7J/saxon-he-12.7.jar"
+
+cd "$(dirname "$0")"
+
+if [ ! -f "$ABSOLUTE_SAXON_PATH" ]; then
+    echo "❌ FATAL ERROR: Saxon JAR not found at '$ABSOLUTE_SAXON_PATH'"
+    exit 1
+fi
+echo "✅ Saxon-HE JAR file found. Using it for all transformations."
+
+
+# --- 1. Create Combined Source File ---
+echo "\n[1/3] Creating temporary combined source file..."
 TEMP_SOURCES_XML="all_sources.xml"
-
-# --- 1. Item Page Generation ---
-echo "\n--- Starting HTML Item Page Generation ---"
-rm -rf "$OUTPUT_DIR_ITEMS"
-mkdir -p "$OUTPUT_DIR_ITEMS"
-
-for master_file in $MASTER_FILES; do
-    echo "  -> Processing master file: $master_file"
-
-    # --- SCRIPT FIX IS HERE ---
-    # Use zsh's array creation `( ... )` to split the IDs correctly.
-    # This is much more reliable than the simple for loop.
-    local -a item_ids_array
-    item_ids_array=($(xsltproc get_item_ids.xsl "$master_file"))
-
-    if [ ${#item_ids_array[@]} -eq 0 ]; then
-        echo "     WARNING: No items found in $master_file."
-        continue
-    fi
-
-    # Loop through the array of IDs
-    for item_id in "${item_ids_array[@]}"; do
-        output_file="${OUTPUT_DIR_ITEMS}/${item_id}.html"
-        xsltproc --stringparam item_id "$item_id" item_transform.xsl "$master_file" > "$output_file"
-        if [ $? -eq 0 ]; then
-            echo "     ✅ Generated -> ${output_file##*/}" # Only show filename
-        else
-            echo "     ❌ FAILED: to generate page for item '$item_id' from '$master_file'."
-        fi
-    done
-done
-echo "--- HTML Item Page Generation Finished ---"
-
-
-# --- 2. Database Generation ---
-echo "\n--- Starting database.json Generation ---"
+MASTER_FILES=("tischendorf_01.xml" "synaxarion_01.xml")
 echo '<?xml version="1.0" encoding="UTF-8"?><sources xmlns:xi="http://www.w3.org/2001/XInclude">' > $TEMP_SOURCES_XML
 for master_file in $MASTER_FILES; do
     echo "  <xi:include href=\"${master_file}\" />" >> $TEMP_SOURCES_XML
 done
 echo '</sources>' >> $TEMP_SOURCES_XML
+echo "  -> Created temporary file: $TEMP_SOURCES_XML"
 
-echo "  -> Created temporary source file: $TEMP_SOURCES_XML"
 
-xsltproc --xinclude generate_database.xsl "$TEMP_SOURCES_XML" > "$DATABASE_OUTPUT_PATH"
+# --- 2. Run All Saxon Transformations in a Single Pass ---
+echo "\n[2/3] Generating ALL pages and database with Saxon..."
 
-if [ $? -eq 0 ]; then
-  echo "✅ SUCCESS: Generated -> $DATABASE_OUTPUT_PATH"
-else
-  echo "❌ FAILED: Could not generate database.json."
-fi
+# Clean old directories
+rm -rf "../../pages/item" "../../pages/person"
+mkdir -p "../../pages/item" "../../pages/person"
 
+# A. Generate ALL item pages (FAST)
+java -jar "$ABSOLUTE_SAXON_PATH" -s:"$TEMP_SOURCES_XML" -xsl:"generate_all_items.xsl" -xi
+echo "  -> Generated all item pages."
+
+# B. Generate the database.json
+java -jar "$ABSOLUTE_SAXON_PATH" -s:"$TEMP_SOURCES_XML" -xsl:"generate_database.xsl" -o:"../../database.json" -xi
+echo "  -> Generated database.json"
+
+# C. Generate ALL person pages (FAST)
+java -jar "$ABSOLUTE_SAXON_PATH" -s:"$TEMP_SOURCES_XML" -xsl:"generate_persons.xsl" -xi
+echo "  -> Generated all person pages."
+
+echo "✅ SUCCESS: All Saxon transformations complete."
+
+
+# --- 3. Cleanup ---
+echo "\n[3/3] Cleaning up temporary files..."
 rm $TEMP_SOURCES_XML
-echo "  -> Cleaned up temporary files."
-echo "--- All Generation Tasks Finished ---"
+echo "--- Build complete! ---"
