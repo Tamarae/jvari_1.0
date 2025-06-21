@@ -24,6 +24,7 @@
     <xsl:template name="translate-role-en"><xsl:param name="type"/><xsl:choose><xsl:when test="$type = 'clergy'">Clergy</xsl:when><xsl:when test="$type = 'noble'">Noble</xsl:when><xsl:when test="$type = 'administrative'">Administrative</xsl:when><xsl:when test="$type = 'royal'">Royal</xsl:when><xsl:when test="$type = 'secular'">Secular</xsl:when><xsl:when test="$type = 'martyr'">Martyr</xsl:when><xsl:otherwise><xsl:value-of select="$type"/></xsl:otherwise></xsl:choose></xsl:template>
 
     <xsl:template match="/">
+        <!-- CHANGE 1: Add a new variable to sum the values for 'ducat' -->
         <xsl:variable name="totalFlorins" select="sum(//tei:num[following-sibling::tei:term[1]/@key='florin' or ../tei:term[@key='florin']]/@value)"/>
         <xsl:variable name="totalTetri" select="sum(//tei:num[following-sibling::tei:term[1]/@key='tetri' or ../tei:term[@key='tetri']]/@value)"/>
         <xsl:variable name="totalDrama" select="sum(//tei:num[following-sibling::tei:term[1]/@key='drama' or ../tei:term[@key='drama']]/@value)"/>
@@ -32,6 +33,7 @@
         <xsl:variable name="totalVenetianTetri" select="sum(//tei:num[following-sibling::tei:term[1]/@key='venetian_tetri' or ../tei:term[@key='venetian_tetri']]/@value)"/>
         <xsl:variable name="totalVelentiuriFlorin" select="sum(//tei:num[following-sibling::tei:term[1]/@key='velentiuri_florin' or ../tei:term[@key='velentiuri_florin']]/@value)"/>
         <xsl:variable name="totalMutqaliGold" select="sum(//tei:num[following-sibling::tei:term[1]/@key='mutqali_gold' or ../tei:term[@key='mutqali_gold']]/@value)"/>
+        <xsl:variable name="totalDucats" select="sum(//tei:num[following-sibling::tei:term[1]/@key='ducat' or ../tei:term[@key='ducat']]/@value)"/>
 
         <xsl:variable name="totalPersons" select="count(//tei:persName[@key and generate-id(.) = generate-id(key('persons-by-key', @key)[1])])"/>
         <xsl:variable name="totalFamilies" select="count(//tei:addName[@type='patronymic' and @key and generate-id(.)=generate-id(key('families-by-key', @key)[1])])"/>
@@ -53,6 +55,7 @@
         <xsl:text>],</xsl:text>
 
         <xsl:text>"economicData": [</xsl:text>
+        <!-- CHANGE 2: Add a new template call for 'ducat' at the end of the list, updating the `isFirst` logic -->
         <xsl:call-template name="generate-coin-data">
             <xsl:with-param name="isFirst" select="true()"/>
             <xsl:with-param name="total" select="$totalFlorins"/>
@@ -108,6 +111,13 @@
             <xsl:with-param name="key" select="'mutqali_gold'"/>
             <xsl:with-param name="labelKa" select="'მუტყალი ოქრო'"/>
             <xsl:with-param name="labelEn" select="'Mutqali Gold'"/>
+        </xsl:call-template>
+        <xsl:call-template name="generate-coin-data">
+            <xsl:with-param name="isFirst" select="not($totalFlorins > 0 or $totalTetri > 0 or $totalDrama > 0 or $totalMarchili > 0 or $totalDrahkani > 0 or $totalVenetianTetri > 0 or $totalVelentiuriFlorin > 0 or $totalMutqaliGold > 0)"/>
+            <xsl:with-param name="total" select="$totalDucats"/>
+            <xsl:with-param name="key" select="'ducat'"/>
+            <xsl:with-param name="labelKa" select="'დუკატი'"/>
+            <xsl:with-param name="labelEn" select="'Ducat'"/>
         </xsl:call-template>
 
         <xsl:text>]</xsl:text>

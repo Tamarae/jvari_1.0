@@ -9867,7 +9867,7 @@
                             <seg type="donation_narrative">
                                 მოგუცა <term type="donation"><num value="130">ას ოცდაათი</num> <term type="coin" key="ducat">დუკატი</term></term> და ამისა
                                 <lb n="8" ed="8"/>
-                                <expan>შ<ex>ემდგომა</ex>დ</expan> შექმნა <term type="object" key="ჯვარი"><expan>ჯ<ex>უარ</ex>ი</expan></term> <term type="value"><num value="80">ოთხმოც</num> დუკატად</term>
+                                <expan>შ<ex>ემდგომა</ex>დ</expan> შექმნა <term type="object" key="ჯვარი"><expan>ჯ<ex>უარ</ex>ი</expan></term> <term type="value"><num value="80">ოთხმოც</num> <term type="coin" key="ducat">დუკატად</term></term>
                                 <lb n="9" ed="9"/>
                                 და დაასუჱნა <placeName ref="#altar" key="საკურთხეველი"><expan>საკურთხ<ex>ე</ex>ვ<ex>ე</ex>ლსა</expan> <expan>ზ<ex>ედ</ex>ა</expan></placeName>.
                             </seg> 
@@ -9882,7 +9882,7 @@
                                 <lb n="13" ed="13"/>
                                 <expan>უღონობისაგ<ex>ა</ex>ნ</expan>; <expan>არწმუნა</expan> ღმერთმან და
                                 <lb n="14" ed="14"/>
-                                <term type="donation"><num value="100">ასი</num> დუკატი</term> <expan>მისთ<ex>ჳ</ex>ს</expan> შეგუაწია.
+                                <term type="donation"><num value="100">ასი</num> <term type="coin" key="ducat">დუკატი</term></term> <expan>მისთ<ex>ჳ</ex>ს</expan> შეგუაწია.
                             </seg> 
                             <seg type="foundation_statement" xml:id="jer25_foundation_statement_010">
                                 <orgName type="monastic_community" ref="#org_cross_monastery"><expan>ჩ<ex>უე</ex>ნ</expan></orgName> დაუწესეთ,
