@@ -307,7 +307,7 @@ body.lang-en-active .lang-ka { display: none; }
 /* --- III. STYLES FOR INDIVIDUAL ITEM PAGES --- */
 
 .back-link {
-    position: fixed; top: 15px; right: 20px;
+    
     color: white; padding: 8px 15px;
     text-decoration: none; font-size: 0.9em; border-radius: 4px;
     transition: background 0.2s;
@@ -404,7 +404,6 @@ body.lang-en-active .lang-ka { display: none; }
 
 .line-content .supplied-text {
     color: #555;
-    font-style: italic;
 }
 
 .line-content .expansion {
@@ -932,4 +931,96 @@ body.lang-en-active .lang-ka { display: none; }
 
 .header-top-controls .back-link:hover {
     color: #0d6efd;
+}
+
+/* =================================================================== */
+/* STYLES FOR CRITICAL APPARATUS & EDITORIAL INTERVENTIONS             */
+/* =================================================================== */
+
+/* --- Tooltip for Textual Variants --- */
+.app-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.tooltip-marker {
+    cursor: pointer;
+    color: #005a9c; /* A distinct, scholarly blue */
+    font-weight: bold;
+    font-size: 10px;
+    vertical-align: super;
+    line-height: 1;
+}
+
+.tooltip-content {
+    visibility: hidden;
+    width: 220px;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: left;
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: absolute;
+    z-index: 10;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -110px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.app-wrapper:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-title {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.reading {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.reading:last-child {
+    margin-bottom: 0;
+}
+
+.witness {
+    font-style: italic;
+    color: #666;
+}
+
+/* --- Styles for Editorial Interventions --- */
+.tei-add {
+    color: #444;
+}
+
+del {
+    text-decoration: line-through;
+    color: #d9534f;
+    background-color: #fbeae9;
+}
+
+.tei-unclear {
+    color: #777;
+    border-bottom: 1px dotted #999;
+}
+
+/* Style for abbreviation expansions */
+.abbr-expansion {
+    color: #555;
 }
